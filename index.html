@@ -2,7 +2,7 @@
 <html lang="mr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>BloomBite - Fresh Fruit & Sprouts</title>
   
   <!-- Google Fonts & Core Frameworks -->
@@ -29,18 +29,24 @@
       --text-muted: #64748b;
     }
     
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     html, body {
       width: 100%;
-      overflow-x: clip;
-      -webkit-overflow-scrolling: touch;
+      max-width: 100vw;
+      overflow-x: hidden;
+      touch-action: pan-y;
+      -webkit-text-size-adjust: 100%;
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg-cream);
       color: var(--text-dark);
       padding-bottom: 0;
+      margin: 0;
       scroll-behavior: smooth;
     }
 
-    /* फक्त मोबाईलवर स्टिकी बारसाठी खालून पॅडिंग */
     @media (max-width: 768px) {
       body {
         padding-bottom: 70px;
@@ -56,7 +62,7 @@
       transition: transform 0.3s ease;
     }
     .brand-title:hover {
-      transform: scale(1.04);
+      transform: scale(1.05);
     }
 
     /* Glass Navbar */
@@ -71,6 +77,7 @@
       background: radial-gradient(circle at 85% 20%, #d8f3dc 0%, #fbfbf8 70%);
       padding: 45px 0 40px;
       border-bottom: 1px solid #e2e8f0;
+      width: 100%;
     }
 
     .pill-badge {
@@ -84,49 +91,52 @@
       border: 1px solid #fed7aa;
       animation: gentlePulse 2.5s infinite ease-in-out;
     }
-
     @keyframes gentlePulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
+      50% { transform: scale(1.04); }
     }
 
+    /* ================= FULL HOVER ANIMATIONS RESTORED ================= */
     .premium-card {
       background: var(--card-white);
       border-radius: 20px;
       border: 1px solid #edf2f7;
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      width: 100%;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      transform: translateZ(0);
     }
     .premium-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
       border-color: #cbd5e1;
     }
 
-    /* Comparison Styling */
+    /* Comparison Hover */
     .compare-box-bad {
       background: #fff8f8;
       border: 2px dashed #fca5a5;
-      border-radius: 22px;
-      transition: transform 0.3s ease;
+      border-radius: 20px;
+      width: 100%;
+      transition: all 0.35s ease;
     }
     .compare-box-bad:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(239, 68, 68, 0.12);
     }
     .compare-box-good {
       background: #f2fbf5;
       border: 2px solid #22c55e;
-      border-radius: 22px;
-      transition: transform 0.3s ease;
+      border-radius: 20px;
+      width: 100%;
       box-shadow: 0 10px 25px rgba(34, 197, 94, 0.1);
+      transition: all 0.35s ease;
     }
     .compare-box-good:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(34, 197, 94, 0.18);
+      transform: translateY(-6px);
+      box-shadow: 0 18px 35px rgba(34, 197, 94, 0.2);
     }
 
-    /* 30-Day Motion Cards */
+    /* 30-Day Motion & Hover Cards */
     .step-card {
       background: #ffffff;
       border-radius: 20px;
@@ -135,13 +145,13 @@
       height: 100%;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
-      transition: all 0.35s ease;
-      transform: translateZ(0);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+      width: 100%;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .step-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 28px rgba(15, 23, 42, 0.09);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
       border-color: var(--primary-accent);
     }
     .step-card::before {
@@ -151,6 +161,10 @@
       left: 0;
       right: 0;
       height: 5px;
+      transition: height 0.2s ease;
+    }
+    .step-card:hover::before {
+      height: 7px;
     }
     .step-card-1::before { background: #198754; }
     .step-card-2::before { background: #f59e0b; }
@@ -176,7 +190,7 @@
       100% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0); }
     }
 
-    /* Hygiene & Farm Standards Cards */
+    /* Hygiene Cards Hover */
     .hygiene-card {
       background: #ffffff;
       border-radius: 20px;
@@ -184,11 +198,12 @@
       padding: 24px 18px;
       text-align: center;
       height: 100%;
+      width: 100%;
       transition: all 0.35s ease;
     }
     .hygiene-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 28px rgba(27, 67, 50, 0.12);
+      transform: translateY(-7px);
+      box-shadow: 0 16px 30px rgba(27, 67, 50, 0.12);
       border-color: var(--primary-accent);
     }
     .hygiene-icon-wrap {
@@ -202,12 +217,12 @@
       justify-content: center;
       font-size: 1.8rem;
       margin: 0 auto 12px;
-      transition: all 0.3s ease;
+      transition: all 0.35s ease;
     }
     .hygiene-card:hover .hygiene-icon-wrap {
       background: var(--primary-accent);
       color: white;
-      transform: rotate(8deg) scale(1.1);
+      transform: rotate(12deg) scale(1.12);
     }
 
     /* About Us Story Card */
@@ -215,6 +230,7 @@
       background: linear-gradient(135deg, #ffffff 0%, #f4fbf7 100%);
       border: 1px solid #d1e7dd;
       border-radius: 24px;
+      width: 100%;
     }
     .stat-badge {
       background: white;
@@ -222,18 +238,20 @@
       padding: 14px 10px;
       border: 1px solid #e2e8f0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: transform 0.25s ease;
+      transition: all 0.25s ease;
     }
     .stat-badge:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
     }
 
-    /* Checkout Shell */
+    /* Checkout Shell & Plan Hover */
     .order-shell {
       background: #ffffff;
       border-radius: 22px;
       border: 1px solid #e2e8f0;
       box-shadow: 0 18px 40px rgba(15, 23, 42, 0.07);
+      width: 100%;
     }
     .plan-selector {
       border: 2px solid #e2e8f0;
@@ -246,11 +264,12 @@
     .plan-selector:hover {
       border-color: #86efac;
       background: #f0fdf4;
+      transform: translateY(-3px);
     }
     .plan-selector.active {
       border-color: var(--primary-accent);
       background: #e8f5e9;
-      box-shadow: 0 4px 12px rgba(45, 106, 79, 0.15);
+      box-shadow: 0 6px 16px rgba(45, 106, 79, 0.16);
       transform: scale(1.02);
     }
     .qty-btn {
@@ -280,13 +299,13 @@
       border: none;
       display: inline-block;
       text-decoration: none;
-      transition: all 0.25s ease;
+      transition: all 0.3s ease;
     }
     .btn-brand:hover, .btn-brand:active {
       background-color: var(--primary);
       color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(27, 67, 50, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(27, 67, 50, 0.28);
     }
 
     .day-badge {
@@ -383,7 +402,7 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg glass-nav sticky-top py-2 py-md-3">
+  <nav class="navbar navbar-expand-lg glass-nav sticky-top py-2">
     <div class="container px-3">
       <a class="brand-title" href="#">BloomBite 🌱</a>
       
@@ -408,11 +427,11 @@
       <div class="row align-items-center g-4">
         
         <div class="col-lg-7 text-center text-lg-start" data-aos="fade-up">
-          <span class="pill-badge mb-2 mb-md-3" data-key="heroTag">Fresh, Healthy & Beautiful</span>
-          <h1 class="h2 fw-bold mt-1 mb-2 mb-md-3" style="color: var(--primary);" data-key="heroTitle">
+          <span class="pill-badge mb-2" data-key="heroTag">Fresh, Healthy & Beautiful</span>
+          <h1 class="h2 fw-bold mt-1 mb-2" style="color: var(--primary);" data-key="heroTitle">
             Your Daily Source for Fresh Fruit & Sprouts
           </h1>
-          <p class="text-secondary small mb-3 mb-md-4" style="max-width: 620px;" data-key="heroDesc">
+          <p class="text-secondary small mb-3" style="max-width: 620px;" data-key="heroDesc">
             ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे आणि अंकुरित कडधान्ये! डॉक्टर-प्रमाणित पोषण थेट तुमच्या टेबलावर.
           </p>
           <div class="d-flex justify-content-center justify-content-lg-start gap-2">
@@ -422,7 +441,7 @@
         </div>
 
         <!-- Hero Card -->
-        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
           <div class="card premium-card p-3 p-md-4 border-2 border-success-subtle shadow-sm">
             <div class="d-flex align-items-center justify-content-between mb-2">
               <span class="badge bg-warning text-dark fw-bold">Daily Sliced Fresh 🍉</span>
@@ -455,7 +474,7 @@
   </header>
 
   <!-- About Us Section -->
-  <section id="about" class="container my-4 my-md-5 py-2 px-3" data-aos="fade-up">
+  <section id="about" class="container my-4 py-2 px-3" data-aos="fade-up">
     <div class="about-box p-3 p-md-5 shadow-sm">
       <div class="row align-items-center g-4">
         
@@ -485,28 +504,28 @@
 
         <div class="col-lg-5">
           <div class="row g-2">
-            <div class="col-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="col-6" data-aos="zoom-in" data-aos-delay="50">
               <div class="stat-badge text-center">
                 <div class="fs-3 mb-1">👨‍⚕️</div>
                 <h5 class="fw-bold text-success mb-0">15+</h5>
                 <p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="stat1">डॉक्टरांचा सल्ला</p>
               </div>
             </div>
-            <div class="col-6" data-aos="zoom-in" data-aos-delay="150">
+            <div class="col-6" data-aos="zoom-in" data-aos-delay="100">
               <div class="stat-badge text-center">
                 <div class="fs-3 mb-1">🌾</div>
                 <h5 class="fw-bold text-primary mb-0">100%</h5>
                 <p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="stat2">थेट शेतातून निवड</p>
               </div>
             </div>
-            <div class="col-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="col-6" data-aos="zoom-in" data-aos-delay="150">
               <div class="stat-badge text-center">
                 <div class="fs-3 mb-1">💊</div>
                 <h5 class="fw-bold text-danger mb-0">0%</h5>
                 <p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="stat3">गोळ्यांची गरज</p>
               </div>
             </div>
-            <div class="col-6" data-aos="zoom-in" data-aos-delay="250">
+            <div class="col-6" data-aos="zoom-in" data-aos-delay="200">
               <div class="stat-badge text-center">
                 <div class="fs-3 mb-1">🥗</div>
                 <h5 class="fw-bold text-warning mb-0">Fresh</h5>
@@ -521,7 +540,7 @@
   </section>
 
   <!-- 5-Star Hygiene Standards -->
-  <section class="container my-4 my-md-5 py-2 px-3" data-aos="fade-up">
+  <section class="container my-4 py-2 px-3" data-aos="fade-up">
     <div class="text-center mb-4">
       <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold mb-2" data-key="hygieneBadge">
         🛡️ 100% शुध्दता आणि सुरक्षितता
@@ -535,7 +554,7 @@
     </div>
 
     <div class="row g-3">
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
         <div class="hygiene-card">
           <div class="hygiene-icon-wrap"><i class="bi bi-geo-alt-fill"></i></div>
           <h6 class="fw-bold mb-1" data-key="hcard1Title">Direct From Farm</h6>
@@ -545,7 +564,7 @@
         </div>
       </div>
 
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div class="hygiene-card">
           <div class="hygiene-icon-wrap"><i class="bi bi-droplet-half"></i></div>
           <h6 class="fw-bold mb-1" data-key="hcard2Title">RO Water Cleaned</h6>
@@ -555,7 +574,7 @@
         </div>
       </div>
 
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
         <div class="hygiene-card">
           <div class="hygiene-icon-wrap"><i class="bi bi-shield-check"></i></div>
           <h6 class="fw-bold mb-1" data-key="hcard3Title">Cap & Gloves</h6>
@@ -565,7 +584,7 @@
         </div>
       </div>
 
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="250">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div class="hygiene-card">
           <div class="hygiene-icon-wrap"><i class="bi bi-box2-heart-fill"></i></div>
           <h6 class="fw-bold mb-1" data-key="hcard4Title">Sealed Fresh Box</h6>
@@ -577,8 +596,8 @@
     </div>
   </section>
 
-  <!-- ================= SHOCKING COMPARISON (FULL 5-POINT BREAKDOWN) ================= -->
-  <section class="container my-4 my-md-5 py-2 px-3" data-aos="fade-up">
+  <!-- ================= REALITY CHECK (ALL 5 POINTS) ================= -->
+  <section class="container my-4 py-2 px-3" data-aos="fade-up">
     <div class="text-center mb-4">
       <span class="badge bg-danger text-white px-3 py-1 rounded-pill fw-bold mb-2" data-key="vsBadge">
         डोळे उघडणारी तुलना (Reality Check) ⚠️
@@ -591,33 +610,33 @@
 
     <div class="row g-3">
       <!-- 2 Samosas + 1 Tea (Toxic Side) -->
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="50">
         <div class="compare-box-bad p-3 p-md-4 h-100 shadow-sm">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold text-danger mb-0" data-key="badHead">❌ २ समोसे (₹४०) + चहा (₹१०)</h5>
-            <span class="badge bg-danger text-white fs-6">रोज ₹५० + छुपे खर्च!</span>
+            <h6 class="fw-bold text-danger mb-0 fs-6" data-key="badHead">❌ २ समोसे (₹४०) + चहा (₹१०)</h6>
+            <span class="badge bg-danger text-white">रोज ₹५० + छुपे खर्च!</span>
           </div>
           <p class="text-muted small mb-3" data-key="badSub">दररोज दुपारी ४ वाजता होणारा शरीरावर आणि खिशावर विषारी हल्ला:</p>
 
           <ul class="list-unstyled mb-0 small">
             <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger fs-6 me-2 mt-1"></i>
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
               <span data-key="bad1"><strong>जळालेले रिफाइंड तेल & चरबी:</strong> वारंवार उकळलेले तेल थेट हृदयाच्या नसांमध्ये कोलेस्ट्रॉल आणि Blockages वाढवते.</span>
             </li>
             <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger fs-6 me-2 mt-1"></i>
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
               <span data-key="bad2"><strong>मैदा आणि साखरेचा झटका:</strong> मैदा आतड्यांना चिकटतो, भयानक ॲसिडिटी करतो, गॅसेस वाढवतो आणि पचनक्रिया मंदावतो.</span>
             </li>
             <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger fs-6 me-2 mt-1"></i>
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
               <span data-key="bad3"><strong>गोळ्यांचा नित्य खर्च (Tablets Cost):</strong> रोजच्या ॲसिडिटीसाठी Pan-D, Omez, इनो किंवा पेनकिलर्सवर दरमहा ₹५०० ते ₹१,००० खर्च होतो!</span>
             </li>
             <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger fs-6 me-2 mt-1"></i>
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
               <span data-key="bad4"><strong>हॉस्पिटल ॲडमिशनचा धोका (Hospital Bills):</strong> फॅटी लिव्हर, वाढलेले बीपी, शुगर आणि अचानक पोट बिघडल्यास डॉक्टरांची फी ₹१,००० आणि ॲडमिट झाल्यास ₹३०,००० ते ₹५०,००० चा भुर्दंड!</span>
             </li>
             <li class="d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger fs-6 me-2 mt-1"></i>
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
               <span data-key="bad5"><strong>कष्टाच्या पैशांची नासाडी:</strong> महिन्याला ₹१,५००+ समोशांवर + हजारो रुपये औषधांवर घालवून फक्त लठ्ठपणा आणि आजारपण विकत मिळते!</span>
             </li>
           </ul>
@@ -625,33 +644,33 @@
       </div>
 
       <!-- BloomBite Fresh Whole Nutrition (Healthy Side) -->
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="150">
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
         <div class="compare-box-good p-3 p-md-4 h-100 shadow-sm">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold text-success mb-0" data-key="goodHead">🌱 BloomBite Fresh Whole Nutrition</h5>
-            <span class="badge bg-success text-white fs-6">स्मार्ट गुंतवणूक</span>
+            <h6 class="fw-bold text-success mb-0 fs-6" data-key="goodHead">🌱 BloomBite Fresh Whole Nutrition</h6>
+            <span class="badge bg-success text-white">स्मार्ट गुंतवणूक</span>
           </div>
           <p class="text-muted small mb-3" data-key="goodSub">हॉस्पिटलची पायरी चढण्यापेक्षा निसर्गाची ताकद थेट तुमच्या टेबलवर:</p>
 
           <ul class="list-unstyled mb-0 small">
             <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success fs-6 me-2 mt-1"></i>
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
               <span data-key="good1"><strong>१००% शुद्ध प्लांट प्रोटीन & फायबर:</strong> मोड आलेली कडधान्ये आतडी स्वच्छ करतात आणि ३-४ तास जंक फूडची भूक पूर्णपणे थांबवतात.</span>
             </li>
             <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success fs-6 me-2 mt-1"></i>
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
               <span data-key="good2"><strong>पपईचे पाचक एन्झाईम्स (Papain):</strong> ॲसिडिटी मुळापासून नष्ट होते, पोट कायम हलके राहते आणि बद्धकोष्ठता होत नाही.</span>
             </li>
             <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success fs-6 me-2 mt-1"></i>
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
               <span data-key="good3"><strong>झिरो गोळ्यांचा खर्च (Zero Tablets):</strong> नैसर्गिक पोषणामुळे शरीराची रचना सुधारते; कोणतीही अँटासिड किंवा व्हिटॅमिन गोळी घेण्याची गरजच पडत नाही!</span>
             </li>
             <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success fs-6 me-2 mt-1"></i>
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
               <span data-key="good4"><strong>अखंड नैसर्गिक स्टॅमिना & इम्युनिटी:</strong> संत्री, डाळिंब आणि पेरू मधील शुद्ध व्हिटॅमिन्स रोगांशी लढतात आणि दुपारचा आळस पूर्णपणे नाहीसा करतात.</span>
             </li>
             <li class="d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success fs-6 me-2 mt-1"></i>
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
               <span data-key="good5"><strong>खऱ्या आरोग्याची बचत (Lifetime Health):</strong> डॉक्टरांचे लाखो रुपये वाचवून शरीर फिट, वजन नियंत्रित, त्वचा तजेलदार आणि मन दिवसभर टवटवीत राहते!</span>
             </li>
           </ul>
@@ -661,7 +680,7 @@
   </section>
 
   <!-- 4 Problems Section -->
-  <section class="container my-4 my-md-5 py-2 px-3" data-aos="fade-up">
+  <section class="container my-4 py-2 px-3" data-aos="fade-up">
     <div class="text-center mb-4">
       <span class="pill-badge mb-2" data-key="concernsTag">Whole Nutrition Power</span>
       <h3 class="fw-bold" style="color: var(--primary);" data-key="concernsTitle">
@@ -671,52 +690,52 @@
     </div>
 
     <div class="row g-3">
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
         <div class="card premium-card p-3 h-100 border-top border-danger border-4">
           <div class="d-flex align-items-center justify-content-between mb-2">
             <span class="fs-4">⚡</span>
             <span class="badge bg-light text-danger fw-bold" style="font-size: 0.65rem;">Problem 1</span>
           </div>
-          <h6 class="fw-bold mb-1" style="font-size: 0.9rem;" data-key="c1Head">दुपारचा आळस & थकवा</h6>
+          <h6 class="fw-bold mb-1" style="font-size: 0.88rem;" data-key="c1Head">दुपारचा आळस & थकवा</h6>
           <p class="text-muted mb-2" style="font-size: 0.75rem;" data-key="c1Issue">रक्तातील साखर अचानक कमी-जास्त झाल्यामुळे कामावर लक्ष लागत नाही.</p>
           <hr class="text-muted my-1 opacity-25">
           <p class="mb-0 text-secondary" style="font-size: 0.75rem;" data-key="c1Fix"><strong class="text-success">उतारा:</strong> केळी, सफरचंद आणि स्प्राउट्स दिवसभर टिकणारी नॅचरल एनर्जी देतात.</p>
         </div>
       </div>
 
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div class="card premium-card p-3 h-100 border-top border-warning border-4">
           <div class="d-flex align-items-center justify-content-between mb-2">
             <span class="fs-4">🔥</span>
             <span class="badge bg-light text-warning fw-bold" style="font-size: 0.65rem;">Problem 2</span>
           </div>
-          <h6 class="fw-bold mb-1" style="font-size: 0.9rem;" data-key="c2Head">पोटाचे विकार & ॲसिडिटी</h6>
+          <h6 class="fw-bold mb-1" style="font-size: 0.88rem;" data-key="c2Head">पोटाचे विकार & ॲसिडिटी</h6>
           <p class="text-muted mb-2" style="font-size: 0.75rem;" data-key="c2Issue">तळलेले अन्न आणि फायबरच्या अभावामुळे पचनक्रिया मंदावून पोट फुगते.</p>
           <hr class="text-muted my-1 opacity-25">
           <p class="mb-0 text-secondary" style="font-size: 0.75rem;" data-key="c2Fix"><strong class="text-success">उतारा:</strong> पपई मधील पाचक एन्झाईम्स आतडी स्वच्छ करतात व पचन सुलभ करतात.</p>
         </div>
       </div>
 
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
         <div class="card premium-card p-3 h-100 border-top border-primary border-4">
           <div class="d-flex align-items-center justify-content-between mb-2">
             <span class="fs-4">⚖️</span>
             <span class="badge bg-light text-primary fw-bold" style="font-size: 0.65rem;">Problem 3</span>
           </div>
-          <h6 class="fw-bold mb-1" style="font-size: 0.9rem;" data-key="c3Head">पोटाची चरबी & वजन</h6>
+          <h6 class="fw-bold mb-1" style="font-size: 0.88rem;" data-key="c3Head">पोटाची चरबी & वजन</h6>
           <p class="text-muted mb-2" style="font-size: 0.75rem;" data-key="c3Issue">वारंवार लागणारी भूक आणि जंक फूडमुळे पोटावर चरबी साचते.</p>
           <hr class="text-muted my-1 opacity-25">
           <p class="mb-0 text-secondary" style="font-size: 0.75rem;" data-key="c3Fix"><strong class="text-success">उतारा:</strong> हिरवे मूग स्प्राउट्समधील शुद्ध प्रोटीनमुळे ३-४ तास भूक लागत नाही.</p>
         </div>
       </div>
 
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="250">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div class="card premium-card p-3 h-100 border-top border-success border-4">
           <div class="d-flex align-items-center justify-content-between mb-2">
             <span class="fs-4">🛡️</span>
             <span class="badge bg-light text-success fw-bold" style="font-size: 0.65rem;">Problem 4</span>
           </div>
-          <h6 class="fw-bold mb-1" style="font-size: 0.9rem;" data-key="c4Head">कमी प्रतिकारशक्ती</h6>
+          <h6 class="fw-bold mb-1" style="font-size: 0.88rem;" data-key="c4Head">कमी प्रतिकारशक्ती</h6>
           <p class="text-muted mb-2" style="font-size: 0.75rem;" data-key="c4Issue">हवामान बदलताच लगेच सर्दी, खोकला आणि व्हायरल इन्फेक्शन होणे.</p>
           <hr class="text-muted my-1 opacity-25">
           <p class="mb-0 text-secondary" style="font-size: 0.75rem;" data-key="c4Fix"><strong class="text-success">उतारा:</strong> संत्री, डाळिंब यातील Vitamin C शरीराची इम्युनिटी वॉल मजबूत ठेवतात.</p>
@@ -726,7 +745,7 @@
   </section>
 
   <!-- 30-Day Transformation Timeline -->
-  <section class="container my-4 my-md-5 py-2 px-3" data-aos="fade-up">
+  <section class="container my-4 py-2 px-3" data-aos="fade-up">
     <div class="p-3 p-md-5 rounded-4 shadow-sm border bg-white">
       <div class="text-center mb-4">
         <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold mb-1">
@@ -741,7 +760,7 @@
       </div>
 
       <div class="row g-3">
-        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
           <div class="step-card step-card-1">
             <div class="step-badge bg-success">01</div>
             <h6 class="fw-bold text-success mb-1" style="font-size: 0.85rem;" data-key="t1Time">Days 1 to 7</h6>
@@ -752,7 +771,7 @@
           </div>
         </div>
 
-        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
           <div class="step-card step-card-2">
             <div class="step-badge bg-warning">02</div>
             <h6 class="fw-bold text-warning mb-1" style="font-size: 0.85rem;" data-key="t2Time">Days 8 to 15</h6>
@@ -763,7 +782,7 @@
           </div>
         </div>
 
-        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
           <div class="step-card step-card-3">
             <div class="step-badge bg-primary">03</div>
             <h6 class="fw-bold text-primary mb-1" style="font-size: 0.85rem;" data-key="t3Time">Days 16 to 22</h6>
@@ -774,7 +793,7 @@
           </div>
         </div>
 
-        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="250">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
           <div class="step-card step-card-4">
             <div class="step-badge bg-info">04</div>
             <h6 class="fw-bold text-info mb-1" style="font-size: 0.85rem;" data-key="t4Time">Days 23 to 30</h6>
@@ -803,7 +822,7 @@
       </div>
 
       <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle shadow-sm" style="font-size: 0.85rem;">
+        <table class="table table-bordered text-center align-middle shadow-sm mb-0" style="font-size: 0.85rem;">
           <thead class="table-success">
             <tr>
               <th data-key="thDay">वार</th>
@@ -825,14 +844,14 @@
   </section>
 
   <!-- Pricing Cards -->
-  <section class="container my-4 my-md-5 py-2 px-3" data-aos="fade-up">
+  <section class="container my-4 py-2 px-3" data-aos="fade-up">
     <div class="text-center mb-4">
       <span class="pill-badge mb-2" data-key="priceBadge">Best Value Plans</span>
       <h3 class="fw-bold" style="color: var(--primary);" data-key="priceTitle">दर आणि स्पेशल ऑफर्स</h3>
     </div>
 
     <div class="row g-3 justify-content-center">
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
         <div class="card premium-card p-3 text-center border-top border-secondary border-4 h-100">
           <h6 class="fw-bold" data-key="p1Title">रेग्युलर मंथली प्लॅन</h6>
           <h3 class="text-dark my-2">₹3,500 <small class="fs-6 text-muted">/ महिना</small></h3>
@@ -841,7 +860,7 @@
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="card premium-card p-3 text-center border-top border-success border-4 h-100 position-relative">
           <span class="badge bg-danger position-absolute top-0 start-50 translate-middle rounded-pill">🔥 मर्यादित ऑफर</span>
           <h6 class="fw-bold mt-1" data-key="p2Title">पहिले ३ महिने ऑफर</h6>
@@ -851,7 +870,7 @@
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
         <div class="card premium-card p-3 text-center border-top border-primary border-4 h-100">
           <h6 class="fw-bold" data-key="p3Title">२० लोकांचा रेफरल प्लॅन</h6>
           <h3 class="text-primary my-2">1 FREE <small class="fs-6 text-muted">/ Party</small></h3>
@@ -953,7 +972,7 @@
     </a>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer (Zero bottom spacing) -->
   <footer class="bg-dark text-white py-4 text-center px-2 m-0 border-0">
     <div class="container">
       <h4 class="brand-title text-white mb-1">BloomBite</h4>
@@ -971,7 +990,7 @@
 
   <script>
     AOS.init({
-      duration: 700,
+      duration: 650,
       once: true,
       easing: 'ease-out-cubic',
       disable: false
@@ -1125,7 +1144,7 @@
         hcard3Desc: "Staff strictly wears head caps, aprons, and food-grade gloves. Zero direct hand contact!",
         hcard4Title: "Sealed Fresh Box",
         hcard4Desc: "Airtight eco-friendly boxes to keep environmental pollutants and flies completely out.",
-        vsBadge: "Reality Check (Shocking Truth) ⚠️",
+        vsBadge: "Reality Check ⚠️",
         vsTitle: "2 Samosas + 1 Tea (₹50) VS BloomBite Basket",
         vsSub: "It's not just ₹50/day—it invites thousands in hidden pharmacy and hospital bills!",
         badHead: "❌ 2 Samosas (₹40) + Tea (₹10)",
@@ -1228,7 +1247,7 @@
         }
       });
       recalcBill();
-
+      
       setTimeout(() => {
         AOS.refreshHard();
       }, 100);
