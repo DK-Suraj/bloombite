@@ -20,15 +20,13 @@
       --secondary-green: #38a169;
       --light-mint: #e6f7ec;
       --accent-orange: #f97316;
-      --bg-cream: #f8faf7;
+      --bg-cream: #f9fbf8;
       --card-white: #ffffff;
       --text-dark: #0f172a;
       --text-muted: #64748b;
       --border-color: rgba(35, 104, 66, 0.12);
-      --glass-surface: rgba(255, 255, 255, 0.82);
-      --glass-border: rgba(255, 255, 255, 0.6);
-      --bb-shadow: 0 20px 40px -15px rgba(18, 56, 36, 0.08);
-      --bb-shadow-hover: 0 25px 50px -12px rgba(18, 56, 36, 0.16);
+      --bb-shadow: 0 10px 25px -5px rgba(18, 56, 36, 0.07);
+      --bb-shadow-hover: 0 18px 36px -8px rgba(18, 56, 36, 0.15);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -38,26 +36,71 @@
       max-width: 100vw;
       overflow-x: hidden;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: radial-gradient(circle at 10% 20%, rgba(230, 247, 236, 0.7) 0%, transparent 40%),
-                  radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 35%),
-                  var(--bg-cream);
+      background: var(--bg-cream);
       color: var(--text-dark);
       margin: 0;
       scroll-behavior: smooth;
+      position: relative;
+    }
+
+    /* Ambient Side Leaves for Laptop & Desktop */
+    .leaf-accent {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+      user-select: none;
+    }
+    .leaf-left {
+      top: 40px;
+      left: -20px;
+      width: 140px;
+      height: 280px;
+      transform: rotate(5deg);
+    }
+    .leaf-right {
+      top: 100px;
+      right: -25px;
+      width: 150px;
+      height: 320px;
+      transform: scaleX(-1) rotate(8deg);
+    }
+    .leaf-mid-left {
+      top: 980px;
+      left: -35px;
+      width: 130px;
+      height: 260px;
+      transform: rotate(20deg);
+    }
+
+    @media (max-width: 991px) {
+      .leaf-accent {
+        display: none !important;
+      }
     }
 
     @media (max-width: 768px) {
       body { padding-bottom: 85px; }
+      .glass-nav,
+      .hero-banner-box,
+      .premium-card,
+      .category-chip-box,
+      .sticky-mobile-cta,
+      .lang-modal {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
     }
 
     .brand-logo-img {
       height: 50px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .brand-logo-img:hover { transform: scale(1.08) rotate(-2deg); }
+    .brand-logo-img:hover {
+      transform: scale(1.08) rotate(-3deg);
+    }
 
     .brand-title {
       font-family: 'Playball', cursive;
@@ -69,21 +112,34 @@
     }
 
     .glass-nav {
-      background: var(--glass-surface) !important;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: #ffffff !important;
       border-bottom: 1px solid var(--border-color) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      position: relative;
+      z-index: 1000;
     }
 
     .hero-banner-box {
-      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(230, 247, 236, 0.5) 100%);
-      backdrop-filter: blur(10px);
-      border-radius: 32px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      padding: clamp(28px, 5vw, 48px);
+      background: linear-gradient(135deg, #ffffff 0%, #edf7f0 100%);
+      border-radius: 28px;
+      border: 1px solid var(--border-color);
+      padding: clamp(24px, 4.5vw, 44px);
       position: relative;
       box-shadow: var(--bb-shadow);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Subtle corner leaves on hero card */
+    .hero-banner-box::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(56, 161, 105, 0.15) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .pill-badge {
@@ -91,28 +147,34 @@
       color: var(--primary-accent);
       font-weight: 700;
       border-radius: 50px;
-      padding: 7px 18px;
+      padding: 7px 16px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       font-size: 0.82rem;
       border: 1px solid var(--border-color);
-      box-shadow: 0 4px 12px rgba(35, 104, 66, 0.06);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      animation: softPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes softPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
     }
 
     .feature-icon-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: 50px;
-      padding: 7px 16px;
+      padding: 7px 15px;
       font-size: 0.8rem;
       font-weight: 600;
       color: var(--primary);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
     .feature-icon-badge:hover {
       transform: translateY(-2px);
@@ -120,167 +182,168 @@
     }
 
     .category-chip-box {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(8px);
+      background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: 22px;
-      padding: 14px 18px;
+      border-radius: 20px;
+      padding: 14px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
       color: var(--text-dark);
-      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
-      min-height: 80px;
+      min-height: 76px;
+      box-shadow: var(--bb-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+      z-index: 1;
     }
     .category-chip-box:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--bb-shadow-hover);
       border-color: var(--primary-accent);
-      background: #ffffff;
-      transform: translateY(-5px);
-      box-shadow: var(--bb-shadow);
       color: var(--primary);
     }
     .cat-avatar {
-      flex: 0 0 48px;
-      width: 48px;
-      height: 48px;
+      flex: 0 0 46px;
+      width: 46px;
+      height: 46px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, #e6f7ec, #ffffff);
-      border: 1px solid rgba(35, 104, 66, 0.15);
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(35, 104, 66, 0.06);
+      font-size: 1.5rem;
+      background: var(--light-mint);
+      border-radius: 14px;
+      transition: transform 0.25s ease;
+    }
+    .category-chip-box:hover .cat-avatar {
+      transform: scale(1.1) rotate(5deg);
     }
 
     .premium-card {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
+      background: #ffffff;
       border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border-color);
       box-shadow: var(--bb-shadow);
       width: 100%;
-      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .premium-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       box-shadow: var(--bb-shadow-hover);
-      border-color: rgba(35, 104, 66, 0.2);
     }
 
     .compare-box-bad {
-      background: linear-gradient(180deg, #fffafa 0%, #fff 100%);
+      background: #fffafa;
       border: 2px dashed #fca5a5;
-      border-radius: 24px;
-      transition: all 0.35s ease;
+      border-radius: 22px;
+      transition: transform 0.25s ease;
     }
-    .compare-box-bad:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(239, 68, 68, 0.08);
-    }
+    .compare-box-bad:hover { transform: translateY(-3px); }
+
     .compare-box-good {
-      background: linear-gradient(180deg, #f2fbf6 0%, #fff 100%);
+      background: #f2fbf6;
       border: 2px solid #34d399;
-      border-radius: 24px;
-      box-shadow: 0 12px 28px rgba(52, 211, 153, 0.12);
-      transition: all 0.35s ease;
+      border-radius: 22px;
+      box-shadow: 0 8px 20px rgba(52, 211, 153, 0.12);
+      transition: transform 0.25s ease;
     }
-    .compare-box-good:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(52, 211, 153, 0.2);
-    }
+    .compare-box-good:hover { transform: translateY(-3px); }
 
     .hazard-card {
       background: #ffffff;
-      border-radius: 24px;
-      padding: 24px 20px;
-      border: 2px solid transparent;
+      border-radius: 22px;
+      padding: 22px 18px;
       height: 100%;
+      border: 1px solid #e2e8f0;
       box-shadow: var(--bb-shadow);
-      transition: all 0.3s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .hazard-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       box-shadow: var(--bb-shadow-hover);
     }
-    .hazard-card-1 { border-color: rgba(239, 68, 68, 0.3); }
-    .hazard-card-2 { border-color: rgba(245, 158, 11, 0.3); }
-    .hazard-card-3 { border-color: rgba(59, 130, 246, 0.3); }
-    .hazard-card-4 { border-color: rgba(16, 185, 129, 0.3); }
+    .hazard-card-1 { border-top: 5px solid #ef4444; }
+    .hazard-card-2 { border-top: 5px solid #f59e0b; }
+    .hazard-card-3 { border-top: 5px solid #3b82f6; }
+    .hazard-card-4 { border-top: 5px solid #10b981; }
 
     .step-card {
       background: #ffffff;
-      border-radius: 24px;
-      padding: 26px 20px;
+      border-radius: 22px;
+      padding: 24px 18px;
       border: 1px solid var(--border-color);
       height: 100%;
       position: relative;
       overflow: hidden;
       box-shadow: var(--bb-shadow);
-      transition: all 0.35s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .step-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       box-shadow: var(--bb-shadow-hover);
     }
     .step-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 6px;
+      height: 5px;
     }
-    .step-card-1::before { background: linear-gradient(90deg, #10b981, #34d399); }
-    .step-card-2::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
-    .step-card-3::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
-    .step-card-4::before { background: linear-gradient(90deg, #06b6d4, #22d3ee); }
+    .step-card-1::before { background: #10b981; }
+    .step-card-2::before { background: #f59e0b; }
+    .step-card-3::before { background: #3b82f6; }
+    .step-card-4::before { background: #06b6d4; }
 
     .step-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
       color: white;
       font-weight: 800;
       margin-bottom: 14px;
-      font-size: 1.1rem;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+      font-size: 1.05rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .about-box {
-      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(242, 251, 246, 0.95) 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #f4fbf6 100%);
       border: 1px solid var(--border-color);
-      border-radius: 28px;
+      border-radius: 26px;
       box-shadow: var(--bb-shadow);
+      position: relative;
+      z-index: 1;
     }
+
     .stat-badge {
-      background: white;
-      border-radius: 20px;
-      padding: 16px 10px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 14px 10px;
       border: 1px solid var(--border-color);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      transition: transform 0.2s ease;
     }
+    .stat-badge:hover { transform: scale(1.04); }
 
     .order-shell {
       background: #ffffff;
-      border-radius: 28px;
+      border-radius: 26px;
       border: 1px solid var(--border-color);
-      box-shadow: var(--bb-shadow-hover);
+      box-shadow: var(--bb-shadow);
     }
+
     .plan-selector {
       border: 2px solid #e2e8f0;
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 14px 10px;
       cursor: pointer;
       background: #fafafa;
-      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-      min-height: 90px;
+      min-height: 88px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
     }
     .plan-selector:hover {
       border-color: #86efac;
@@ -289,14 +352,14 @@
     }
     .plan-selector.active {
       border-color: var(--primary-accent) !important;
-      background: linear-gradient(180deg, #eaf8f0 0%, #ffffff 100%);
-      box-shadow: 0 10px 25px rgba(35, 104, 66, 0.18);
-      transform: scale(1.03);
+      background: #eaf8f0;
+      transform: scale(1.02);
+      box-shadow: 0 6px 16px rgba(35, 104, 66, 0.12);
     }
 
     .qty-btn {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 14px;
       border: 1px solid #cbd5e1;
       background: white;
@@ -305,64 +368,56 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: background-color 0.15s ease, transform 0.1s ease;
     }
-    .qty-btn:hover {
-      background: var(--light-mint);
-      border-color: var(--primary-accent);
-      color: var(--primary);
-    }
+    .qty-btn:active { transform: scale(0.92); }
 
     .btn-brand {
       background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary) 100%);
       color: white;
       font-weight: 700;
       border-radius: 16px;
-      padding: 14px 28px;
+      padding: 13px 26px;
       border: none;
       display: inline-block;
       text-decoration: none;
-      box-shadow: 0 10px 20px var(--primary-glow);
-      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 8px 18px var(--primary-glow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .btn-brand:hover {
       color: white;
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(18, 56, 36, 0.28);
+      box-shadow: 0 12px 24px rgba(18, 56, 36, 0.24);
     }
+    .btn-brand:active { transform: scale(0.98); }
 
     .day-badge {
       background: var(--light-mint);
       color: var(--primary);
       font-weight: 800;
       border-radius: 10px;
-      padding: 6px 14px;
-      font-size: 0.85rem;
+      padding: 5px 12px;
+      font-size: 0.82rem;
       display: inline-block;
     }
 
     .bulk-card {
-      background: linear-gradient(135deg, #123824 0%, #1f5437 100%);
+      background: linear-gradient(135deg, #123824 0%, #1a4f32 100%);
       color: white;
-      border-radius: 28px;
-      padding: 36px 28px;
-      box-shadow: 0 24px 60px rgba(18, 56, 36, 0.25);
-      position: relative;
-      overflow: hidden;
+      border-radius: 26px;
+      padding: 32px 24px;
+      box-shadow: 0 16px 36px rgba(18, 56, 36, 0.2);
     }
 
     .sticky-mobile-cta {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: #ffffff;
       padding: 12px 16px;
-      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
       z-index: 1020;
       display: none;
-      border-top: 1px solid rgba(0,0,0,0.05);
+      border-top: 1px solid rgba(0,0,0,0.06);
     }
     @media (max-width: 768px) {
       .sticky-mobile-cta { display: block; }
@@ -371,8 +426,7 @@
     .lang-modal {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(15, 23, 42, 0.82);
-      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.75);
       z-index: 999999;
       display: flex;
       align-items: center;
@@ -380,26 +434,30 @@
       padding: 16px;
     }
     .lang-box {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 28px;
-      padding: 32px 24px;
-      max-width: 400px;
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 30px 22px;
+      max-width: 380px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+    @keyframes popIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
     .lang-btn {
       border: 2px solid #e2e8f0;
       border-radius: 16px;
-      padding: 14px;
+      padding: 13px;
       width: 100%;
-      margin: 10px 0;
+      margin: 8px 0;
       background: #fff;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
     }
     .lang-btn:hover {
       background: var(--light-mint);
@@ -408,19 +466,41 @@
     }
 
     .table-responsive {
-      border-radius: 22px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: var(--bb-shadow);
       border: 1px solid var(--border-color);
+      box-shadow: var(--bb-shadow);
     }
   </style>
 </head>
 <body>
 
-  <!-- Language Selection Modal (Marathi, English, Hindi) -->
+  <!-- Natural Side Leaves / Foliage Elements (Rendered via SVG - zero extra requests) -->
+  <svg class="leaf-accent leaf-left" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 190 Q30 110 50 10" stroke="#236842" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M35 130 C15 120 5 95 18 80 C32 65 52 90 35 130 Z" fill="#48bb78" opacity="0.75"/>
+    <path d="M42 100 C58 90 70 65 55 52 C40 40 28 65 42 100 Z" fill="#38a169" opacity="0.85"/>
+    <path d="M48 60 C32 50 25 30 38 18 C50 8 60 25 48 60 Z" fill="#68d391" opacity="0.8"/>
+    <path d="M50 10 C62 5 70 -5 60 -15 C48 -18 40 -5 50 10 Z" fill="#2f855a" opacity="0.6"/>
+  </svg>
+
+  <svg class="leaf-accent leaf-right" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 190 Q30 110 50 10" stroke="#236842" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M35 130 C15 120 5 95 18 80 C32 65 52 90 35 130 Z" fill="#48bb78" opacity="0.75"/>
+    <path d="M42 100 C58 90 70 65 55 52 C40 40 28 65 42 100 Z" fill="#38a169" opacity="0.85"/>
+    <path d="M48 60 C32 50 25 30 38 18 C50 8 60 25 48 60 Z" fill="#68d391" opacity="0.8"/>
+  </svg>
+
+  <svg class="leaf-accent leaf-mid-left" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 180 Q35 100 45 20" stroke="#236842" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+    <path d="M30 120 C15 110 10 90 22 75 C35 60 48 80 30 120 Z" fill="#48bb78" opacity="0.6"/>
+    <path d="M38 80 C50 70 60 50 48 40 C35 30 25 50 38 80 Z" fill="#38a169" opacity="0.7"/>
+  </svg>
+
+  <!-- Language Selection Modal -->
   <div id="languageModal" class="lang-modal">
-    <div class="lang-box shadow-lg">
-      <img src="logo.png" alt="BloomBite Logo" class="brand-logo-img mb-3" style="height: 70px;">
+    <div class="lang-box shadow">
+      <img src="logo.png" alt="BloomBite Logo" class="brand-logo-img mb-3" style="height: 65px;">
       <h3 class="fw-bold mb-1" style="color: var(--primary);">BloomBite</h3>
       <p class="text-muted small mb-4">Please select language / तुमची भाषा निवडा</p>
 
@@ -454,7 +534,7 @@
           <button class="btn btn-sm btn-light border rounded-pill px-3 dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown">
             <span id="currentLangLabel">मराठी</span>
           </button>
-          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-4">
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4">
             <li><a class="dropdown-item" href="javascript:void(0)" onclick="chooseLanguage('mr')">मराठी</a></li>
             <li><a class="dropdown-item" href="javascript:void(0)" onclick="chooseLanguage('en')">English</a></li>
             <li><a class="dropdown-item" href="javascript:void(0)" onclick="chooseLanguage('hi')">हिन्दी</a></li>
@@ -466,7 +546,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <header class="py-4 px-3">
+  <header class="py-4 px-3 position-relative">
     <div class="container">
       <div class="hero-banner-box">
         <div class="row align-items-center g-4">
@@ -487,13 +567,13 @@
 
             <div class="d-flex justify-content-center justify-content-lg-start gap-3">
               <a href="#menu" class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold" data-key="heroBtnExplore">Explore Menu ↓</a>
-              <a href="#order-form" class="btn btn-brand rounded-pill px-4 py-2 shadow-sm" data-key="heroBtnOrder">ऑर्डर बुक करा</a>
+              <a href="#order-form" class="btn btn-brand rounded-pill px-4 py-2" data-key="heroBtnOrder">ऑर्डर बुक करा</a>
             </div>
           </div>
 
           <!-- Hero Highlight Card -->
           <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
-            <div class="card premium-card p-3 p-md-4 border-2 border-success-subtle shadow-sm">
+            <div class="card premium-card p-3 p-md-4 border-2 border-success-subtle">
               <div class="d-flex align-items-center justify-content-between mb-2">
                 <span class="badge bg-warning text-dark fw-bold rounded-pill px-3 py-1" data-key="freshPrepared">Freshly Prepared ✨</span>
                 <span class="badge bg-danger text-white fw-bold rounded-pill px-3 py-1" data-key="festiveOff">FESTIVE ₹500 OFF</span>
@@ -525,10 +605,10 @@
     </div>
   </header>
 
-  <!-- Categories Horizontal Navigation -->
-  <section class="container my-2 px-3">
+  <!-- Categories Section -->
+  <section class="container my-2 px-3 position-relative">
     <div class="row g-2 g-md-3">
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
         <a href="#menu" class="category-chip-box">
           <div class="d-flex align-items-center gap-2">
             <div class="cat-avatar">🍎</div>
@@ -540,7 +620,7 @@
           <i class="bi bi-chevron-right text-muted small"></i>
         </a>
       </div>
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <a href="#menu" class="category-chip-box">
           <div class="d-flex align-items-center gap-2">
             <div class="cat-avatar">🌱</div>
@@ -552,7 +632,7 @@
           <i class="bi bi-chevron-right text-muted small"></i>
         </a>
       </div>
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
         <a href="#menu" class="category-chip-box">
           <div class="d-flex align-items-center gap-2">
             <div class="cat-avatar">🥗</div>
@@ -564,7 +644,7 @@
           <i class="bi bi-chevron-right text-muted small"></i>
         </a>
       </div>
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <a href="#menu" class="category-chip-box">
           <div class="d-flex align-items-center gap-2">
             <div class="cat-avatar">🥜</div>
@@ -579,8 +659,8 @@
     </div>
   </section>
 
-  <!-- ================= 1. REALITY CHECK SECTION ================= -->
-  <section class="container my-4 py-3 px-3" data-aos="fade-up">
+  <!-- Reality Check Section -->
+  <section class="container my-4 py-3 px-3 position-relative" data-aos="fade-up">
     <div class="text-center mb-4">
       <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm" data-key="vsBadge">
         Reality Check ⚠️
@@ -594,9 +674,8 @@
     </div>
 
     <div class="row g-3">
-      <!-- 2 Samosas + 1 Tea (Toxic Side) -->
-      <div class="col-md-6">
-        <div class="compare-box-bad p-4 h-100 shadow-sm">
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="compare-box-bad p-4 h-100">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h6 class="fw-bold text-danger mb-0 fs-6" data-key="badHead">❌ 2 Samosas (₹40) + Tea (₹10)</h6>
             <span class="badge bg-danger text-white rounded-pill px-3 py-1" data-key="badBadge">रोज ₹५० + छुपे खर्च!</span>
@@ -628,9 +707,8 @@
         </div>
       </div>
 
-      <!-- BloomBite Fresh Whole Nutrition (Healthy Side) -->
-      <div class="col-md-6">
-        <div class="compare-box-good p-4 h-100 shadow-sm">
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="compare-box-good p-4 h-100">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h6 class="fw-bold text-success mb-0 fs-6" data-key="goodHead">🌱 BloomBite Fresh Whole Nutrition</h6>
             <span class="badge bg-success text-white rounded-pill px-3 py-1" data-key="goodBadge">स्मार्ट गुंतवणूक</span>
@@ -664,8 +742,8 @@
     </div>
   </section>
 
-  <!-- ================= 2. 4 HEALTH HAZARDS & BLOOMBITE CURE ================= -->
-  <section class="container my-4 py-3 px-3" data-aos="fade-up">
+  <!-- 4 Health Hazards Section -->
+  <section class="container my-4 py-3 px-3 position-relative" data-aos="fade-up">
     <div class="text-center mb-4">
       <span class="pill-badge mb-2" data-key="hazardsBadge">Whole Nutrition Power</span>
       <h3 class="fw-bold" style="color: var(--primary);" data-key="hazardsTitle">
@@ -677,7 +755,7 @@
     </div>
 
     <div class="row g-3">
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
         <div class="hazard-card hazard-card-1">
           <div class="d-flex align-items-center justify-content-between mb-2">
             <span class="fs-3 text-danger">⚡</span>
@@ -692,7 +770,7 @@
         </div>
       </div>
 
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
         <div class="hazard-card hazard-card-2">
           <div class="d-flex align-items-center justify-content-between mb-2">
             <span class="fs-3 text-warning">🔥</span>
@@ -707,7 +785,7 @@
         </div>
       </div>
 
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
         <div class="hazard-card hazard-card-3">
           <div class="d-flex align-items-center justify-content-between mb-2">
             <span class="fs-3 text-primary">⚖️</span>
@@ -722,7 +800,7 @@
         </div>
       </div>
 
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
         <div class="hazard-card hazard-card-4">
           <div class="d-flex align-items-center justify-content-between mb-2">
             <span class="fs-3 text-success">🛡️</span>
@@ -739,9 +817,9 @@
     </div>
   </section>
 
-  <!-- ================= 3. 30-DAY JOURNEY SECTION ================= -->
-  <section class="container my-4 py-3 px-3" data-aos="fade-up">
-    <div class="p-4 p-md-5 rounded-4 shadow-sm border bg-white text-center">
+  <!-- 30-Day Journey Section -->
+  <section class="container my-4 py-3 px-3 position-relative" data-aos="fade-up">
+    <div class="p-4 p-md-5 rounded-4 border bg-white text-center shadow-sm">
       <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm" data-key="tJourneyBadge">
         30-DAY JOURNEY 🗓️
       </span>
@@ -753,7 +831,7 @@
       </p>
 
       <div class="row g-3 text-start">
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
           <div class="step-card step-card-1">
             <div class="step-badge bg-success">01</div>
             <h6 class="fw-bold text-success mb-1" style="font-size: 0.85rem;" data-key="t1Time">Days 1 to 7</h6>
@@ -764,7 +842,7 @@
           </div>
         </div>
 
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
           <div class="step-card step-card-2">
             <div class="step-badge bg-warning">02</div>
             <h6 class="fw-bold text-warning mb-1" style="font-size: 0.85rem;" data-key="t2Time">Days 8 to 15</h6>
@@ -775,7 +853,7 @@
           </div>
         </div>
 
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
           <div class="step-card step-card-3">
             <div class="step-badge bg-primary">03</div>
             <h6 class="fw-bold text-primary mb-1" style="font-size: 0.85rem;" data-key="t3Time">Days 16 to 22</h6>
@@ -786,7 +864,7 @@
           </div>
         </div>
 
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
           <div class="step-card step-card-4">
             <div class="step-badge bg-info">04</div>
             <h6 class="fw-bold text-info mb-1" style="font-size: 0.85rem;" data-key="t4Time">Days 23 to 30</h6>
@@ -807,8 +885,8 @@
   </section>
 
   <!-- About Us Section -->
-  <section id="about" class="container my-4 py-2 px-3" data-aos="fade-up">
-    <div class="about-box p-4 p-md-5 shadow-sm">
+  <section id="about" class="container my-4 py-2 px-3 position-relative" data-aos="fade-up">
+    <div class="about-box p-4 p-md-5">
       <div class="row align-items-center g-4">
         <div class="col-lg-7">
           <span class="badge bg-success text-white px-3 py-1 rounded-pill fw-bold mb-2" data-key="aboutBadge">
@@ -828,16 +906,16 @@
           </p>
 
           <div class="d-flex flex-wrap gap-2">
-            <span class="badge bg-white text-success border px-3 py-2 rounded-pill small shadow-sm" data-key="tagDoctor">✅ Doctor Approved</span>
-            <span class="badge bg-white text-success border px-3 py-2 rounded-pill small shadow-sm" data-key="tagDiet">✅ 26 Days Power Diet</span>
-            <span class="badge bg-white text-success border px-3 py-2 rounded-pill small shadow-sm" data-key="tagPrice">✅ All-Inclusive Price</span>
+            <span class="badge bg-light text-success border px-3 py-2 rounded-pill small" data-key="tagDoctor">✅ Doctor Approved</span>
+            <span class="badge bg-light text-success border px-3 py-2 rounded-pill small" data-key="tagDiet">✅ 26 Days Power Diet</span>
+            <span class="badge bg-light text-success border px-3 py-2 rounded-pill small" data-key="tagPrice">✅ All-Inclusive Price</span>
           </div>
         </div>
 
         <div class="col-lg-5">
           <div class="row g-2 text-center">
             <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">👨‍⚕️</div><h5 class="fw-bold text-success mb-0">15+</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="doctorAdvice">डॉक्टरांचा सल्ला</p></div></div>
-            <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🌾</div><h5 class="fw-bold text-primary mb-0">100%</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="farmSelected">थेट शेतातून निवड</p></div></div>
+            <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🌿</div><h5 class="fw-bold text-primary mb-0">100%</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="farmSelected">थेट शेतातून निवड</p></div></div>
             <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🚚</div><h5 class="fw-bold text-danger mb-0">Free</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="morningDelivery">सकाळची डिलिव्हरी</p></div></div>
             <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🥜</div><h5 class="fw-bold text-warning mb-0">3 Nuts</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="nutsIncluded">काजू + बदाम समाविष्ट</p></div></div>
           </div>
@@ -846,8 +924,8 @@
     </div>
   </section>
 
-  <!-- 6-Day Menu Table with Dry Fruits -->
-  <section id="menu" class="py-4 bg-white border-top border-bottom px-3" data-aos="fade-up">
+  <!-- 6-Day Menu Table -->
+  <section id="menu" class="py-4 bg-white border-top border-bottom px-3 position-relative" data-aos="fade-up">
     <div class="container">
       <div class="text-center mb-4">
         <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold mb-1" data-key="menuBadge">३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स</span>
@@ -856,10 +934,10 @@
       </div>
 
       <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle shadow-sm mb-0" style="font-size: 0.9rem;">
+        <table class="table table-bordered text-center align-middle mb-0" style="font-size: 0.9rem;">
           <thead class="table-success">
             <tr style="background-color: var(--light-mint);">
-              <th style="width: 15%; padding: 14px;" data-key="thDay">वार</th>
+              <th style="width: 15%; padding: 12px;" data-key="thDay">वार</th>
               <th style="width: 35%;" data-key="thFruit">ताजी फळे (Fresh Fruits)</th>
               <th style="width: 25%;" data-key="thSprouts">मोड आलेली कडधान्ये (Sprouts)</th>
               <th style="width: 25%;" data-key="thNuts">३ ड्रायफ्रूट्स (Dry Fruits)</th>
@@ -909,11 +987,11 @@
   </section>
 
   <!-- Bulk & Event Orders Section -->
-  <section id="bulk-events" class="container my-4 py-3 px-3" data-aos="fade-up">
-    <div class="bulk-card shadow-lg">
+  <section id="bulk-events" class="container my-4 py-3 px-3 position-relative" data-aos="fade-up">
+    <div class="bulk-card">
       <div class="row align-items-center g-4">
         <div class="col-lg-8 text-center text-lg-start">
-          <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm" data-key="bulkBadge">
+          <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3" data-key="bulkBadge">
             🎉 Sunday & Special Events Special
           </span>
           <h3 class="fw-bold mb-2 text-white" data-key="bulkTitle">जिम इव्हेंट्स, ऑफिस पार्टी & सोसायट्यांसाठी बल्क ऑर्डर्स!</h3>
@@ -929,7 +1007,7 @@
           </div>
         </div>
         <div class="col-lg-4 text-center">
-          <div class="bg-white text-dark p-4 rounded-4 shadow-sm border">
+          <div class="bg-white text-dark p-4 rounded-4 border shadow-sm">
             <h5 class="fw-bold mb-1 text-success" data-key="bulkCardHead">बल्क ऑर्डर डिस्काउंट</h5>
             <p class="small text-muted mb-3" data-key="bulkCardSub">१०, २५, ५० किंवा १००+ बॉक्सेससाठी विशेष कस्टमाइज्ड पॅक</p>
             <a href="#order-form" onclick="selectPlan('bulk', 0, 'Bulk / Party / Gym Event Order (Special Sunday Slot)')" class="btn btn-brand w-100 fw-bold py-2" data-key="bulkBtn">
@@ -942,7 +1020,7 @@
   </section>
 
   <!-- Pricing Cards -->
-  <section class="container my-4 py-2 px-3" data-aos="fade-up">
+  <section class="container my-4 py-2 px-3 position-relative" data-aos="fade-up">
     <div class="text-center mb-4">
       <span class="pill-badge mb-2">Festive Value Plans</span>
       <h3 class="fw-bold" style="color: var(--primary);" data-key="pricingHead">पारदर्शक दर आणि स्पेशल फेस्टिव्हल ऑफर</h3>
@@ -951,7 +1029,7 @@
 
     <div class="row g-3 justify-content-center">
       <!-- Trial Plan -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
         <div class="card premium-card p-4 text-center border-top border-warning border-4 h-100">
           <span class="badge bg-warning text-dark mb-2 align-self-center px-3 py-1 rounded-pill fw-bold">1-Day Trial</span>
           <h5 class="fw-bold" data-key="trialTitle">सिंगल ट्रायल बॉक्स</h5>
@@ -967,8 +1045,8 @@
       </div>
 
       <!-- Festive Offer -->
-      <div class="col-md-4">
-        <div class="card premium-card p-4 text-center border-top border-success border-4 h-100 position-relative shadow">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card premium-card p-4 text-center border-top border-success border-4 h-100 position-relative shadow-sm">
           <span class="badge bg-danger position-absolute top-0 start-50 translate-middle rounded-pill px-3 py-2 shadow-sm" data-key="festiveBadge">
             🔥 फेस्टिव्हल स्पेशल ऑफर
           </span>
@@ -982,12 +1060,12 @@
             <div>✔ <strong data-key="fPoint3">सकाळी ६:३० ते ८:३० घरपोच मोफत डिलिव्हरी</strong></div>
             <div>✔ <strong data-key="fPoint4">टॅक्स, पॅकिंग & डिलिव्हरी सर्व मोफत</strong></div>
           </div>
-          <a href="#order-form" onclick="selectPlan('festive', 3000, 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)')" class="btn btn-success rounded-pill w-100 fw-bold mt-auto shadow-sm" data-key="btnSubOffer">ऑफरमध्ये सबस्क्राइब करा</a>
+          <a href="#order-form" onclick="selectPlan('festive', 3000, 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)')" class="btn btn-success rounded-pill w-100 fw-bold mt-auto" data-key="btnSubOffer">ऑफरमध्ये सबस्क्राइब करा</a>
         </div>
       </div>
 
       <!-- Bulk / Event Card -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
         <div class="card premium-card p-4 text-center border-top border-primary border-4 h-100">
           <span class="badge bg-primary text-white mb-2 align-self-center px-3 py-1 rounded-pill fw-bold">Gym & Sunday Events</span>
           <h5 class="fw-bold" data-key="bulkCardTitle">बल्क & इव्हेंट ऑर्डर</h5>
@@ -1005,9 +1083,9 @@
   </section>
 
   <!-- Checkout Order Form -->
-  <section id="order-form" class="py-5 px-3" style="background: linear-gradient(180deg, #f8fafc 0%, #edf4ee 100%);">
+  <section id="order-form" class="py-4 px-3" style="background: #f1f5f9;">
     <div class="container" style="max-width: 680px;" data-aos="zoom-in">
-      <div class="order-shell p-4 p-md-5">
+      <div class="order-shell p-4">
         <div class="text-center mb-4">
           <img src="logo.png" alt="BloomBite" class="brand-logo-img mb-2" style="height: 52px;">
           <div><span class="pill-badge mb-2"><span data-key="instantBooking">⚡ Instant WhatsApp Booking</span></span></div>
@@ -1076,13 +1154,13 @@
           </div>
 
           <!-- Pricing Banner -->
-          <div class="p-3 mb-4 rounded-4" style="background: linear-gradient(135deg, #eaf8f0 0%, #f4fbf7 100%); border: 1.5px dashed #22c55e;">
+          <div class="p-3 mb-4 rounded-4" style="background: #eaf8f0; border: 1.5px dashed #22c55e;">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <div>
                 <span class="text-muted small d-block" style="font-size: 0.75rem;"><span data-key="totalLabel">एकूण अंदाज रक्कम (Total Amount):</span></span>
                 <span class="h3 fw-bold text-success mb-0" id="totalPriceDisplay">₹3,000</span>
               </div>
-              <span class="badge bg-success py-2 px-3 rounded-pill shadow-sm" id="discountTag">फेस्टिव्हल सेव्हिंग ₹५००</span>
+              <span class="badge bg-success py-2 px-3 rounded-pill" id="discountTag">फेस्टिव्हल सेव्हिंग ₹५००</span>
             </div>
             <hr class="my-2 text-success opacity-25">
             <div class="d-flex flex-wrap gap-3 small" style="font-size: 0.75rem; color: #155724;">
@@ -1108,10 +1186,10 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white py-5 text-center px-2 m-0 border-0">
+  <footer class="bg-dark text-white py-4 text-center px-2 m-0 border-0">
     <div class="container">
       <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
-        <img src="logo.png" alt="BloomBite" style="height: 42px; filter: brightness(0) invert(1);">
+        <img src="logo.png" alt="BloomBite" style="height: 38px; filter: brightness(0) invert(1);">
         <h4 class="brand-title text-white mb-0">BloomBite</h4>
       </div>
       <p class="text-secondary small mb-3"><span data-key="footerDesc">Daily Fresh Fruit, Sprouts & Dry Fruits | Gym & Party Bulk Orders Available</span></p>
@@ -1126,7 +1204,12 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
   <script>
-    AOS.init({ duration: 650, once: true, easing: 'ease-out-cubic' });
+    AOS.init({ 
+      duration: 450, 
+      once: true,
+      easing: 'ease-out',
+      offset: 40
+    });
 
     const translations = {
       mr: {
@@ -1160,8 +1243,6 @@
         cat3Desc: "फळे + कडधान्ये",
         cat4Title: "ड्रायफ्रूट्स",
         cat4Desc: "काजू व बदाम",
-
-        // Reality Check
         vsBadge: "Reality Check ⚠️",
         vsTitle: "२ समोसे + १ चहा (₹५०) VS BloomBite फ्रूट बास्केट",
         vsSub: "दररोज नकळत फक्त ₹५० जात नाहीत, तर भविष्यात हॉस्पिटल आणि गोळ्यांचा हजारो रुपयांचा भुर्दंड बसतो!",
@@ -1181,8 +1262,6 @@
         good3: "<strong>झिरो गोळ्यांचा खर्च:</strong> नैसर्गिक पोषणामुळे शरीराची रचना सुधारते; कोणतीही अँटासिड गोळी घेण्याची गरज पडत नाही!",
         good4: "<strong>अखंड नैसर्गिक स्टॅमिना:</strong> संत्री, डाळिंब आणि ड्रायफ्रूट्स दुपारचा आळस पूर्णपणे नाहीसा करतात.",
         good5: "<strong>खऱ्या आरोग्याची बचत:</strong> डॉक्टरांचे लाखो रुपये वाचवून शरीर फिट, वजन नियंत्रित आणि मन टवटवीत राहते!",
-
-        // 4 Health Hazards
         hazardsBadge: "Whole Nutrition Power",
         hazardsTitle: "रोजच्या ४ मोठ्या समस्या & BloomBite चा नैसर्गिक उतारा",
         hazardsSub: "केमिकलच्या सप्लिमेंट्सपेक्षा निसर्गाचा मूळ आहार १०० पट अधिक प्रभावी असतो:",
@@ -1198,8 +1277,6 @@
         hz4Title: "कमी प्रतिकारशक्ती & अशक्तपणा",
         hz4Desc: "हवामान बदलताच लगेच सर्दी, खोकला आणि व्हायरल इन्फेक्शन होणे.",
         hz4Cure: "<strong class='text-success'>उतारा:</strong> संत्री, डाळिंब यातील Vitamin C शरीराची इम्युनिटी वॉल मजबूत ठेवतात.",
-
-        // 30 Days Journey
         tJourneyBadge: "30-DAY JOURNEY 🗓️",
         tJourneyTitle: "३० दिवसांत शरीरात काय बदल घडतात?",
         tJourneySub: "दररोज ताजी फळे, स्प्राउट्स आणि ड्रायफ्रूट्स खाण्याचा शास्त्रीय परिणाम:",
@@ -1216,7 +1293,6 @@
         t4Title: "Skin & Immunity",
         t4Desc: "चेहऱ्यावर नॅचरल ग्लो येतो आणि रोगप्रतिकारशक्ती उत्तम राहते.",
         tJourneyBtn: "माझा ३० दिवसांचा प्रवास सुरू करा 🌱",
-
         aboutBadge: "आमची कहाणी & हेतू 🩺",
         aboutTitle: "आम्ही तरुण विद्यार्थी हॉस्पिटल्समध्ये गेलो, डॉक्टरांना भेटलो... आणि डोळे उघडले!",
         aboutP1: "आम्ही कॉलेजचे तरुण विद्यार्थी, जेव्हा आम्ही शहरातील विविध हॉस्पिटल्समध्ये गेलो आणि वरिष्ठ डॉक्टरांशी चर्चा केली, तेव्हा समोर आलेले वास्तव धक्कादायक होते!",
@@ -1340,8 +1416,6 @@
         cat3Desc: "Fruits + Sprouts",
         cat4Title: "Dry Fruits",
         cat4Desc: "Cashew & Almonds",
-
-        // Reality Check
         vsBadge: "Reality Check ⚠️",
         vsTitle: "2 Samosas + 1 Tea (₹50) VS BloomBite Basket",
         vsSub: "It's not just ₹50/day—it invites thousands in hidden pharmacy and hospital bills!",
@@ -1351,7 +1425,7 @@
         bad1: "<strong>Burnt Hydrogenated Oils:</strong> Re-heated commercial oils choke arteries and shoot bad cholesterol levels.",
         bad2: "<strong>Refined Flour & Bloat:</strong> Sticks to gut lining, slowing metabolic digestion and triggering chronic reflux.",
         bad3: "<strong>Pharmacy & Tablet Bills:</strong> Spending ₹500–₹1,000/month on Pan-D, antacids, and pain pills just to suppress daily acidity!",
-        bad4: "<strong>Emergency Hospital Risk:</strong> Fatty liver, escalating BP, and severe gut inflammation risk admissions costing ₹30,000 to ₹50,000+.",
+        bad4: "<strong>Emergency Hospital Risk:</strong> Fatty liver, escalating BP, and severe gut inflammation risk admissions costing ₹30,000 to ₹50,000+.</span>",
         bad5: "<strong>Total Wasteful Drain:</strong> Spending ₹1,500/month on fried snacks only to purchase disease, obesity, and permanent exhaustion!",
         goodHead: "🌱 BloomBite Fresh Whole Nutrition",
         goodBadge: "Smart Investment",
@@ -1361,8 +1435,6 @@
         good3: "<strong>Zero Tablet Expenses:</strong> Clean cellular hydration eliminates reliance on antacids or multivitamin supplements!",
         good4: "<strong>Clean Stamina & Immunity:</strong> Dense natural fructose, Vitamin C and premium nuts fuel sharp focus with zero midday crash.",
         good5: "<strong>Lifetime Health Dividends:</strong> Saves thousands in medical consultations while keeping your body athletic and energetic all day!",
-
-        // 4 Health Hazards
         hazardsBadge: "Whole Nutrition Power",
         hazardsTitle: "4 Daily Health Hazards & The BloomBite Cure",
         hazardsSub: "Live raw plant food is 100× more bio-available than artificial vitamin pills:",
@@ -1378,8 +1450,6 @@
         hz4Title: "Frequent Weakness & Colds",
         hz4Desc: "Oxidative stress degrades cell repair when antioxidant intake is zero.",
         hz4Cure: "<strong class='text-success'>Cure:</strong> Fresh oranges, pomegranates, and guavas inject concentrated Vitamin C to shield against infections.",
-
-        // 30 Days Journey
         tJourneyBadge: "30-DAY JOURNEY 🗓️",
         tJourneyTitle: "What Happens to Your Body in 30 Days?",
         tJourneySub: "A scientific look at 4 weeks of consistent raw fruit & sprout nutrition:",
@@ -1396,7 +1466,6 @@
         t4Title: "Skin & Immunity",
         t4Desc: "Deep cellular hydration clears skin complexion; your immune markers reach peak stability.",
         tJourneyBtn: "Start My 30–Day Journey 🌱",
-
         aboutBadge: "Our Journey & Mission 🩺",
         aboutTitle: "We Are Students Who Visited Hospitals, Consulted Doctors... and Realized the Crisis!",
         aboutP1: "As university students studying everyday lifestyle patterns, we visited multi-specialty hospitals and consulted senior physicians. The lifestyle health crisis was alarming.",
@@ -1520,8 +1589,6 @@
         cat3Desc: "फल + स्प्राउट्स",
         cat4Title: "ड्राय फ्रूट्स",
         cat4Desc: "काजू और बादाम",
-
-        // Reality Check
         vsBadge: "Reality Check ⚠️",
         vsTitle: "2 समोसे + 1 चाय (₹50) VS BloomBite फ्रूट बास्केट",
         vsSub: "अनजाने में हर रोज़ सिर्फ ₹50 नहीं जाते, बल्कि भविष्य में हज़ारों रुपये अस्पताल और गोलियों में खर्च होते हैं!",
@@ -1541,8 +1608,6 @@
         good3: "<strong>दवाइयों का शून्य खर्च:</strong> प्राकृतिक पोषण से शरीर मजबूत होता है; किसी एंटासिड गोली की जरूरत नहीं पड़ती!",
         good4: "<strong>अखंड प्राकृतिक स्टैमिना:</strong> संतरे, अनार और ड्राय फ्रूट्स दोपहर की सुस्ती पूरी तरह दूर करते हैं।",
         good5: "<strong>जीवनभर की स्वास्थ्य बचत:</strong> डॉक्टरों के लाखों रुपये बचाएं, वजन नियंत्रित रखें और दिनभर तरोताज़ा रहें!",
-
-        // 4 Health Hazards
         hazardsBadge: "Whole Nutrition Power",
         hazardsTitle: "रोज़ की 4 बड़ी समस्याएं और BloomBite का प्राकृतिक उपाय",
         hazardsSub: "आर्टिफिशियल सप्लीमेंट्स की तुलना में असली कच्चा भोजन 100 गुना अधिक लाभकारी होता है:",
@@ -1558,8 +1623,6 @@
         hz4Title: "कमज़ोर इम्युनिटी और बार-बार जुकाम",
         hz4Desc: "एंटीऑक्सीडेंट्स की कमी से बदलते मौसम में जल्दी इन्फेक्शन होना।",
         hz4Cure: "<strong class='text-success'>उपाय:</strong> संतरा, अनार और अमरूद का Vitamin C शरीर की रोगप्रतिकारक शक्ति बढ़ाता है।",
-
-        // 30 Days Journey
         tJourneyBadge: "30-DAY JOURNEY 🗓️",
         tJourneyTitle: "30 दिनों में आपके शरीर में क्या बदलाव आते हैं?",
         tJourneySub: "4 हफ्ते लगातार ताजे फल और अंकुरित अनाज खाने का वैज्ञानिक असर:",
@@ -1576,7 +1639,6 @@
         t4Title: "Skin & Immunity",
         t4Desc: "चेहरे पर प्राकृतिक चमक आती है और रोगप्रतिकारक क्षमता उच्चतम स्तर पर पहुंचती है।",
         tJourneyBtn: "मेरी 30 दिनों की यात्रा शुरू करें 🌱",
-
         aboutBadge: "हमारी कहानी और मिशन 🩺",
         aboutTitle: "हम छात्र हैं। हमने अस्पतालों का दौरा किया, डॉक्टरों से सलाह ली... और सच्चाई समझी!",
         aboutP1: "दैनिक जीवनशैली का अध्ययन करते हुए हमने कई अस्पतालों का दौरा किया और वरिष्ठ डॉक्टरों से चर्चा की। जीवनशैली से जुड़ी स्वास्थ्य समस्याओं की स्थिति चिंताजनक थी।",
@@ -1683,7 +1745,9 @@
       selectedLang = lang;
       const modal = document.getElementById('languageModal');
       if (modal) {
-        modal.style.setProperty('display', 'none', 'important');
+        modal.style.transition = 'opacity 0.2s ease';
+        modal.style.opacity = '0';
+        setTimeout(() => modal.remove(), 200);
       }
       document.body.style.overflow = 'auto';
 
