@@ -3,55 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>BloomBite - Fresh Fruit & Sprouts</title>
-  
-  <!-- Google Fonts & Core Frameworks -->
+  <title>BloomBite - Fresh Fruits, Sprouts & Dry Fruits</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playball&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  
-  <!-- AOS Motion Library -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  
+
   <style>
     :root {
-      --primary: #1b4332;
-      --primary-accent: #2d6a4f;
-      --secondary-green: #52b788;
-      --light-mint: #d8f3dc;
-      --accent-orange: #e76f51;
-      --accent-amber: #f4a261;
-      --bg-cream: #fbfbf8;
+      --primary: #123824;
+      --primary-accent: #236842;
+      --primary-glow: rgba(35, 104, 66, 0.25);
+      --secondary-green: #38a169;
+      --light-mint: #e6f7ec;
+      --accent-orange: #f97316;
+      --bg-cream: #f8faf7;
       --card-white: #ffffff;
       --text-dark: #0f172a;
       --text-muted: #64748b;
+      --border-color: rgba(35, 104, 66, 0.12);
+      --glass-surface: rgba(255, 255, 255, 0.82);
+      --glass-border: rgba(255, 255, 255, 0.6);
+      --bb-shadow: 0 20px 40px -15px rgba(18, 56, 36, 0.08);
+      --bb-shadow-hover: 0 25px 50px -12px rgba(18, 56, 36, 0.16);
     }
-    
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+
+    *, *::before, *::after { box-sizing: border-box; }
 
     html, body {
       width: 100%;
       max-width: 100vw;
       overflow-x: hidden;
-      touch-action: pan-y;
-      -webkit-text-size-adjust: 100%;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-cream);
+      background: radial-gradient(circle at 10% 20%, rgba(230, 247, 236, 0.7) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 35%),
+                  var(--bg-cream);
       color: var(--text-dark);
-      padding-bottom: 0;
       margin: 0;
       scroll-behavior: smooth;
     }
 
     @media (max-width: 768px) {
-      body {
-        padding-bottom: 70px;
-      }
+      body { padding-bottom: 85px; }
     }
+
+    .brand-logo-img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .brand-logo-img:hover { transform: scale(1.08) rotate(-2deg); }
 
     .brand-title {
       font-family: 'Playball', cursive;
@@ -59,361 +65,399 @@
       font-size: 2.2rem;
       text-decoration: none;
       display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    .brand-title:hover {
-      transform: scale(1.05);
+      letter-spacing: 0.5px;
     }
 
-    /* Glass Navbar */
     .glass-nav {
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      background: var(--glass-surface) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     }
 
-    /* Hero Banner */
-    .hero-wrapper {
-      background: radial-gradient(circle at 85% 20%, #d8f3dc 0%, #fbfbf8 70%);
-      padding: 45px 0 40px;
-      border-bottom: 1px solid #e2e8f0;
-      width: 100%;
+    .hero-banner-box {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(230, 247, 236, 0.5) 100%);
+      backdrop-filter: blur(10px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      padding: clamp(28px, 5vw, 48px);
+      position: relative;
+      box-shadow: var(--bb-shadow);
     }
 
     .pill-badge {
-      background-color: #fff3e6;
-      color: #b45309;
+      background: #ffffff;
+      color: var(--primary-accent);
       font-weight: 700;
       border-radius: 50px;
-      padding: 6px 16px;
-      display: inline-block;
-      font-size: 0.8rem;
-      border: 1px solid #fed7aa;
-      animation: gentlePulse 2.5s infinite ease-in-out;
-    }
-    @keyframes gentlePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
+      padding: 7px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(35, 104, 66, 0.06);
     }
 
-    /* ================= FULL HOVER ANIMATIONS RESTORED ================= */
+    .feature-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 7px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: all 0.25s ease;
+    }
+    .feature-icon-badge:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-accent);
+    }
+
+    .category-chip-box {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
+      min-height: 80px;
+    }
+    .category-chip-box:hover {
+      border-color: var(--primary-accent);
+      background: #ffffff;
+      transform: translateY(-5px);
+      box-shadow: var(--bb-shadow);
+      color: var(--primary);
+    }
+    .cat-avatar {
+      flex: 0 0 48px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #e6f7ec, #ffffff);
+      border: 1px solid rgba(35, 104, 66, 0.15);
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(35, 104, 66, 0.06);
+    }
+
     .premium-card {
-      background: var(--card-white);
-      border-radius: 20px;
-      border: 1px solid #edf2f7;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: var(--bb-shadow);
       width: 100%;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .premium-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
-      border-color: #cbd5e1;
+      box-shadow: var(--bb-shadow-hover);
+      border-color: rgba(35, 104, 66, 0.2);
     }
 
-    /* Comparison Hover */
     .compare-box-bad {
-      background: #fff8f8;
+      background: linear-gradient(180deg, #fffafa 0%, #fff 100%);
       border: 2px dashed #fca5a5;
-      border-radius: 20px;
-      width: 100%;
+      border-radius: 24px;
       transition: all 0.35s ease;
     }
     .compare-box-bad:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 28px rgba(239, 68, 68, 0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(239, 68, 68, 0.08);
     }
     .compare-box-good {
-      background: #f2fbf5;
-      border: 2px solid #22c55e;
-      border-radius: 20px;
-      width: 100%;
-      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.1);
+      background: linear-gradient(180deg, #f2fbf6 0%, #fff 100%);
+      border: 2px solid #34d399;
+      border-radius: 24px;
+      box-shadow: 0 12px 28px rgba(52, 211, 153, 0.12);
       transition: all 0.35s ease;
     }
     .compare-box-good:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 35px rgba(34, 197, 94, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(52, 211, 153, 0.2);
     }
 
-    /* 30-Day Motion & Hover Cards */
+    .hazard-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 24px 20px;
+      border: 2px solid transparent;
+      height: 100%;
+      box-shadow: var(--bb-shadow);
+      transition: all 0.3s ease;
+    }
+    .hazard-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--bb-shadow-hover);
+    }
+    .hazard-card-1 { border-color: rgba(239, 68, 68, 0.3); }
+    .hazard-card-2 { border-color: rgba(245, 158, 11, 0.3); }
+    .hazard-card-3 { border-color: rgba(59, 130, 246, 0.3); }
+    .hazard-card-4 { border-color: rgba(16, 185, 129, 0.3); }
+
     .step-card {
       background: #ffffff;
-      border-radius: 20px;
-      padding: 22px 18px;
-      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 26px 20px;
+      border: 1px solid var(--border-color);
       height: 100%;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
-      width: 100%;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--bb-shadow);
+      transition: all 0.35s ease;
     }
     .step-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
-      border-color: var(--primary-accent);
+      transform: translateY(-6px);
+      box-shadow: var(--bb-shadow-hover);
     }
     .step-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      transition: height 0.2s ease;
+      top: 0; left: 0; right: 0;
+      height: 6px;
     }
-    .step-card:hover::before {
-      height: 7px;
-    }
-    .step-card-1::before { background: #198754; }
-    .step-card-2::before { background: #f59e0b; }
-    .step-card-3::before { background: #0d6efd; }
-    .step-card-4::before { background: #0dcaf0; }
+    .step-card-1::before { background: linear-gradient(90deg, #10b981, #34d399); }
+    .step-card-2::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .step-card-3::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+    .step-card-4::before { background: linear-gradient(90deg, #06b6d4, #22d3ee); }
 
     .step-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
       color: white;
       font-weight: 800;
-      margin-bottom: 12px;
-      font-size: 0.95rem;
-      animation: badgeGlow 2.5s infinite;
-    }
-    @keyframes badgeGlow {
-      0% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(45, 106, 79, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(45, 106, 79, 0); }
+      margin-bottom: 14px;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
     }
 
-    /* Hygiene Cards Hover */
-    .hygiene-card {
-      background: #ffffff;
-      border-radius: 20px;
-      border: 1px solid #e8f5e9;
-      padding: 24px 18px;
-      text-align: center;
-      height: 100%;
-      width: 100%;
-      transition: all 0.35s ease;
-    }
-    .hygiene-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 16px 30px rgba(27, 67, 50, 0.12);
-      border-color: var(--primary-accent);
-    }
-    .hygiene-icon-wrap {
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      background: #e8f5e9;
-      color: var(--primary-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin: 0 auto 12px;
-      transition: all 0.35s ease;
-    }
-    .hygiene-card:hover .hygiene-icon-wrap {
-      background: var(--primary-accent);
-      color: white;
-      transform: rotate(12deg) scale(1.12);
-    }
-
-    /* About Us Story Card */
     .about-box {
-      background: linear-gradient(135deg, #ffffff 0%, #f4fbf7 100%);
-      border: 1px solid #d1e7dd;
-      border-radius: 24px;
-      width: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(242, 251, 246, 0.95) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 28px;
+      box-shadow: var(--bb-shadow);
     }
     .stat-badge {
       background: white;
-      border-radius: 16px;
-      padding: 14px 10px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      transition: all 0.25s ease;
-    }
-    .stat-badge:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 16px 10px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
 
-    /* Checkout Shell & Plan Hover */
     .order-shell {
       background: #ffffff;
-      border-radius: 22px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.07);
-      width: 100%;
+      border-radius: 28px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--bb-shadow-hover);
     }
     .plan-selector {
       border: 2px solid #e2e8f0;
-      border-radius: 16px;
+      border-radius: 20px;
       padding: 14px 10px;
       cursor: pointer;
       background: #fafafa;
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .plan-selector:hover {
       border-color: #86efac;
       background: #f0fdf4;
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
     .plan-selector.active {
-      border-color: var(--primary-accent);
-      background: #e8f5e9;
-      box-shadow: 0 6px 16px rgba(45, 106, 79, 0.16);
-      transform: scale(1.02);
+      border-color: var(--primary-accent) !important;
+      background: linear-gradient(180deg, #eaf8f0 0%, #ffffff 100%);
+      box-shadow: 0 10px 25px rgba(35, 104, 66, 0.18);
+      transform: scale(1.03);
     }
+
     .qty-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       border: 1px solid #cbd5e1;
       background: white;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
-    .qty-btn:active {
-      background: #e2e8f0;
-      transform: scale(0.95);
+    .qty-btn:hover {
+      background: var(--light-mint);
+      border-color: var(--primary-accent);
+      color: var(--primary);
     }
 
     .btn-brand {
-      background-color: var(--primary-accent);
+      background: linear-gradient(135deg, var(--primary-accent) 0%, var(--primary) 100%);
       color: white;
       font-weight: 700;
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 14px 28px;
       border: none;
       display: inline-block;
       text-decoration: none;
-      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px var(--primary-glow);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .btn-brand:hover, .btn-brand:active {
-      background-color: var(--primary);
+    .btn-brand:hover {
       color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 22px rgba(27, 67, 50, 0.28);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(18, 56, 36, 0.28);
     }
 
     .day-badge {
-      background: #e8f5e9;
+      background: var(--light-mint);
       color: var(--primary);
       font-weight: 800;
-      border-radius: 8px;
-      padding: 5px 12px;
+      border-radius: 10px;
+      padding: 6px 14px;
       font-size: 0.85rem;
       display: inline-block;
     }
 
-    /* Mobile Sticky Bar */
+    .bulk-card {
+      background: linear-gradient(135deg, #123824 0%, #1f5437 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 36px 28px;
+      box-shadow: 0 24px 60px rgba(18, 56, 36, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
     .sticky-mobile-cta {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: white;
-      padding: 10px 14px;
-      box-shadow: 0 -4px 16px rgba(0,0,0,0.1);
+      bottom: 0; left: 0; right: 0;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 12px 16px;
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.06);
       z-index: 1020;
       display: none;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
     @media (max-width: 768px) {
       .sticky-mobile-cta { display: block; }
     }
 
-    /* Modal Styling */
     .lang-modal {
       position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 99999;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(12px);
+      z-index: 999999;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 16px;
     }
     .lang-box {
-      background: white;
-      border-radius: 22px;
-      padding: 28px 20px;
-      max-width: 380px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 28px;
+      padding: 32px 24px;
+      max-width: 400px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      animation: modalFadeIn 0.3s ease-out;
-    }
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.92); }
-      to { opacity: 1; transform: scale(1); }
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.8);
     }
     .lang-btn {
       border: 2px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 12px;
+      border-radius: 16px;
+      padding: 14px;
       width: 100%;
-      margin: 8px 0;
+      margin: 10px 0;
       background: #fff;
       font-weight: 700;
-      font-size: 1rem;
-      transition: all 0.2s ease;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
     }
-    .lang-btn:hover, .lang-btn:active {
-      background: #e8f5e9;
+    .lang-btn:hover {
+      background: var(--light-mint);
       border-color: var(--primary-accent);
       transform: translateY(-2px);
+    }
+
+    .table-responsive {
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--bb-shadow);
+      border: 1px solid var(--border-color);
     }
   </style>
 </head>
 <body>
 
-  <!-- Language Selection Modal -->
+  <!-- Language Selection Modal (Marathi, English, Hindi) -->
   <div id="languageModal" class="lang-modal">
-    <div class="lang-box">
-      <div class="fs-1 mb-2">🥗</div>
-      <h3 class="fw-bold mb-1" style="color: var(--primary-accent);">BloomBite</h3>
-      <p class="text-muted small mb-3">Please select language / तुमची भाषा निवडा</p>
-      
-      <button class="lang-btn text-success" onclick="chooseLanguage('mr')">
+    <div class="lang-box shadow-lg">
+      <img src="logo.png" alt="BloomBite Logo" class="brand-logo-img mb-3" style="height: 70px;">
+      <h3 class="fw-bold mb-1" style="color: var(--primary);">BloomBite</h3>
+      <p class="text-muted small mb-4">Please select language / तुमची भाषा निवडा</p>
+
+      <button type="button" class="lang-btn text-success" onclick="chooseLanguage('mr')">
         🚩 मराठी (Marathi)
       </button>
-      <button class="lang-btn text-primary" onclick="chooseLanguage('en')">
+      <button type="button" class="lang-btn text-primary" onclick="chooseLanguage('en')">
         🌐 English
+      </button>
+      <button type="button" class="lang-btn text-warning" style="color: #b45309;" onclick="chooseLanguage('hi')">
+        🇮🇳 हिन्दी (Hindi)
       </button>
     </div>
   </div>
 
   <!-- Announcement Ribbon -->
   <div class="bg-success text-white py-2 text-center small fw-semibold px-2">
-    <span data-key="topRibbon">✨ गणेशाय नमः | पहिले ३ महिने स्पेशल ऑफर: फक्त ₹३,०००/महिना (मूळ किंमत ₹३,५००)!</span>
+    <span data-key="topRibbon">🎉 फेस्टिव्हल धमाका: २६ दिवस महिना फक्त ₹३,००० (३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स) | मोफत सकाळची डिलिव्हरी + टॅक्स समाविष्ट!</span>
   </div>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg glass-nav sticky-top py-2">
     <div class="container px-3">
-      <a class="brand-title" href="#">BloomBite 🌱</a>
-      
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img src="logo.png" alt="BloomBite Logo" class="brand-logo-img">
+        <span class="brand-title">BloomBite</span>
+      </a>
+
       <div class="d-flex align-items-center gap-2">
         <div class="dropdown">
           <button class="btn btn-sm btn-light border rounded-pill px-3 dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown">
             <span id="currentLangLabel">मराठी</span>
           </button>
-          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
-            <li><a class="dropdown-item" href="#" onclick="chooseLanguage('mr')">मराठी</a></li>
-            <li><a class="dropdown-item" href="#" onclick="chooseLanguage('en')">English</a></li>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-4">
+            <li><a class="dropdown-item" href="javascript:void(0)" onclick="chooseLanguage('mr')">मराठी</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)" onclick="chooseLanguage('en')">English</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0)" onclick="chooseLanguage('hi')">हिन्दी</a></li>
           </ul>
         </div>
         <a href="#order-form" class="btn btn-sm btn-brand rounded-pill px-3 d-none d-md-inline-block" data-key="navOrder">ऑर्डर करा</a>
@@ -422,62 +466,350 @@
   </nav>
 
   <!-- Hero Section -->
-  <header class="hero-wrapper">
-    <div class="container px-3">
-      <div class="row align-items-center g-4">
-        
-        <div class="col-lg-7 text-center text-lg-start" data-aos="fade-up">
-          <span class="pill-badge mb-2" data-key="heroTag">Fresh, Healthy & Beautiful</span>
-          <h1 class="h2 fw-bold mt-1 mb-2" style="color: var(--primary);" data-key="heroTitle">
-            Your Daily Source for Fresh Fruit & Sprouts
-          </h1>
-          <p class="text-secondary small mb-3" style="max-width: 620px;" data-key="heroDesc">
-            ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे आणि अंकुरित कडधान्ये! डॉक्टर-प्रमाणित पोषण थेट तुमच्या टेबलावर.
-          </p>
-          <div class="d-flex justify-content-center justify-content-lg-start gap-2">
-            <a href="#about" class="btn btn-outline-dark rounded-pill px-3 py-2" data-key="heroBtnStory">आमची कथा 📖</a>
-            <a href="#order-form" class="btn btn-brand rounded-pill px-4 py-2 shadow-sm" data-key="heroBtnOrder">ऑर्डर बुक करा</a>
-          </div>
-        </div>
+  <header class="py-4 px-3">
+    <div class="container">
+      <div class="hero-banner-box">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7 text-center text-lg-start" data-aos="fade-up">
+            <span class="pill-badge mb-2" data-key="heroTag">✨ Fresh Fruits & Sprouts, Delivered To Your Door</span>
+            <h1 class="display-6 fw-bold mt-2 mb-2" style="color: var(--primary);" data-key="heroTitle">
+              Healthy Choices. Happier You.
+            </h1>
+            <p class="text-secondary small mb-4" style="max-width: 540px; font-size: 0.95rem; line-height: 1.6;" data-key="heroDesc">
+              ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे, मोड आलेली कडधान्ये आणि प्रीमियम काजू-बदाम! २६ दिवस थेट घरपोच सकाळची फ्रेश डिलिव्हरी.
+            </p>
 
-        <!-- Hero Card -->
-        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
-          <div class="card premium-card p-3 p-md-4 border-2 border-success-subtle shadow-sm">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <span class="badge bg-warning text-dark fw-bold">Daily Sliced Fresh 🍉</span>
-              <span class="badge bg-success-subtle text-success fw-bold">₹500 OFF</span>
+            <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start mb-4">
+              <span class="feature-icon-badge"><i class="bi bi-patch-check-fill text-success"></i> <span data-key="featureFresh">Fresh & Premium</span></span>
+              <span class="feature-icon-badge"><i class="bi bi-heart-pulse-fill text-danger"></i> <span data-key="featureDoctor">Doctor Certified</span></span>
+              <span class="feature-icon-badge"><i class="bi bi-truck text-primary"></i> <span data-key="featureDelivery">Fast Morning Delivery</span></span>
             </div>
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <div class="fs-2">📦</div>
-              <div>
-                <h6 class="fw-bold mb-0">BloomBite Daily Box</h6>
-                <span class="text-success small fw-semibold">Pure Farm Vitality Bowl</span>
-              </div>
-            </div>
-            <div class="p-2 rounded-3 mb-3" style="background: #f8fafc; border: 1px dashed #cbd5e1; font-size: 0.82rem;">
-              <div>✔ <strong>३ ताजी फळे:</strong> पपई, सफरचंद आणि टरबूज</div>
-              <div>✔ <strong>३ स्प्राउट्स मिक्स:</strong> देशी चणा, मूग आणि मटकी</div>
-              <div>✔ <strong>नॅचरल लेमन-मसाला ट्विस्ट</strong></div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <span class="text-muted small text-decoration-line-through">₹3,500/महिना</span>
-                <div class="h5 fw-bold text-success mb-0">₹3,000 <small class="fs-6 text-muted">/ महिना</small></div>
-              </div>
-              <a href="#order-form" class="btn btn-sm btn-outline-success rounded-pill px-3 fw-bold">Select Plan</a>
+
+            <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+              <a href="#menu" class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold" data-key="heroBtnExplore">Explore Menu ↓</a>
+              <a href="#order-form" class="btn btn-brand rounded-pill px-4 py-2 shadow-sm" data-key="heroBtnOrder">ऑर्डर बुक करा</a>
             </div>
           </div>
-        </div>
 
+          <!-- Hero Highlight Card -->
+          <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="card premium-card p-3 p-md-4 border-2 border-success-subtle shadow-sm">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge bg-warning text-dark fw-bold rounded-pill px-3 py-1" data-key="freshPrepared">Freshly Prepared ✨</span>
+                <span class="badge bg-danger text-white fw-bold rounded-pill px-3 py-1" data-key="festiveOff">FESTIVE ₹500 OFF</span>
+              </div>
+              <div class="d-flex align-items-center gap-3 my-2">
+                <img src="logo.png" alt="BloomBite" style="height: 44px; width: 44px; object-fit: contain;">
+                <div>
+                  <h6 class="fw-bold mb-0" data-key="powerBox">BloomBite Power Box</h6>
+                  <span class="text-success small fw-semibold" data-key="powerBoxSub">२६ दिवस • २६ बॉक्सेस • फक्त ₹११५/दिवस</span>
+                </div>
+              </div>
+              <div class="p-3 rounded-4 mb-3 bg-light" style="border: 1px dashed #cbd5e1; font-size: 0.82rem; line-height: 1.7;">
+                <div>✔ <strong data-key="boxF1">३ ताजी फळे:</strong> <span data-key="boxF1Desc">पपई, सफरचंद आणि टरबूज/डाळिंब</span></div>
+                <div>✔ <strong data-key="boxF2">३ स्प्राउट्स मिक्स:</strong> <span data-key="boxF2Desc">देशी चणा, हिरवे मूग आणि मटकी</span></div>
+                <div>✔ <strong data-key="boxF3">३ प्रीमियम ड्रायफ्रूट्स:</strong> <span data-key="boxF3Desc">काजू, बदाम आणि किशमिश</span></div>
+                <div>✔ <strong data-key="boxF4">सकाळची मोफत डिलिव्हरी + पॅकिंग + टॅक्स समाविष्ट!</strong></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="text-muted small text-decoration-line-through">₹3,500/महिना</span>
+                  <div class="h4 fw-bold text-success mb-0">₹3,000 <small class="fs-6 text-muted">/ २६ दिवस</small></div>
+                </div>
+                <a href="#order-form" class="btn btn-outline-success rounded-pill px-4 fw-bold" data-key="btnSelectPlan">Select Plan</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
+  <!-- Categories Horizontal Navigation -->
+  <section class="container my-2 px-3">
+    <div class="row g-2 g-md-3">
+      <div class="col-6 col-md-3">
+        <a href="#menu" class="category-chip-box">
+          <div class="d-flex align-items-center gap-2">
+            <div class="cat-avatar">🍎</div>
+            <div>
+              <div class="fw-bold small" data-key="cat1Title">Fruits</div>
+              <div class="text-muted" style="font-size: 0.75rem;" data-key="cat1Desc">Fresh & Juicy</div>
+            </div>
+          </div>
+          <i class="bi bi-chevron-right text-muted small"></i>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="#menu" class="category-chip-box">
+          <div class="d-flex align-items-center gap-2">
+            <div class="cat-avatar">🌱</div>
+            <div>
+              <div class="fw-bold small" data-key="cat2Title">Sprouts</div>
+              <div class="text-muted" style="font-size: 0.75rem;" data-key="cat2Desc">Rich Protein</div>
+            </div>
+          </div>
+          <i class="bi bi-chevron-right text-muted small"></i>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="#menu" class="category-chip-box">
+          <div class="d-flex align-items-center gap-2">
+            <div class="cat-avatar">🥗</div>
+            <div>
+              <div class="fw-bold small" data-key="cat3Title">Mix Box</div>
+              <div class="text-muted" style="font-size: 0.75rem;" data-key="cat3Desc">Healthy Combo</div>
+            </div>
+          </div>
+          <i class="bi bi-chevron-right text-muted small"></i>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="#menu" class="category-chip-box">
+          <div class="d-flex align-items-center gap-2">
+            <div class="cat-avatar">🥜</div>
+            <div>
+              <div class="fw-bold small" data-key="cat4Title">Dry Fruits</div>
+              <div class="text-muted" style="font-size: 0.75rem;" data-key="cat4Desc">Nuts & Power</div>
+            </div>
+          </div>
+          <i class="bi bi-chevron-right text-muted small"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 1. REALITY CHECK SECTION ================= -->
+  <section class="container my-4 py-3 px-3" data-aos="fade-up">
+    <div class="text-center mb-4">
+      <span class="badge bg-danger text-white px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm" data-key="vsBadge">
+        Reality Check ⚠️
+      </span>
+      <h3 class="fw-bold" style="color: var(--primary);" data-key="vsTitle">
+        2 Samosas + 1 Tea (₹50) VS BloomBite Basket
+      </h3>
+      <p class="text-muted small mx-auto" style="max-width: 650px;" data-key="vsSub">
+        It's not just ₹50/day—it invites thousands in hidden pharmacy and hospital bills!
+      </p>
+    </div>
+
+    <div class="row g-3">
+      <!-- 2 Samosas + 1 Tea (Toxic Side) -->
+      <div class="col-md-6">
+        <div class="compare-box-bad p-4 h-100 shadow-sm">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold text-danger mb-0 fs-6" data-key="badHead">❌ 2 Samosas (₹40) + Tea (₹10)</h6>
+            <span class="badge bg-danger text-white rounded-pill px-3 py-1" data-key="badBadge">रोज ₹५० + छुपे खर्च!</span>
+          </div>
+          <p class="text-muted small mb-3" data-key="badSub">The toxic financial & physical toll of daily roadside junk:</p>
+
+          <ul class="list-unstyled mb-0 small" style="line-height: 1.8;">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
+              <span data-key="bad1"><strong>Burnt Hydrogenated Oils:</strong> Re-heated commercial oils choke arteries and shoot bad cholesterol levels.</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
+              <span data-key="bad2"><strong>Refined Flour & Bloat:</strong> Sticks to gut lining, slowing metabolic digestion and triggering chronic reflux.</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
+              <span data-key="bad3"><strong>Pharmacy & Tablet Bills:</strong> Spending ₹500–₹1,000/month on Pan-D, antacids, and pain pills just to suppress daily acidity!</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
+              <span data-key="bad4"><strong>Emergency Hospital Risk:</strong> Fatty liver, escalating BP, and severe gut inflammation risk admissions costing ₹30,000 to ₹50,000+.</span>
+            </li>
+            <li class="d-flex align-items-start">
+              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
+              <span data-key="bad5"><strong>Total Wasteful Drain:</strong> Spending ₹1,500/month on fried snacks only to purchase disease, obesity, and permanent exhaustion!</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- BloomBite Fresh Whole Nutrition (Healthy Side) -->
+      <div class="col-md-6">
+        <div class="compare-box-good p-4 h-100 shadow-sm">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="fw-bold text-success mb-0 fs-6" data-key="goodHead">🌱 BloomBite Fresh Whole Nutrition</h6>
+            <span class="badge bg-success text-white rounded-pill px-3 py-1" data-key="goodBadge">स्मार्ट गुंतवणूक</span>
+          </div>
+          <p class="text-muted small mb-3" data-key="goodSub">Prevent doctor visits by putting clean cellular fuel on your desk:</p>
+
+          <ul class="list-unstyled mb-0 small" style="line-height: 1.8;">
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+              <span data-key="good1"><strong>Living Protein & Soluble Fiber:</strong> Sprouted legumes clean intestines and shut cravings down for 3-4 hours.</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+              <span data-key="good2"><strong>Raw Digestive Enzymes (Papain):</strong> Ends acidity at the root, lubricates gut lining, and prevents bloating permanently.</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+              <span data-key="good3"><strong>Zero Tablet Expenses:</strong> Clean cellular hydration eliminates reliance on antacids or multivitamin supplements!</span>
+            </li>
+            <li class="mb-3 d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+              <span data-key="good4"><strong>Clean Stamina & Immunity:</strong> Dense natural fructose, Vitamin C and premium nuts fuel sharp focus with zero midday crash.</span>
+            </li>
+            <li class="d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+              <span data-key="good5"><strong>Lifetime Health Dividends:</strong> Saves thousands in medical consultations while keeping your body athletic and energetic all day!</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. 4 HEALTH HAZARDS & BLOOMBITE CURE ================= -->
+  <section class="container my-4 py-3 px-3" data-aos="fade-up">
+    <div class="text-center mb-4">
+      <span class="pill-badge mb-2" data-key="hazardsBadge">Whole Nutrition Power</span>
+      <h3 class="fw-bold" style="color: var(--primary);" data-key="hazardsTitle">
+        4 Daily Health Hazards & The BloomBite Cure
+      </h3>
+      <p class="text-muted small mx-auto" style="max-width: 650px;" data-key="hazardsSub">
+        Live raw plant food is 100× more bio-available than artificial vitamin pills:
+      </p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <div class="hazard-card hazard-card-1">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fs-3 text-danger">⚡</span>
+            <span class="badge bg-danger-subtle text-danger fw-bold rounded-pill px-2 py-1" style="font-size: 0.72rem;">Problem 1</span>
+          </div>
+          <h6 class="fw-bold mb-1" style="font-size: 0.95rem;" data-key="hz1Title">3 PM Slump & Lethargy</h6>
+          <p class="text-muted mb-2" style="font-size: 0.78rem;" data-key="hz1Desc">Spiking insulin from refined carbohydrates crashes your daytime focus.</p>
+          <hr class="my-2 opacity-25">
+          <p class="mb-0 text-secondary" style="font-size: 0.78rem;" data-key="hz1Cure">
+            <strong class="text-success">Cure:</strong> Bananas, apples, and sprouted chickpea carbs deliver smooth, non-crashing endurance.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="hazard-card hazard-card-2">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fs-3 text-warning">🔥</span>
+            <span class="badge bg-warning-subtle text-warning fw-bold rounded-pill px-2 py-1" style="font-size: 0.72rem;">Problem 2</span>
+          </div>
+          <h6 class="fw-bold mb-1" style="font-size: 0.95rem;" data-key="hz2Title">Acidity & Bloating</h6>
+          <p class="text-muted mb-2" style="font-size: 0.78rem;" data-key="hz2Desc">Oily foods stripped of insoluble fiber slow down gut transit time.</p>
+          <hr class="my-2 opacity-25">
+          <p class="mb-0 text-secondary" style="font-size: 0.78rem;" data-key="hz2Cure">
+            <strong class="text-success">Cure:</strong> Papaya enzymes and sprouted matki lubricate digestion and nourish beneficial gut flora.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="hazard-card hazard-card-3">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fs-3 text-primary">⚖️</span>
+            <span class="badge bg-primary-subtle text-primary fw-bold rounded-pill px-2 py-1" style="font-size: 0.72rem;">Problem 3</span>
+          </div>
+          <h6 class="fw-bold mb-1" style="font-size: 0.95rem;" data-key="hz3Title">Visceral Fat & Cravings</h6>
+          <p class="text-muted mb-2" style="font-size: 0.78rem;" data-key="hz3Desc">Empty calories leave your appetite unsatisfied, triggering overeating.</p>
+          <hr class="my-2 opacity-25">
+          <p class="mb-0 text-secondary" style="font-size: 0.78rem;" data-key="hz3Cure">
+            <strong class="text-success">Cure:</strong> High plant protein and complex fiber from Green Moong sprouts shut down cravings for 3–4 hours.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="hazard-card hazard-card-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fs-3 text-success">🛡️</span>
+            <span class="badge bg-success-subtle text-success fw-bold rounded-pill px-2 py-1" style="font-size: 0.72rem;">Problem 4</span>
+          </div>
+          <h6 class="fw-bold mb-1" style="font-size: 0.95rem;" data-key="hz4Title">Frequent Weakness & Colds</h6>
+          <p class="text-muted mb-2" style="font-size: 0.78rem;" data-key="hz4Desc">Oxidative stress degrades cell repair when antioxidant intake is zero.</p>
+          <hr class="my-2 opacity-25">
+          <p class="mb-0 text-secondary" style="font-size: 0.78rem;" data-key="hz4Cure">
+            <strong class="text-success">Cure:</strong> Fresh oranges, pomegranates, and guavas inject concentrated Vitamin C to shield against infections.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. 30-DAY JOURNEY SECTION ================= -->
+  <section class="container my-4 py-3 px-3" data-aos="fade-up">
+    <div class="p-4 p-md-5 rounded-4 shadow-sm border bg-white text-center">
+      <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-bold mb-2 shadow-sm" data-key="tJourneyBadge">
+        30-DAY JOURNEY 🗓️
+      </span>
+      <h3 class="fw-bold" style="color: var(--primary);" data-key="tJourneyTitle">
+        What Happens to Your Body in 30 Days?
+      </h3>
+      <p class="text-muted small mx-auto mb-4" style="max-width: 650px;" data-key="tJourneySub">
+        A scientific look at 4 weeks of consistent raw fruit & sprout nutrition:
+      </p>
+
+      <div class="row g-3 text-start">
+        <div class="col-6 col-md-3">
+          <div class="step-card step-card-1">
+            <div class="step-badge bg-success">01</div>
+            <h6 class="fw-bold text-success mb-1" style="font-size: 0.85rem;" data-key="t1Time">Days 1 to 7</h6>
+            <h6 class="fw-bold mb-1" style="font-size: 1rem;" data-key="t1Title">Gut Reset</h6>
+            <p class="text-muted mb-0" style="font-size: 0.78rem;" data-key="t1Desc">
+              Enzymatic fiber ends acidity spikes; natural colon cleansing removes morning heaviness.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="step-card step-card-2">
+            <div class="step-badge bg-warning">02</div>
+            <h6 class="fw-bold text-warning mb-1" style="font-size: 0.85rem;" data-key="t2Time">Days 8 to 15</h6>
+            <h6 class="fw-bold mb-1" style="font-size: 1rem;" data-key="t2Title">Stamina Boost</h6>
+            <p class="text-muted mb-0" style="font-size: 0.78rem;" data-key="t2Desc">
+              Midday brain fog lifts completely. You won't rely on sugary sodas or extra cups of tea.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="step-card step-card-3">
+            <div class="step-badge bg-primary">03</div>
+            <h6 class="fw-bold text-primary mb-1" style="font-size: 0.85rem;" data-key="t3Time">Days 16 to 22</h6>
+            <h6 class="fw-bold mb-1" style="font-size: 1rem;" data-key="t3Title">Fat Control</h6>
+            <p class="text-muted mb-0" style="font-size: 0.78rem;" data-key="t3Desc">
+              Unhealthy sugar cravings drop noticeably. Metabolism accelerates, improving waistline comfort.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="step-card step-card-4">
+            <div class="step-badge bg-info">04</div>
+            <h6 class="fw-bold text-info mb-1" style="font-size: 0.85rem;" data-key="t4Time">Days 23 to 30</h6>
+            <h6 class="fw-bold mb-1" style="font-size: 1rem;" data-key="t4Title">Skin & Immunity</h6>
+            <p class="text-muted mb-0" style="font-size: 0.78rem;" data-key="t4Desc">
+              Deep cellular hydration clears skin complexion; your immune markers reach peak stability.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 pt-2">
+        <a href="#order-form" class="btn btn-brand rounded-pill px-5 py-3" data-key="tJourneyBtn">
+          Start My 30–Day Journey 🌱
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- About Us Section -->
   <section id="about" class="container my-4 py-2 px-3" data-aos="fade-up">
-    <div class="about-box p-3 p-md-5 shadow-sm">
+    <div class="about-box p-4 p-md-5 shadow-sm">
       <div class="row align-items-center g-4">
-        
         <div class="col-lg-7">
           <span class="badge bg-success text-white px-3 py-1 rounded-pill fw-bold mb-2" data-key="aboutBadge">
             आमची कहाणी & हेतू (Our Story & Mission) 🩺
@@ -485,360 +817,126 @@
           <h3 class="fw-bold mb-2" style="color: var(--primary);" data-key="aboutTitle">
             आम्ही तरुण विद्यार्थी हॉस्पिटल्समध्ये गेलो, डॉक्टरांना भेटलो... आणि डोळे उघडले!
           </h3>
-          <p class="text-secondary small mb-2" data-key="aboutP1">
+          <p class="text-secondary small mb-2" style="font-size: 0.9rem; line-height: 1.6;" data-key="aboutP1">
             आम्ही कॉलेजचे तरुण विद्यार्थी, जेव्हा आम्ही शहरातील विविध हॉस्पिटल्समध्ये गेलो आणि वरिष्ठ डॉक्टरांशी चर्चा केली, तेव्हा समोर आलेले वास्तव धक्कादायक होते! आज २० ते ४५ वयोगटातील तरुणांमध्ये फॅटी लिव्हर, भयानक ॲसिडिटी, डायबिटीस, हाय बीपी आणि क्रॉनिक थकवा झपाट्याने वाढत आहे.
           </p>
-          <p class="text-secondary small mb-2" data-key="aboutP2">
+          <p class="text-secondary small mb-2" style="font-size: 0.9rem; line-height: 1.6;" data-key="aboutP2">
             डॉक्टरांनी आम्हाला स्पष्ट सांगितले: <em>"औषधे फक्त तात्पुरती लक्षणे दाबतात. जोपर्यंत रोजच्या आहारात जिवंत फळे आणि मोड आलेली कडधान्ये येत नाहीत, तोपर्यंत हे हॉस्पिटलचे खेटे थांबणार नाहीत!"</em>
           </p>
-          <p class="text-secondary small mb-3" data-key="aboutP3">
-            धावपळीच्या जीवनात रोज फळे कापणे आणि स्प्राउट्स तयार करणे जमत नाही. <strong>म्हणूनच आम्ही 'BloomBite' सुरू केले!</strong> आमचे ध्येय एकच—हॉस्पिटलचे बिल थांबवून प्रत्येकाच्या टेबलावर शेतातून थेट शुद्ध पोषण पोहोचवणे.
+          <p class="text-secondary small mb-3" style="font-size: 0.9rem; line-height: 1.6;" data-key="aboutP3">
+            धावपळीच्या जीवनात रोज फळे कापणे आणि स्प्राउट्स तयार करणे जमत नाही. <strong>म्हणूनच आम्ही 'BloomBite' सुरू केले!</strong> आता यात आम्ही पौष्टिक काजू-बदाम जोडून संपूर्ण शक्तीवर्धक आहार तयार केला आहे.
           </p>
 
-          <div class="d-flex flex-wrap gap-1">
-            <span class="badge bg-light text-success border px-2 py-1 rounded-pill small" data-key="tag1">✅ Doctor Approved</span>
-            <span class="badge bg-light text-success border px-2 py-1 rounded-pill small" data-key="tag2">✅ Zero Hospital Visits</span>
-            <span class="badge bg-light text-success border px-2 py-1 rounded-pill small" data-key="tag3">✅ Student Mission</span>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-white text-success border px-3 py-2 rounded-pill small shadow-sm" data-key="tagDoctor">✅ Doctor Approved</span>
+            <span class="badge bg-white text-success border px-3 py-2 rounded-pill small shadow-sm" data-key="tagDiet">✅ 26 Days Power Diet</span>
+            <span class="badge bg-white text-success border px-3 py-2 rounded-pill small shadow-sm" data-key="tagPrice">✅ All-Inclusive Price</span>
           </div>
         </div>
 
         <div class="col-lg-5">
-          <div class="row g-2">
-            <div class="col-6" data-aos="zoom-in" data-aos-delay="50">
-              <div class="stat-badge text-center">
-                <div class="fs-3 mb-1">👨‍⚕️</div>
-                <h5 class="fw-bold text-success mb-0">15+</h5>
-                <p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="stat1">डॉक्टरांचा सल्ला</p>
-              </div>
-            </div>
-            <div class="col-6" data-aos="zoom-in" data-aos-delay="100">
-              <div class="stat-badge text-center">
-                <div class="fs-3 mb-1">🌾</div>
-                <h5 class="fw-bold text-primary mb-0">100%</h5>
-                <p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="stat2">थेट शेतातून निवड</p>
-              </div>
-            </div>
-            <div class="col-6" data-aos="zoom-in" data-aos-delay="150">
-              <div class="stat-badge text-center">
-                <div class="fs-3 mb-1">💊</div>
-                <h5 class="fw-bold text-danger mb-0">0%</h5>
-                <p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="stat3">गोळ्यांची गरज</p>
-              </div>
-            </div>
-            <div class="col-6" data-aos="zoom-in" data-aos-delay="200">
-              <div class="stat-badge text-center">
-                <div class="fs-3 mb-1">🥗</div>
-                <h5 class="fw-bold text-warning mb-0">Fresh</h5>
-                <p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="stat4">दररोज ताजी तयारी</p>
-              </div>
-            </div>
+          <div class="row g-2 text-center">
+            <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">👨‍⚕️</div><h5 class="fw-bold text-success mb-0">15+</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="doctorAdvice">डॉक्टरांचा सल्ला</p></div></div>
+            <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🌾</div><h5 class="fw-bold text-primary mb-0">100%</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="farmSelected">थेट शेतातून निवड</p></div></div>
+            <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🚚</div><h5 class="fw-bold text-danger mb-0">Free</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="morningDelivery">सकाळची डिलिव्हरी</p></div></div>
+            <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🥜</div><h5 class="fw-bold text-warning mb-0">3 Nuts</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="nutsIncluded">काजू + बदाम समाविष्ट</p></div></div>
           </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 5-Star Hygiene Standards -->
-  <section class="container my-4 py-2 px-3" data-aos="fade-up">
-    <div class="text-center mb-4">
-      <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold mb-2" data-key="hygieneBadge">
-        🛡️ 100% शुध्दता आणि सुरक्षितता
-      </span>
-      <h3 class="fw-bold" style="color: var(--primary);" data-key="hygieneTitle">
-        थेट शेतातून तुमच्या टेबलापर्यंत: 5-Star स्वच्छता!
-      </h3>
-      <p class="text-muted small mx-auto" style="max-width: 600px;" data-key="hygieneSub">
-        रस्त्यावरील उघड्या फळांना बाय-बाय म्हणा! BloomBite मध्ये प्रत्येक घास असतो हॉस्पिटल-ग्रेड सुरक्षित.
-      </p>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
-        <div class="hygiene-card">
-          <div class="hygiene-icon-wrap"><i class="bi bi-geo-alt-fill"></i></div>
-          <h6 class="fw-bold mb-1" data-key="hcard1Title">Direct From Farm</h6>
-          <p class="text-muted mb-0" style="font-size: 0.75rem;" data-key="hcard1Desc">
-            Zero कोल्ड स्टोरेज! पहाटे थेट शेतकऱ्यांकडून निवडलेली ताजी फळे.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="hygiene-card">
-          <div class="hygiene-icon-wrap"><i class="bi bi-droplet-half"></i></div>
-          <h6 class="fw-bold mb-1" data-key="hcard2Title">RO Water Cleaned</h6>
-          <p class="text-muted mb-0" style="font-size: 0.75rem;" data-key="hcard2Desc">
-            धुळीचे कण व कीटकनाशके नष्ट करण्यासाठी शुद्ध RO पाण्याने ३ वेळा धुलाई.
-          </p>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
-        <div class="hygiene-card">
-          <div class="hygiene-icon-wrap"><i class="bi bi-shield-check"></i></div>
-          <h6 class="fw-bold mb-1" data-key="hcard3Title">Cap & Gloves</h6>
-          <p class="text-muted mb-0" style="font-size: 0.75rem;" data-key="hcard3Desc">
-            हेड-कॅप आणि फूड-ग्रेड हँड ग्लोव्हज अनिवार्य. Zero Direct Hand Touch!
-          </p>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-        <div class="hygiene-card">
-          <div class="hygiene-icon-wrap"><i class="bi bi-box2-heart-fill"></i></div>
-          <h6 class="fw-bold mb-1" data-key="hcard4Title">Sealed Fresh Box</h6>
-          <p class="text-muted mb-0" style="font-size: 0.75rem;" data-key="hcard4Desc">
-            धूळ व माश्यांपासून १००% सुरक्षित एअर-टाईट पर्यावरणपूरक डब्यात पॅकिंग.
-          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= REALITY CHECK (ALL 5 POINTS) ================= -->
-  <section class="container my-4 py-2 px-3" data-aos="fade-up">
-    <div class="text-center mb-4">
-      <span class="badge bg-danger text-white px-3 py-1 rounded-pill fw-bold mb-2" data-key="vsBadge">
-        डोळे उघडणारी तुलना (Reality Check) ⚠️
-      </span>
-      <h3 class="fw-bold" style="color: var(--primary);" data-key="vsTitle">
-        २ समोसे + १ चहा (₹५०) VS BloomBite फ्रूट बास्केट
-      </h3>
-      <p class="text-muted small" data-key="vsSub">दररोज नकळत फक्त ₹५० जात नाहीत, तर भविष्यात हॉस्पिटल आणि गोळ्यांचा हजारो रुपयांचा भुर्दंड बसतो!</p>
-    </div>
-
-    <div class="row g-3">
-      <!-- 2 Samosas + 1 Tea (Toxic Side) -->
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="50">
-        <div class="compare-box-bad p-3 p-md-4 h-100 shadow-sm">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h6 class="fw-bold text-danger mb-0 fs-6" data-key="badHead">❌ २ समोसे (₹४०) + चहा (₹१०)</h6>
-            <span class="badge bg-danger text-white">रोज ₹५० + छुपे खर्च!</span>
-          </div>
-          <p class="text-muted small mb-3" data-key="badSub">दररोज दुपारी ४ वाजता होणारा शरीरावर आणि खिशावर विषारी हल्ला:</p>
-
-          <ul class="list-unstyled mb-0 small">
-            <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
-              <span data-key="bad1"><strong>जळालेले रिफाइंड तेल & चरबी:</strong> वारंवार उकळलेले तेल थेट हृदयाच्या नसांमध्ये कोलेस्ट्रॉल आणि Blockages वाढवते.</span>
-            </li>
-            <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
-              <span data-key="bad2"><strong>मैदा आणि साखरेचा झटका:</strong> मैदा आतड्यांना चिकटतो, भयानक ॲसिडिटी करतो, गॅसेस वाढवतो आणि पचनक्रिया मंदावतो.</span>
-            </li>
-            <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
-              <span data-key="bad3"><strong>गोळ्यांचा नित्य खर्च (Tablets Cost):</strong> रोजच्या ॲसिडिटीसाठी Pan-D, Omez, इनो किंवा पेनकिलर्सवर दरमहा ₹५०० ते ₹१,००० खर्च होतो!</span>
-            </li>
-            <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
-              <span data-key="bad4"><strong>हॉस्पिटल ॲडमिशनचा धोका (Hospital Bills):</strong> फॅटी लिव्हर, वाढलेले बीपी, शुगर आणि अचानक पोट बिघडल्यास डॉक्टरांची फी ₹१,००० आणि ॲडमिट झाल्यास ₹३०,००० ते ₹५०,००० चा भुर्दंड!</span>
-            </li>
-            <li class="d-flex align-items-start">
-              <i class="bi bi-x-circle-fill text-danger me-2 mt-1"></i>
-              <span data-key="bad5"><strong>कष्टाच्या पैशांची नासाडी:</strong> महिन्याला ₹१,५००+ समोशांवर + हजारो रुपये औषधांवर घालवून फक्त लठ्ठपणा आणि आजारपण विकत मिळते!</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- BloomBite Fresh Whole Nutrition (Healthy Side) -->
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="compare-box-good p-3 p-md-4 h-100 shadow-sm">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h6 class="fw-bold text-success mb-0 fs-6" data-key="goodHead">🌱 BloomBite Fresh Whole Nutrition</h6>
-            <span class="badge bg-success text-white">स्मार्ट गुंतवणूक</span>
-          </div>
-          <p class="text-muted small mb-3" data-key="goodSub">हॉस्पिटलची पायरी चढण्यापेक्षा निसर्गाची ताकद थेट तुमच्या टेबलवर:</p>
-
-          <ul class="list-unstyled mb-0 small">
-            <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-              <span data-key="good1"><strong>१००% शुद्ध प्लांट प्रोटीन & फायबर:</strong> मोड आलेली कडधान्ये आतडी स्वच्छ करतात आणि ३-४ तास जंक फूडची भूक पूर्णपणे थांबवतात.</span>
-            </li>
-            <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-              <span data-key="good2"><strong>पपईचे पाचक एन्झाईम्स (Papain):</strong> ॲसिडिटी मुळापासून नष्ट होते, पोट कायम हलके राहते आणि बद्धकोष्ठता होत नाही.</span>
-            </li>
-            <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-              <span data-key="good3"><strong>झिरो गोळ्यांचा खर्च (Zero Tablets):</strong> नैसर्गिक पोषणामुळे शरीराची रचना सुधारते; कोणतीही अँटासिड किंवा व्हिटॅमिन गोळी घेण्याची गरजच पडत नाही!</span>
-            </li>
-            <li class="mb-3 d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-              <span data-key="good4"><strong>अखंड नैसर्गिक स्टॅमिना & इम्युनिटी:</strong> संत्री, डाळिंब आणि पेरू मधील शुद्ध व्हिटॅमिन्स रोगांशी लढतात आणि दुपारचा आळस पूर्णपणे नाहीसा करतात.</span>
-            </li>
-            <li class="d-flex align-items-start">
-              <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-              <span data-key="good5"><strong>खऱ्या आरोग्याची बचत (Lifetime Health):</strong> डॉक्टरांचे लाखो रुपये वाचवून शरीर फिट, वजन नियंत्रित, त्वचा तजेलदार आणि मन दिवसभर टवटवीत राहते!</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 Problems Section -->
-  <section class="container my-4 py-2 px-3" data-aos="fade-up">
-    <div class="text-center mb-4">
-      <span class="pill-badge mb-2" data-key="concernsTag">Whole Nutrition Power</span>
-      <h3 class="fw-bold" style="color: var(--primary);" data-key="concernsTitle">
-        रोजच्या ४ मोठ्या समस्या & BloomBite चा नैसर्गिक उतारा
-      </h3>
-      <p class="text-muted small" data-key="concernsSub">केमिकलच्या सप्लिमेंट्सपेक्षा निसर्गाचा मूळ आहार १०० पट अधिक प्रभावी असतो:</p>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
-        <div class="card premium-card p-3 h-100 border-top border-danger border-4">
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <span class="fs-4">⚡</span>
-            <span class="badge bg-light text-danger fw-bold" style="font-size: 0.65rem;">Problem 1</span>
-          </div>
-          <h6 class="fw-bold mb-1" style="font-size: 0.88rem;" data-key="c1Head">दुपारचा आळस & थकवा</h6>
-          <p class="text-muted mb-2" style="font-size: 0.75rem;" data-key="c1Issue">रक्तातील साखर अचानक कमी-जास्त झाल्यामुळे कामावर लक्ष लागत नाही.</p>
-          <hr class="text-muted my-1 opacity-25">
-          <p class="mb-0 text-secondary" style="font-size: 0.75rem;" data-key="c1Fix"><strong class="text-success">उतारा:</strong> केळी, सफरचंद आणि स्प्राउट्स दिवसभर टिकणारी नॅचरल एनर्जी देतात.</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="card premium-card p-3 h-100 border-top border-warning border-4">
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <span class="fs-4">🔥</span>
-            <span class="badge bg-light text-warning fw-bold" style="font-size: 0.65rem;">Problem 2</span>
-          </div>
-          <h6 class="fw-bold mb-1" style="font-size: 0.88rem;" data-key="c2Head">पोटाचे विकार & ॲसिडिटी</h6>
-          <p class="text-muted mb-2" style="font-size: 0.75rem;" data-key="c2Issue">तळलेले अन्न आणि फायबरच्या अभावामुळे पचनक्रिया मंदावून पोट फुगते.</p>
-          <hr class="text-muted my-1 opacity-25">
-          <p class="mb-0 text-secondary" style="font-size: 0.75rem;" data-key="c2Fix"><strong class="text-success">उतारा:</strong> पपई मधील पाचक एन्झाईम्स आतडी स्वच्छ करतात व पचन सुलभ करतात.</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
-        <div class="card premium-card p-3 h-100 border-top border-primary border-4">
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <span class="fs-4">⚖️</span>
-            <span class="badge bg-light text-primary fw-bold" style="font-size: 0.65rem;">Problem 3</span>
-          </div>
-          <h6 class="fw-bold mb-1" style="font-size: 0.88rem;" data-key="c3Head">पोटाची चरबी & वजन</h6>
-          <p class="text-muted mb-2" style="font-size: 0.75rem;" data-key="c3Issue">वारंवार लागणारी भूक आणि जंक फूडमुळे पोटावर चरबी साचते.</p>
-          <hr class="text-muted my-1 opacity-25">
-          <p class="mb-0 text-secondary" style="font-size: 0.75rem;" data-key="c3Fix"><strong class="text-success">उतारा:</strong> हिरवे मूग स्प्राउट्समधील शुद्ध प्रोटीनमुळे ३-४ तास भूक लागत नाही.</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-        <div class="card premium-card p-3 h-100 border-top border-success border-4">
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <span class="fs-4">🛡️</span>
-            <span class="badge bg-light text-success fw-bold" style="font-size: 0.65rem;">Problem 4</span>
-          </div>
-          <h6 class="fw-bold mb-1" style="font-size: 0.88rem;" data-key="c4Head">कमी प्रतिकारशक्ती</h6>
-          <p class="text-muted mb-2" style="font-size: 0.75rem;" data-key="c4Issue">हवामान बदलताच लगेच सर्दी, खोकला आणि व्हायरल इन्फेक्शन होणे.</p>
-          <hr class="text-muted my-1 opacity-25">
-          <p class="mb-0 text-secondary" style="font-size: 0.75rem;" data-key="c4Fix"><strong class="text-success">उतारा:</strong> संत्री, डाळिंब यातील Vitamin C शरीराची इम्युनिटी वॉल मजबूत ठेवतात.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 30-Day Transformation Timeline -->
-  <section class="container my-4 py-2 px-3" data-aos="fade-up">
-    <div class="p-3 p-md-5 rounded-4 shadow-sm border bg-white">
-      <div class="text-center mb-4">
-        <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold mb-1">
-          30-DAY JOURNEY 🗓️
-        </span>
-        <h3 class="fw-bold" style="color: var(--primary);" data-key="timelineTitle">
-          What Happens to Your Body in 30 Days?
-        </h3>
-        <p class="text-muted small" data-key="timelineSub">
-          A scientific look at 4 weeks of consistent raw fruit & sprout nutrition:
-        </p>
-      </div>
-
-      <div class="row g-3">
-        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
-          <div class="step-card step-card-1">
-            <div class="step-badge bg-success">01</div>
-            <h6 class="fw-bold text-success mb-1" style="font-size: 0.85rem;" data-key="t1Time">Days 1 to 7</h6>
-            <h6 class="fw-bold mb-1" style="font-size: 0.9rem;" data-key="t1Head">Gut Reset</h6>
-            <p class="text-muted mb-0" style="font-size: 0.75rem;" data-key="t1Desc">
-              पपई आणि फायबरमुळे ॲसिडिटी थांबते आणि पोट हलके होते.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="step-card step-card-2">
-            <div class="step-badge bg-warning">02</div>
-            <h6 class="fw-bold text-warning mb-1" style="font-size: 0.85rem;" data-key="t2Time">Days 8 to 15</h6>
-            <h6 class="fw-bold mb-1" style="font-size: 0.9rem;" data-key="t2Head">Stamina Boost</h6>
-            <p class="text-muted mb-0" style="font-size: 0.75rem;" data-key="t2Desc">
-              दुपारचा आळस निघून जातो. वारंवार चहा पिण्याची गरज पडत नाही.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
-          <div class="step-card step-card-3">
-            <div class="step-badge bg-primary">03</div>
-            <h6 class="fw-bold text-primary mb-1" style="font-size: 0.85rem;" data-key="t3Time">Days 16 to 22</h6>
-            <h6 class="fw-bold mb-1" style="font-size: 0.9rem;" data-key="t3Head">Fat Control</h6>
-            <p class="text-muted mb-0" style="font-size: 0.75rem;" data-key="t3Desc">
-              जंक फूड क्रेव्हिंग्स थांबतात आणि पोट-कंबर हलकी वाटू लागते.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="step-card step-card-4">
-            <div class="step-badge bg-info">04</div>
-            <h6 class="fw-bold text-info mb-1" style="font-size: 0.85rem;" data-key="t4Time">Days 23 to 30</h6>
-            <h6 class="fw-bold mb-1" style="font-size: 0.9rem;" data-key="t4Head">Skin & Immunity</h6>
-            <p class="text-muted mb-0" style="font-size: 0.75rem;" data-key="t4Desc">
-              चेहऱ्यावर नॅचरल ग्लो येतो आणि रोगप्रतिकारशक्ती उत्तम राहते.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-4">
-        <a href="#order-form" class="btn btn-brand rounded-pill px-4 py-2" data-key="timelineBtn">
-          माझा ३० दिवसांचा प्रवास सुरू करा 🌱
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6-Day Menu Table -->
+  <!-- 6-Day Menu Table with Dry Fruits -->
   <section id="menu" class="py-4 bg-white border-top border-bottom px-3" data-aos="fade-up">
     <div class="container">
-      <div class="text-center mb-3">
-        <h3 class="fw-bold" style="color: var(--primary);" data-key="menuTitle">६ दिवसांचा फ्रेश मेनू (Mon - Sat)</h3>
-        <p class="text-muted small" data-key="menuSub">सोमवार ते शनिवार ऑफिस व रूटीनसाठी सर्वोत्तम आहार (रविवार सुट्टी)</p>
+      <div class="text-center mb-4">
+        <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold mb-1" data-key="menuBadge">३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स</span>
+        <h3 class="fw-bold" style="color: var(--primary);" data-key="menuTitle">६ दिवसांचा पॉवर मेनू (सोमवार - शनिवार)</h3>
+        <p class="text-muted small" data-key="menuSub">महिनाभरात एकूण २६ दिवस दररोज सकाळी फ्रेश डिलिव्हरी (रविवार नियमित सुट्टी, फक्त बल्क ऑर्डर्स चालू)</p>
       </div>
 
       <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle shadow-sm mb-0" style="font-size: 0.85rem;">
+        <table class="table table-bordered text-center align-middle shadow-sm mb-0" style="font-size: 0.9rem;">
           <thead class="table-success">
-            <tr>
-              <th data-key="thDay">वार</th>
-              <th data-key="thFruit">ताजी फळे</th>
-              <th data-key="thSprouts">मोड आलेली कडधान्ये</th>
+            <tr style="background-color: var(--light-mint);">
+              <th style="width: 15%; padding: 14px;" data-key="thDay">वार</th>
+              <th style="width: 35%;" data-key="thFruit">ताजी फळे (Fresh Fruits)</th>
+              <th style="width: 25%;" data-key="thSprouts">मोड आलेली कडधान्ये (Sprouts)</th>
+              <th style="width: 25%;" data-key="thNuts">३ ड्रायफ्रूट्स (Dry Fruits)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td><span class="day-badge" data-key="dayMon">सोमवार</span></td><td>Apple, Papaya, Watermelon</td><td>Moong, Chana Mix</td></tr>
-            <tr><td><span class="day-badge" data-key="dayTue">मंगळवार</span></td><td>Banana, Guava, Pomegranate</td><td>Moong, Matki Sprouts</td></tr>
-            <tr><td><span class="day-badge" data-key="dayWed">बुधवार</span></td><td>Muskmelon, Papaya, Apple</td><td>Chana, Matki Sprouts</td></tr>
-            <tr><td><span class="day-badge" data-key="dayThu">गुरुवार</span></td><td>Orange, Watermelon, Guava</td><td>Moong, Chana Mix</td></tr>
-            <tr><td><span class="day-badge" data-key="dayFri">शुक्रवार</span></td><td>Apple, Pineapple</td><td>Matki, Moong Sprouts</td></tr>
-            <tr><td><span class="day-badge" data-key="daySat">शनिवार</span></td><td>Pomegranate, Banana</td><td>Moong, Matki Mix</td></tr>
+            <tr>
+              <td><span class="day-badge" data-key="dayMon">सोमवार</span></td>
+              <td data-key="monFruit">सफरचंद, पपई, कलिंगड</td>
+              <td data-key="monSprout">हिरवे मूग, चणा मिक्स</td>
+              <td data-key="monNuts"><strong class="text-dark">काजू, बदाम, काळे मणुके</strong></td>
+            </tr>
+            <tr>
+              <td><span class="day-badge" data-key="dayTue">मंगळवार</span></td>
+              <td data-key="tueFruit">केळी, पेरू, डाळिंब</td>
+              <td data-key="tueSprout">हिरवे मूग, मटकी स्प्राउट्स</td>
+              <td data-key="tueNuts"><strong class="text-dark">काजू, बदाम, किशमिश</strong></td>
+            </tr>
+            <tr>
+              <td><span class="day-badge" data-key="dayWed">बुधवार</span></td>
+              <td data-key="wedFruit">खरबूज, पपई, सफरचंद</td>
+              <td data-key="wedSprout">देशी चणा, मटकी स्प्राउट्स</td>
+              <td data-key="wedNuts"><strong class="text-dark">बदाम, काजू, अक्रोड तुकडा</strong></td>
+            </tr>
+            <tr>
+              <td><span class="day-badge" data-key="dayThu">गुरुवार</span></td>
+              <td data-key="thuFruit">संत्रे, कलिंगड, पेरू</td>
+              <td data-key="thuSprout">हिरवे मूग, देशी चणा</td>
+              <td data-key="thuNuts"><strong class="text-dark">काजू, बदाम, पिवळे मणुके</strong></td>
+            </tr>
+            <tr>
+              <td><span class="day-badge" data-key="dayFri">शुक्रवार</span></td>
+              <td data-key="friFruit">सफरचंद, अननस, पपई</td>
+              <td data-key="friSprout">मटकी, हिरवे मूग मिक्स</td>
+              <td data-key="friNuts"><strong class="text-dark">बदाम, काजू, किशमिश</strong></td>
+            </tr>
+            <tr>
+              <td><span class="day-badge" data-key="daySat">शनिवार</span></td>
+              <td data-key="satFruit">डाळिंब, केळी, सफरचंद</td>
+              <td data-key="satSprout">हिरवे मूग, मटकी मिक्स</td>
+              <td data-key="satNuts"><strong class="text-dark">काजू, बदाम, काळे मणुके</strong></td>
+            </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bulk & Event Orders Section -->
+  <section id="bulk-events" class="container my-4 py-3 px-3" data-aos="fade-up">
+    <div class="bulk-card shadow-lg">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8 text-center text-lg-start">
+          <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm" data-key="bulkBadge">
+            🎉 Sunday & Special Events Special
+          </span>
+          <h3 class="fw-bold mb-2 text-white" data-key="bulkTitle">जिम इव्हेंट्स, ऑफिस पार्टी & सोसायट्यांसाठी बल्क ऑर्डर्स!</h3>
+          <p class="small text-light mb-4" style="line-height: 1.6;" data-key="bulkDesc">
+            कचरा जंक फूड किंवा तेलकट समोशांऐवजी तुमच्या इव्हेंटमध्ये द्या १००% हायजेनिक फ्रूट, स्प्राउट आणि ड्रायफ्रूट्स बास्केट! 
+            <strong>रविवार असो किंवा कोणताही सण-उत्सव — आम्ही विशेष बल्क ऑर्डर्स वेळेवर पोहोचवतो.</strong>
+          </p>
+          <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
+            <span class="badge bg-white text-dark py-2 px-3 rounded-pill fw-bold">🏋️ Gym & Marathon Events</span>
+            <span class="badge bg-white text-dark py-2 px-3 rounded-pill fw-bold">🏢 Corporate Office Snacks</span>
+            <span class="badge bg-white text-dark py-2 px-3 rounded-pill fw-bold">🏘️ Housing Society Gatherings</span>
+            <span class="badge bg-warning text-dark py-2 px-3 rounded-pill fw-bold">⚡ Sunday Delivery Available</span>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center">
+          <div class="bg-white text-dark p-4 rounded-4 shadow-sm border">
+            <h5 class="fw-bold mb-1 text-success" data-key="bulkCardHead">बल्क ऑर्डर डिस्काउंट</h5>
+            <p class="small text-muted mb-3" data-key="bulkCardSub">१०, २५, ५० किंवा १००+ बॉक्सेससाठी विशेष कस्टमाइज्ड पॅक</p>
+            <a href="#order-form" onclick="selectPlan('bulk', 0, 'Bulk / Party / Gym Event Order (Special Sunday Slot)')" class="btn btn-brand w-100 fw-bold py-2" data-key="bulkBtn">
+              बल्क चौकशी करा
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -846,140 +944,179 @@
   <!-- Pricing Cards -->
   <section class="container my-4 py-2 px-3" data-aos="fade-up">
     <div class="text-center mb-4">
-      <span class="pill-badge mb-2" data-key="priceBadge">Best Value Plans</span>
-      <h3 class="fw-bold" style="color: var(--primary);" data-key="priceTitle">दर आणि स्पेशल ऑफर्स</h3>
+      <span class="pill-badge mb-2">Festive Value Plans</span>
+      <h3 class="fw-bold" style="color: var(--primary);" data-key="pricingHead">पारदर्शक दर आणि स्पेशल फेस्टिव्हल ऑफर</h3>
+      <p class="text-muted small" data-key="pricingSub">कोणताही छुपा खर्च नाही! पॅकिंग, ड्रायफ्रूट्स, डिलिव्हरी आणि टॅक्स समाविष्ट.</p>
     </div>
 
     <div class="row g-3 justify-content-center">
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
-        <div class="card premium-card p-3 text-center border-top border-secondary border-4 h-100">
-          <h6 class="fw-bold" data-key="p1Title">रेग्युलर मंथली प्लॅन</h6>
-          <h3 class="text-dark my-2">₹3,500 <small class="fs-6 text-muted">/ महिना</small></h3>
-          <span class="badge bg-secondary p-1 mb-2" data-key="p1Offer">पूर्ण महिन्याची बास्केट</span>
-          <p class="small text-muted mb-0" data-key="p1Desc">सोमवार ते शनिवार ताजी फळे व स्प्राउट्स बॉक्स थेट दारात.</p>
+      <!-- Trial Plan -->
+      <div class="col-md-4">
+        <div class="card premium-card p-4 text-center border-top border-warning border-4 h-100">
+          <span class="badge bg-warning text-dark mb-2 align-self-center px-3 py-1 rounded-pill fw-bold">1-Day Trial</span>
+          <h5 class="fw-bold" data-key="trialTitle">सिंगल ट्रायल बॉक्स</h5>
+          <h3 class="text-dark my-2">₹120 <small class="fs-6 text-muted" data-key="perBox">/ १ बॉक्स</small></h3>
+          <p class="small text-muted mb-3" data-key="trialDesc">पहिली टेस्ट घेऊन पहा! ३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स.</p>
+          <div class="p-3 bg-light rounded-3 text-start small mb-4" style="font-size: 0.8rem; line-height: 1.8;">
+            <div>✔ Fresh Sliced Fruits & Sprouts</div>
+            <div>✔ Added Almonds, Cashew & Raisins</div>
+            <div>✔ Free Morning Home Delivery</div>
+          </div>
+          <a href="#order-form" onclick="selectPlan('single', 120, '1-Day Trial Box (₹120)')" class="btn btn-outline-warning text-dark rounded-pill w-100 fw-bold mt-auto" data-key="btnBookTrial">ट्रायल बुक करा</a>
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card premium-card p-3 text-center border-top border-success border-4 h-100 position-relative">
-          <span class="badge bg-danger position-absolute top-0 start-50 translate-middle rounded-pill">🔥 मर्यादित ऑफर</span>
-          <h6 class="fw-bold mt-1" data-key="p2Title">पहिले ३ महिने ऑफर</h6>
-          <h3 class="text-success my-2">₹3,000 <small class="fs-6 text-muted">/ महिना</small></h3>
-          <span class="badge bg-success p-1 mb-2" data-key="p2Offer">Flat ₹500 बचत दरमहा!</span>
-          <p class="small text-muted mb-0" data-key="p2Desc">नवीन ग्राहकांसाठी पहिले ३ महिने फक्त ₹३,००० मध्ये संपूर्ण पोषण.</p>
+      <!-- Festive Offer -->
+      <div class="col-md-4">
+        <div class="card premium-card p-4 text-center border-top border-success border-4 h-100 position-relative shadow">
+          <span class="badge bg-danger position-absolute top-0 start-50 translate-middle rounded-pill px-3 py-2 shadow-sm" data-key="festiveBadge">
+            🔥 फेस्टिव्हल स्पेशल ऑफर
+          </span>
+          <h5 class="fw-bold mt-2" data-key="festiveTitle">२६ दिवसांचा फेस्टिव्हल प्लॅन</h5>
+          <h3 class="text-success my-2">₹3,000 <small class="fs-6 text-muted" data-key="perMonth">/ महिना</small></h3>
+          <div class="fw-bold text-muted small text-decoration-line-through mb-1" data-key="normalRate">नॉर्मल दर: ₹3,500</div>
+          <span class="badge bg-success p-2 px-3 mb-3 rounded-pill" data-key="perDayHighlight">फक्त ₹११५ / दिवस (२६ बॉक्सेस)</span>
+          <div class="p-3 bg-light rounded-3 text-start small mb-4" style="font-size: 0.8rem; line-height: 1.8;">
+            <div>✔ <strong data-key="fPoint1">२६ दिवस अखंड पोषण (रविवार सुट्टी)</strong></div>
+            <div>✔ <strong data-key="fPoint2">काजू, बदाम आणि मणुके दररोज समाविष्ट</strong></div>
+            <div>✔ <strong data-key="fPoint3">सकाळी ६:३० ते ८:३० घरपोच मोफत डिलिव्हरी</strong></div>
+            <div>✔ <strong data-key="fPoint4">टॅक्स, पॅकिंग & डिलिव्हरी सर्व मोफत</strong></div>
+          </div>
+          <a href="#order-form" onclick="selectPlan('festive', 3000, 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)')" class="btn btn-success rounded-pill w-100 fw-bold mt-auto shadow-sm" data-key="btnSubOffer">ऑफरमध्ये सबस्क्राइब करा</a>
         </div>
       </div>
 
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
-        <div class="card premium-card p-3 text-center border-top border-primary border-4 h-100">
-          <h6 class="fw-bold" data-key="p3Title">२० लोकांचा रेफरल प्लॅन</h6>
-          <h3 class="text-primary my-2">1 FREE <small class="fs-6 text-muted">/ Party</small></h3>
-          <span class="badge bg-primary p-1 mb-2" data-key="p3Offer">Group Perk</span>
-          <p class="small text-muted mb-0" data-key="p3Desc">२० जणांना जोडा आणि १ सबस्क्रिप्शन मोफत मिळवा किंवा फ्रूट पार्टी गिफ्ट!</p>
+      <!-- Bulk / Event Card -->
+      <div class="col-md-4">
+        <div class="card premium-card p-4 text-center border-top border-primary border-4 h-100">
+          <span class="badge bg-primary text-white mb-2 align-self-center px-3 py-1 rounded-pill fw-bold">Gym & Sunday Events</span>
+          <h5 class="fw-bold" data-key="bulkCardTitle">बल्क & इव्हेंट ऑर्डर</h5>
+          <h3 class="text-primary my-2">Custom <small class="fs-6 text-muted">/ Bulk Rate</small></h3>
+          <p class="small text-muted mb-3" data-key="bulkCardSub2">जिम, ऑफिस पार्ट्या व सोसायट्यांसाठी विशेष सवलत.</p>
+          <div class="p-3 bg-light rounded-3 text-start small mb-4" style="font-size: 0.8rem; line-height: 1.8;">
+            <div>✔ रविवारच्या इव्हेंटसाठी खास डिलिव्हरी उपलब्ध</div>
+            <div>✔ आवश्यकतेनुसार कस्टमाइज्ड फ्रूट & नट्स बॉक्स</div>
+            <div>✔ आकर्षक घाऊक दर (Best Wholesale Price)</div>
+          </div>
+          <a href="#order-form" onclick="selectPlan('bulk', 0, 'Bulk / Party / Gym Event Order (Special Sunday Slot)')" class="btn btn-outline-primary rounded-pill w-100 fw-bold mt-auto" data-key="btnOrderBulk">बल्क ऑर्डर करा</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Modern Checkout Shell -->
-  <section id="order-form" class="py-4 py-md-5 px-3" style="background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);">
+  <!-- Checkout Order Form -->
+  <section id="order-form" class="py-5 px-3" style="background: linear-gradient(180deg, #f8fafc 0%, #edf4ee 100%);">
     <div class="container" style="max-width: 680px;" data-aos="zoom-in">
-      <div class="order-shell p-3 p-md-5">
-        
-        <div class="text-center mb-3">
-          <span class="pill-badge mb-1">⚡ Instant WhatsApp Booking</span>
-          <h4 class="fw-bold mb-1" style="color: var(--primary);" data-key="orderFormTitle">Place Your Fresh Order</h4>
-          <p class="text-muted small" data-key="orderFormSub">प्लॅन निवडा, तपशील भरा आणि WhatsApp द्वारे एका क्लिकवर बुक करा!</p>
+      <div class="order-shell p-4 p-md-5">
+        <div class="text-center mb-4">
+          <img src="logo.png" alt="BloomBite" class="brand-logo-img mb-2" style="height: 52px;">
+          <div><span class="pill-badge mb-2"><span data-key="instantBooking">⚡ Instant WhatsApp Booking</span></span></div>
+          <h3 class="fw-bold mb-1" style="color: var(--primary);" data-key="orderFormTitle">तुमची ताजी बास्केट बुक करा</h3>
+          <p class="text-muted small" data-key="orderFormSub">प्लॅन निवडा, पत्ता टाका आणि WhatsApp द्वारे त्वरित ऑर्डर कन्फर्म करा!</p>
         </div>
 
         <form id="orderForm" onsubmit="handleOrder(event)">
-          <label class="form-label fw-bold small text-secondary" data-key="labelChoosePlan">1. प्लॅन निवडा (Select Plan)</label>
+          <label class="form-label fw-bold small text-secondary"><span data-key="planLabel">१. तुमचा प्लॅन निवडा (Select Plan)</span></label>
           <div class="row g-2 mb-3">
             <div class="col-4">
-              <div class="plan-selector active text-center" id="planCard-first3m" onclick="selectPlan('first3m', 3000, 'First 3 Months Offer (₹3,000/mo)')">
-                <div class="fw-bold" style="font-size: 0.75rem;">First 3 Mo</div>
-                <div class="fw-bold text-success my-1" style="font-size: 0.95rem;">₹3,000</div>
-                <span class="badge bg-success text-white" style="font-size: 0.65rem;">₹500 OFF</span>
+              <div class="plan-selector active text-center" id="planCard-festive" onclick="selectPlan('festive', 3000, 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)')">
+                <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan1">फेस्टिव्हल २६ दिवस</div>
+                <div class="fw-bold text-success my-1" style="font-size: 1rem;">₹3,000</div>
+                <span class="badge bg-success text-white rounded-pill" style="font-size: 0.65rem;">₹115/Day</span>
               </div>
             </div>
+
             <div class="col-4">
-              <div class="plan-selector text-center" id="planCard-monthly" onclick="selectPlan('monthly', 3500, 'Regular Monthly Plan (₹3,500/mo)')">
-                <div class="fw-bold" style="font-size: 0.75rem;">Regular Mo</div>
-                <div class="fw-bold text-dark my-1" style="font-size: 0.95rem;">₹3,500</div>
-                <span class="badge bg-light text-muted" style="font-size: 0.65rem;">Standard</span>
+              <div class="plan-selector text-center" id="planCard-single" onclick="selectPlan('single', 120, 'Single Trial Box (₹120)')">
+                <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan2">१-Day ट्रायल</div>
+                <div class="fw-bold text-warning my-1" style="font-size: 1rem;">₹120</div>
+                <span class="badge bg-warning text-dark rounded-pill" style="font-size: 0.65rem;">Trial</span>
               </div>
             </div>
+
             <div class="col-4">
-              <div class="plan-selector text-center" id="planCard-single" onclick="selectPlan('single', 115, 'Single Trial Box (₹115)')">
-                <div class="fw-bold" style="font-size: 0.75rem;">Trial Box</div>
-                <div class="fw-bold text-warning my-1" style="font-size: 0.95rem;">₹115</div>
-                <span class="badge bg-warning text-dark" style="font-size: 0.65rem;">1 Day</span>
+              <div class="plan-selector text-center" id="planCard-bulk" onclick="selectPlan('bulk', 0, 'Bulk / Party / Gym Event Order (Special Sunday Slot)')">
+                <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan3">बल्क / Sunday Event</div>
+                <div class="fw-bold text-primary my-1" style="font-size: 1rem;">Custom</div>
+                <span class="badge bg-primary text-white rounded-pill" style="font-size: 0.65rem;">Bulk Special</span>
               </div>
             </div>
           </div>
 
-          <div class="row align-items-center mb-3 p-2 rounded-3 bg-light border g-0">
+          <!-- Quantity Selector -->
+          <div class="row align-items-center mb-3 p-3 rounded-4 bg-light border g-0">
             <div class="col-7">
-              <span class="fw-bold small d-block" data-key="labelQtyTitle">संख्या (Quantity)</span>
-              <span class="text-muted" style="font-size: 0.75rem;" data-key="labelQtySub">किती बॉक्सेस हवे आहेत?</span>
+              <span class="fw-bold small d-block"><span data-key="quantityLabel">संख्या (Quantity)</span></span>
+              <span class="text-muted" style="font-size: 0.75rem;"><span data-key="quantityHelp">किती व्यक्तींसाठी/बॉक्सेस हवे आहेत?</span></span>
             </div>
-            <div class="col-5 d-flex align-items-center justify-content-end gap-1">
+            <div class="col-5 d-flex align-items-center justify-content-end gap-2">
               <button type="button" class="qty-btn" onclick="updateQty(-1)">−</button>
-              <input type="number" id="boxQty" class="form-control text-center fw-bold rounded-2 p-1" value="1" min="1" max="50" style="width: 48px;" readonly>
+              <input type="number" id="boxQty" class="form-control text-center fw-bold rounded-3 p-1" value="1" min="1" max="500" style="width: 60px;">
               <button type="button" class="qty-btn" onclick="updateQty(1)">+</button>
             </div>
           </div>
 
-          <div class="row g-2 mb-3">
-            <div class="col-12 col-md-6">
-              <label class="form-label fw-bold small text-secondary mb-1" data-key="labelName">तुमचे नाव (Full Name)</label>
-              <input type="text" id="custName" class="form-control rounded-3" placeholder="उदा. राहुल शिंदे" required>
-            </div>
-            <div class="col-12 col-md-6">
-              <label class="form-label fw-bold small text-secondary mb-1" data-key="labelContact">कोणाशी संपर्क साधायचा?</label>
-              <select id="sendTo" class="form-select rounded-3">
-                <option value="9604624476">Akash Dhakne (9604624476)</option>
-                <option value="9699730616">Shruti Sonawane (9699730616)</option>
-              </select>
+          <!-- Customer Details -->
+          <div class="row g-3 mb-3">
+            <div class="col-12">
+              <label class="form-label fw-bold small text-secondary mb-1"><span data-key="nameLabel">तुमचे नाव (Full Name)</span></label>
+              <input type="text" id="custName" class="form-control rounded-3 py-2" placeholder="उदा. राहुल शिंदे" required>
             </div>
             <div class="col-12">
-              <label class="form-label fw-bold small text-secondary mb-1" data-key="labelAddress">डिलिव्हरी पत्ता (Address)</label>
-              <textarea id="custAddress" class="form-control rounded-3" rows="2" placeholder="ऑफिस/फ्लॅट क्र. किंवा लँडमार्क..." required></textarea>
+              <label class="form-label fw-bold small text-secondary mb-1"><span data-key="addressLabel">डिलिव्हरी पत्ता & दिनांक (Delivery Address & Event Date/Time)</span></label>
+              <textarea id="custAddress" class="form-control rounded-3 py-2" rows="2" placeholder="ऑफिस/फ्लॅट क्र., सोसायटीचे नाव किंवा रविवार इव्हेंट तारीख..." required></textarea>
             </div>
           </div>
 
-          <div class="p-2 px-3 mb-3 rounded-3 d-flex justify-content-between align-items-center" style="background: #e8f5e9; border: 1.5px dashed #20c997;">
-            <div>
-              <span class="text-muted small d-block" style="font-size: 0.75rem;" data-key="calcLabel">एकूण देय रक्कम:</span>
-              <span class="h4 fw-bold text-success mb-0" id="totalPriceDisplay">₹3,000</span>
+          <!-- Date Selector -->
+          <div class="mb-4">
+            <label for="orderDate" class="form-label fw-semibold small text-secondary mb-1"><span data-key="dateLabel">📅 Delivery / Order Date</span></label>
+            <input type="date" id="orderDate" name="orderDate" class="form-control rounded-3 py-2" required>
+            <div class="form-text" style="font-size: 0.75rem;"><span data-key="dateHelp">Select the date for your meal box delivery.</span></div>
+          </div>
+
+          <!-- Pricing Banner -->
+          <div class="p-3 mb-4 rounded-4" style="background: linear-gradient(135deg, #eaf8f0 0%, #f4fbf7 100%); border: 1.5px dashed #22c55e;">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div>
+                <span class="text-muted small d-block" style="font-size: 0.75rem;"><span data-key="totalLabel">एकूण अंदाज रक्कम (Total Amount):</span></span>
+                <span class="h3 fw-bold text-success mb-0" id="totalPriceDisplay">₹3,000</span>
+              </div>
+              <span class="badge bg-success py-2 px-3 rounded-pill shadow-sm" id="discountTag">फेस्टिव्हल सेव्हिंग ₹५००</span>
             </div>
-            <span class="badge bg-success py-1 px-2 rounded-pill small" id="discountTag">Special Offer</span>
+            <hr class="my-2 text-success opacity-25">
+            <div class="d-flex flex-wrap gap-3 small" style="font-size: 0.75rem; color: #155724;">
+              <span><i class="bi bi-check-circle-fill"></i> <span data-key="bannerF1">३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स (काजू-बदाम)</span></span>
+              <span><i class="bi bi-check-circle-fill"></i> <span data-key="bannerF2">फ्री मॉर्निंग डिलिव्हरी (रविवार इव्हेंट उपलब्ध)</span></span>
+              <span><i class="bi bi-check-circle-fill"></i> <span data-key="bannerF3">पॅकिंग & GST समाविष्ट</span></span>
+            </div>
           </div>
 
           <button type="submit" class="btn btn-brand w-100 py-3 shadow">
-            <i class="bi bi-whatsapp me-2 fs-5"></i> <span data-key="btnSubmit">WhatsApp वर ऑर्डर पाठवा</span>
+            <i class="bi bi-whatsapp me-2 fs-5"></i> <span data-key="whatsappOrder">WhatsApp वर ऑर्डर बुक करा</span>
           </button>
         </form>
-
       </div>
     </div>
   </section>
 
-  <!-- Sticky Mobile Bar -->
+  <!-- Mobile Sticky Button -->
   <div class="sticky-mobile-cta">
-    <a href="#order-form" class="btn btn-brand w-100 d-flex justify-content-center align-items-center gap-2 py-2">
-      <i class="bi bi-whatsapp fs-5"></i> <span data-key="mobBtn">ऑर्डर करा (Order Now)</span>
+    <a href="#order-form" class="btn btn-brand w-100 d-flex justify-content-center align-items-center gap-2 py-3 shadow">
+      <i class="bi bi-whatsapp fs-5"></i> <span><span data-key="stickyOrder">ऑर्डर करा (₹३,००० / २६ दिवस)</span></span>
     </a>
   </div>
 
-  <!-- Footer (Zero bottom spacing) -->
-  <footer class="bg-dark text-white py-4 text-center px-2 m-0 border-0">
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5 text-center px-2 m-0 border-0">
     <div class="container">
-      <h4 class="brand-title text-white mb-1">BloomBite</h4>
-      <p class="text-secondary small mb-2">Daily Fresh Fruit & Sprouts | Instagram: @BloomBiteFresh</p>
+      <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+        <img src="logo.png" alt="BloomBite" style="height: 42px; filter: brightness(0) invert(1);">
+        <h4 class="brand-title text-white mb-0">BloomBite</h4>
+      </div>
+      <p class="text-secondary small mb-3"><span data-key="footerDesc">Daily Fresh Fruit, Sprouts & Dry Fruits | Gym & Party Bulk Orders Available</span></p>
       <div class="small text-secondary">
-        <span class="me-3"><i class="bi bi-telephone-fill text-success"></i> Akash: 9604624476</span>
-        <span><i class="bi bi-telephone-fill text-success"></i> Shruti: 9699730616</span>
+        <span><i class="bi bi-whatsapp text-success me-1"></i> <span data-key="contactLabel">संपर्क / WhatsApp:</span> <strong class="text-white">9022153005</strong></span>
       </div>
     </div>
   </footer>
@@ -989,325 +1126,714 @@
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
   <script>
-    AOS.init({
-      duration: 650,
-      once: true,
-      easing: 'ease-out-cubic',
-      disable: false
-    });
-
-    window.addEventListener('load', function() {
-      AOS.refresh();
-    });
+    AOS.init({ duration: 650, once: true, easing: 'ease-out-cubic' });
 
     const translations = {
       mr: {
-        topRibbon: "✨ गणेशाय नमः | पहिले ३ महिने स्पेशल ऑफर: फक्त ₹३,०००/महिना (मूळ किंमत ₹३,५००)!",
+        topRibbon: "🎉 फेस्टिव्हल धमाका: २६ दिवस महिना फक्त ₹३,००० (३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स) | मोफत सकाळची डिलिव्हरी + टॅक्स समाविष्ट!",
         navOrder: "ऑर्डर करा",
-        heroTag: "Fresh, Healthy & Beautiful",
-        heroTitle: "Your Daily Source for Fresh Fruit & Sprouts",
-        heroDesc: "ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे आणि अंकुरित कडधान्ये! डॉक्टर-प्रमाणित पोषण थेट तुमच्या टेबलावर.",
-        heroBtnStory: "आमची कथा 📖",
+        heroTag: "✨ Fresh Fruits & Sprouts, Delivered To Your Door",
+        heroTitle: "Healthy Choices. Happier You.",
+        heroDesc: "ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे, मोड आलेली कडधान्ये आणि प्रीमियम काजू-बदाम! २६ दिवस थेट घरपोच सकाळची फ्रेश डिलिव्हरी.",
+        featureFresh: "फ्रेश & प्रीमियम",
+        featureDoctor: "डॉक्टरांचा सल्ला",
+        featureDelivery: "जलद सकाळची डिलिव्हरी",
+        heroBtnExplore: "मेनू पहा ↓",
         heroBtnOrder: "ऑर्डर बुक करा",
-        aboutBadge: "आमची कहाणी & हेतू (Our Story & Mission) 🩺",
-        aboutTitle: "आम्ही तरुण विद्यार्थी हॉस्पिटल्समध्ये गेलो, डॉक्टरांना भेटलो... आणि डोळे उघडले!",
-        aboutP1: "आम्ही कॉलेजचे तरुण विद्यार्थी, जेव्हा आम्ही शहरातील विविध हॉस्पिटल्समध्ये गेलो आणि वरिष्ठ डॉक्टरांशी चर्चा केली, तेव्हा समोर आलेले वास्तव धक्कादायक होते! आज २० ते ४५ वयोगटातील तरुणांमध्ये फॅटी लिव्हर, भयानक ॲसिडिटी, डायबिटीस, हाय बीपी आणि क्रॉनिक थकवा झपाट्याने वाढत आहे.",
-        aboutP2: "डॉक्टरांनी आम्हाला स्पष्ट सांगितले: \"औषधे फक्त तात्पुरती लक्षणे दाबतात. जोपर्यंत रोजच्या आहारात जिवंत फळे आणि मोड आलेली कडधान्ये येत नाहीत, तोपर्यंत हे हॉस्पिटलचे खेटे थांबणार नाहीत!\"",
-        aboutP3: "धावपळीच्या जीवनात रोज फळे कापणे आणि स्प्राउट्स तयार करणे जमत नाही. म्हणूनच आम्ही 'BloomBite' सुरू केले! आमचे ध्येय एकच—हॉस्पिटलचे बिल थांबवून प्रत्येकाच्या टेबलावर शेतातून थेट शुद्ध पोषण पोहोचवणे.",
-        tag1: "✅ Doctor Approved",
-        tag2: "✅ Zero Hospital Visits",
-        tag3: "✅ Student Mission",
-        stat1: "डॉक्टरांचा सल्ला",
-        stat2: "थेट शेतातून निवड",
-        stat3: "गोळ्यांची गरज",
-        stat4: "दररोज ताजी तयारी",
-        hygieneBadge: "🛡️ 100% शुध्दता आणि सुरक्षितता",
-        hygieneTitle: "थेट शेतातून तुमच्या टेबलापर्यंत: 5-Star स्वच्छता!",
-        hygieneSub: "रस्त्यावरील उघड्या फळांना बाय-बाय म्हणा! BloomBite मध्ये प्रत्येक घास असतो हॉस्पिटल-ग्रेड सुरक्षित.",
-        hcard1Title: "Direct From Farm",
-        hcard1Desc: "Zero कोल्ड स्टोरेज! पहाटे थेट शेतकऱ्यांकडून निवडलेली ताजी फळे.",
-        hcard2Title: "RO Water Cleaned",
-        hcard2Desc: "धुळीचे कण व कीटकनाशके नष्ट करण्यासाठी शुद्ध RO पाण्याने ३ वेळा धुलाई.",
-        hcard3Title: "Cap & Gloves",
-        hcard3Desc: "हेड-कॅप आणि फूड-ग्रेड हँड ग्लोव्हज अनिवार्य. Zero Direct Hand Touch!",
-        hcard4Title: "Sealed Fresh Box",
-        hcard4Desc: "धूळ व माश्यांपासून १००% सुरक्षित एअर-टाईट पर्यावरणपूरक डब्यात पॅकिंग.",
-        vsBadge: "डोळे उघडणारी तुलना (Reality Check) ⚠️",
+        freshPrepared: "ताजे तयार केलेले ✨",
+        festiveOff: "फेस्टिव्हल ₹५०० OFF",
+        powerBox: "BloomBite पॉवर बॉक्स",
+        powerBoxSub: "२६ दिवस • २६ बॉक्सेस • फक्त ₹११५/दिवस",
+        boxF1: "३ ताजी फळे:",
+        boxF1Desc: "पपई, सफरचंद आणि टरबूज/डाळिंब",
+        boxF2: "३ स्प्राउट्स मिक्स:",
+        boxF2Desc: "देशी चणा, हिरवे मूग आणि मटकी",
+        boxF3: "३ प्रीमियम ड्रायफ्रूट्स:",
+        boxF3Desc: "काजू, बदाम आणि किशमिश",
+        boxF4: "सकाळची मोफत डिलिव्हरी + पॅकिंग + टॅक्स समाविष्ट!",
+        btnSelectPlan: "प्लॅन निवडा",
+        cat1Title: "ताजी फळे",
+        cat1Desc: "ताजी आणि रसाळ",
+        cat2Title: "स्प्राउट्स",
+        cat2Desc: "भरपूर प्रोटीन",
+        cat3Title: "हेल्दी मिक्स",
+        cat3Desc: "फळे + कडधान्ये",
+        cat4Title: "ड्रायफ्रूट्स",
+        cat4Desc: "काजू व बदाम",
+
+        // Reality Check
+        vsBadge: "Reality Check ⚠️",
         vsTitle: "२ समोसे + १ चहा (₹५०) VS BloomBite फ्रूट बास्केट",
         vsSub: "दररोज नकळत फक्त ₹५० जात नाहीत, तर भविष्यात हॉस्पिटल आणि गोळ्यांचा हजारो रुपयांचा भुर्दंड बसतो!",
         badHead: "❌ २ समोसे (₹४०) + चहा (₹१०)",
+        badBadge: "रोज ₹५० + छुपे खर्च!",
         badSub: "दररोज दुपारी ४ वाजता होणारा शरीरावर आणि खिशावर विषारी हल्ला:",
-        bad1: "<strong>जळालेले रिफाइंड तेल & चरबी:</strong> वारंवार उकळलेले तेल थेट हृदयाच्या नसांमध्ये कोलेस्ट्रॉल आणि Blockages वाढवते.",
+        bad1: "<strong>जळालेले रिफाइंड तेल:</strong> वारंवार उकळलेले तेल थेट हृदयाच्या नसांमध्ये कोलेस्ट्रॉल आणि Blockages वाढवते.",
         bad2: "<strong>मैदा आणि साखरेचा झटका:</strong> मैदा आतड्यांना चिकटतो, भयानक ॲसिडिटी करतो, गॅसेस वाढवतो आणि पचनक्रिया मंदावतो.",
-        bad3: "<strong>गोळ्यांचा नित्य खर्च (Tablets Cost):</strong> रोजच्या ॲसिडिटीसाठी Pan-D, Omez, इनो किंवा पेनकिलर्सवर दरमहा ₹५०० ते ₹१,००० खर्च होतो!",
-        bad4: "<strong>हॉस्पिटल ॲडमिशनचा धोका (Hospital Bills):</strong> फॅटी लिव्हर, वाढलेले बीपी, शुगर आणि अचानक पोट बिघडल्यास डॉक्टरांची फी ₹१,००० आणि ॲडमिट झाल्यास ₹३०,००० ते ₹५०,००० चा भुर्दंड!",
-        bad5: "<strong>कष्टाच्या पैशांची नासाडी:</strong> महिन्याला ₹१,५००+ समोशांवर + हजारो रुपये औषधांवर घालवून फक्त लठ्ठपणा आणि आजारपण विकत मिळते!",
+        bad3: "<strong>गोळ्यांचा नित्य खर्च:</strong> रोजच्या ॲसिडिटीसाठी Pan-D, Omez, इनोवर दरमहा ₹५०० ते ₹१,००० खर्च होतो!",
+        bad4: "<strong>हॉस्पिटल ॲडमिशनचा धोका:</strong> फॅटी लिव्हर, वाढलेले बीपी आणि अचानक पोट बिघडल्यास हजारो रुपयांचा भुर्दंड!",
+        bad5: "<strong>कष्टाच्या पैशांची नासाडी:</strong> महिन्याला ₹१,५००+ समोशांवर घालून फक्त लठ्ठपणा आणि आजारपण विकत मिळते!",
         goodHead: "🌱 BloomBite Fresh Whole Nutrition",
+        goodBadge: "स्मार्ट गुंतवणूक",
         goodSub: "हॉस्पिटलची पायरी चढण्यापेक्षा निसर्गाची ताकद थेट तुमच्या टेबलवर:",
-        good1: "<strong>१००% शुद्ध प्लांट प्रोटीन & फायबर:</strong> मोड आलेली कडधान्ये आतडी स्वच्छ करतात आणि ३-४ तास जंक फूडची भूक पूर्णपणे थांबवतात.",
+        good1: "<strong>१००% शुद्ध प्लांट प्रोटीन & फायबर:</strong> मोड आलेली कडधान्ये आतडी स्वच्छ करतात आणि ३-४ तास भूक शांत ठेवतात.",
         good2: "<strong>पपईचे पाचक एन्झाईम्स (Papain):</strong> ॲसिडिटी मुळापासून नष्ट होते, पोट कायम हलके राहते आणि बद्धकोष्ठता होत नाही.",
-        good3: "<strong>झिरो गोळ्यांचा खर्च (Zero Tablets):</strong> नैसर्गिक पोषणामुळे शरीराची रचना सुधारते; कोणतीही अँटासिड किंवा व्हिटॅमिन गोळी घेण्याची गरजच पडत नाही!",
-        good4: "<strong>अखंड नैसर्गिक स्टॅमिना & इम्युनिटी:</strong> संत्री, डाळिंब आणि पेरू मधील शुद्ध व्हिटॅमिन्स रोगांशी लढतात आणि दुपारचा आळस पूर्णपणे नाहीसा करतात.",
-        good5: "<strong>खऱ्या आरोग्याची बचत (Lifetime Health):</strong> डॉक्टरांचे लाखो रुपये वाचवून शरीर फिट, वजन नियंत्रित, त्वचा तजेलदार आणि मन दिवसभर टवटवीत राहते!",
-        concernsTag: "Whole Nutrition Power",
-        concernsTitle: "रोजच्या ४ मोठ्या समस्या & BloomBite चा नैसर्गिक उतारा",
-        concernsSub: "केमिकलच्या सप्लिमेंट्सपेक्षा निसर्गाचा मूळ आहार १०० पट अधिक प्रभावी असतो:",
-        c1Head: "दुपारचा आळस & थकवा",
-        c1Issue: "रक्तातील साखर अचानक कमी-जास्त झाल्यामुळे कामावर लक्ष लागत नाही.",
-        c1Fix: "<strong class=\"text-success\">उतारा:</strong> केळी, सफरचंद आणि स्प्राउट्स दिवसभर टिकणारी नॅचरल एनर्जी देतात.",
-        c2Head: "पोटाचे विकार & ॲसिडिटी",
-        c2Issue: "तळलेले अन्न आणि फायबरच्या अभावामुळे पचनक्रिया मंदावून पोट फुगते.",
-        c2Fix: "<strong class=\"text-success\">उतारा:</strong> पपई मधील पाचक एन्झाईम्स आतडी स्वच्छ करतात व पचन सुलभ करतात.",
-        c3Head: "पोटाची चरबी & वजन",
-        c3Issue: "वारंवार लागणारी भूक आणि जंक फूडमुळे पोटावर चरबी साचते.",
-        c3Fix: "<strong class=\"text-success\">उतारा:</strong> हिरवे मूग स्प्राउट्समधील शुद्ध प्रोटीनमुळे ३-४ तास भूक लागत नाही.",
-        c4Head: "कमी प्रतिकारशक्ती",
-        c4Issue: "हवामान बदलताच लगेच सर्दी, खोकला आणि व्हायरल इन्फेक्शन होणे.",
-        c4Fix: "<strong class=\"text-success\">उतारा:</strong> संत्री, डाळिंब यातील Vitamin C शरीराची इम्युनिटी वॉल मजबूत ठेवतात.",
-        timelineTitle: "What Happens to Your Body in 30 Days?",
-        timelineSub: "A scientific look at 4 weeks of consistent raw fruit & sprout nutrition:",
-        t1Time: "Days 1 to 7",
-        t1Head: "Gut Reset",
-        t1Desc: "पपई आणि फायबरमुळे ॲसिडिटी थांबते आणि पोट हलके होते.",
-        t2Time: "Days 8 to 15",
-        t2Head: "Stamina Boost",
-        t2Desc: "दुपारचा आळस निघून जातो. वारंवार चहा पिण्याची गरज पडत नाही.",
-        t3Time: "Days 16 to 22",
-        t3Head: "Fat Control",
-        t3Desc: "जंक फूड क्रेव्हिंग्स थांबतात आणि पोट-कंबर हलकी वाटू लागते.",
-        t4Time: "Days 23 to 30",
-        t4Head: "Skin & Immunity",
+        good3: "<strong>झिरो गोळ्यांचा खर्च:</strong> नैसर्गिक पोषणामुळे शरीराची रचना सुधारते; कोणतीही अँटासिड गोळी घेण्याची गरज पडत नाही!",
+        good4: "<strong>अखंड नैसर्गिक स्टॅमिना:</strong> संत्री, डाळिंब आणि ड्रायफ्रूट्स दुपारचा आळस पूर्णपणे नाहीसा करतात.",
+        good5: "<strong>खऱ्या आरोग्याची बचत:</strong> डॉक्टरांचे लाखो रुपये वाचवून शरीर फिट, वजन नियंत्रित आणि मन टवटवीत राहते!",
+
+        // 4 Health Hazards
+        hazardsBadge: "Whole Nutrition Power",
+        hazardsTitle: "रोजच्या ४ मोठ्या समस्या & BloomBite चा नैसर्गिक उतारा",
+        hazardsSub: "केमिकलच्या सप्लिमेंट्सपेक्षा निसर्गाचा मूळ आहार १०० पट अधिक प्रभावी असतो:",
+        hz1Title: "दुपारचा आळस & थकवा",
+        hz1Desc: "रक्तातील साखर अचानक कमी-जास्त झाल्यामुळे कामावर लक्ष लागत नाही.",
+        hz1Cure: "<strong class='text-success'>उतारा:</strong> केळी, सफरचंद आणि स्प्राउट्स दिवसभर टिकणारी नॅचरल एनर्जी देतात.",
+        hz2Title: "पोटाचे विकार & ॲसिडिटी",
+        hz2Desc: "तळलेले अन्न आणि फायबरच्या अभावामुळे पचनक्रिया मंदावून पोट फुगते.",
+        hz2Cure: "<strong class='text-success'>उतारा:</strong> पपई मधील पाचक एन्झाईम्स आतडी स्वच्छ करतात व पचन सुलभ करतात.",
+        hz3Title: "पोटाची चरबी & क्रेव्हिंग्स",
+        hz3Desc: "वारंवार लागणारी भूक आणि जंक फूडमुळे पोटावर चरबी साचते.",
+        hz3Cure: "<strong class='text-success'>उतारा:</strong> हिरवे मूग स्प्राउट्समधील शुद्ध प्रोटीनमुळे ३-४ तास भूक लागत नाही.",
+        hz4Title: "कमी प्रतिकारशक्ती & अशक्तपणा",
+        hz4Desc: "हवामान बदलताच लगेच सर्दी, खोकला आणि व्हायरल इन्फेक्शन होणे.",
+        hz4Cure: "<strong class='text-success'>उतारा:</strong> संत्री, डाळिंब यातील Vitamin C शरीराची इम्युनिटी वॉल मजबूत ठेवतात.",
+
+        // 30 Days Journey
+        tJourneyBadge: "30-DAY JOURNEY 🗓️",
+        tJourneyTitle: "३० दिवसांत शरीरात काय बदल घडतात?",
+        tJourneySub: "दररोज ताजी फळे, स्प्राउट्स आणि ड्रायफ्रूट्स खाण्याचा शास्त्रीय परिणाम:",
+        t1Time: "दिवस १ ते ७",
+        t1Title: "Gut Reset",
+        t1Desc: "पपई आणि फायबरमुळे ॲसिडिटी थांबते आणि सकाळचे पोट एकदम हलके होते.",
+        t2Time: "दिवस ८ ते १५",
+        t2Title: "Stamina Boost",
+        t2Desc: "दुपारचा आळस निघून जातो. वारंवार चहा किंवा कॉफी पिण्याची गरज पडत नाही.",
+        t3Time: "दिवस १६ ते २२",
+        t3Title: "Fat Control",
+        t3Desc: "जंक फूडची इच्छा बंद होते, मेटाबॉलिझम वाढतो आणि पोटाचा घेर हलका वाटतो.",
+        t4Time: "दिवस २३ ते ३०",
+        t4Title: "Skin & Immunity",
         t4Desc: "चेहऱ्यावर नॅचरल ग्लो येतो आणि रोगप्रतिकारशक्ती उत्तम राहते.",
-        timelineBtn: "माझा ३० दिवसांचा प्रवास सुरू करा 🌱",
-        menuTitle: "६ दिवसांचा फ्रेश मेनू (Mon - Sat)",
-        menuSub: "सोमवार ते शनिवार ऑफिस व रूटीनसाठी सर्वोत्तम आहार (रविवार सुट्टी)",
+        tJourneyBtn: "माझा ३० दिवसांचा प्रवास सुरू करा 🌱",
+
+        aboutBadge: "आमची कहाणी & हेतू 🩺",
+        aboutTitle: "आम्ही तरुण विद्यार्थी हॉस्पिटल्समध्ये गेलो, डॉक्टरांना भेटलो... आणि डोळे उघडले!",
+        aboutP1: "आम्ही कॉलेजचे तरुण विद्यार्थी, जेव्हा आम्ही शहरातील विविध हॉस्पिटल्समध्ये गेलो आणि वरिष्ठ डॉक्टरांशी चर्चा केली, तेव्हा समोर आलेले वास्तव धक्कादायक होते!",
+        aboutP2: "डॉक्टरांनी आम्हाला स्पष्ट सांगितले: 'जोपर्यंत रोजच्या आहारात जिवंत फळे आणि मोड आलेली कडधान्ये येत नाहीत, तोपर्यंत हे हॉस्पिटलचे खेटे थांबणार नाहीत!'",
+        aboutP3: "म्हणूनच आम्ही 'BloomBite' सुरू केले! आता यात आम्ही पौष्टिक काजू-बदाम जोडून संपूर्ण शक्तीवर्धक आहार तयार केला आहे.",
+        tagDoctor: "✅ Doctor Approved",
+        tagDiet: "✅ 26 Days Power Diet",
+        tagPrice: "✅ All-Inclusive Price",
+        doctorAdvice: "डॉक्टरांचा सल्ला",
+        farmSelected: "थेट शेतातून निवड",
+        morningDelivery: "सकाळची डिलिव्हरी",
+        nutsIncluded: "काजू + बदाम समाविष्ट",
+        menuBadge: "३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स",
+        menuTitle: "६ दिवसांचा पॉवर मेनू (सोमवार - शनिवार)",
+        menuSub: "महिनाभरात एकूण २६ दिवस दररोज सकाळी फ्रेश डिलिव्हरी (रविवार नियमित सुट्टी, फक्त बल्क ऑर्डर्स चालू)",
         thDay: "वार",
-        thFruit: "ताजी फळे",
-        thSprouts: "मोड आलेली कडधान्ये",
+        thFruit: "ताजी फळे (Fresh Fruits)",
+        thSprouts: "मोड आलेली कडधान्ये (Sprouts)",
+        thNuts: "३ ड्रायफ्रूट्स (Dry Fruits)",
         dayMon: "सोमवार",
+        monFruit: "सफरचंद, पपई, कलिंगड",
+        monSprout: "हिरवे मूग, चणा मिक्स",
+        monNuts: "<strong class='text-dark'>काजू, बदाम, काळे मणुके</strong>",
         dayTue: "मंगळवार",
+        tueFruit: "केळी, पेरू, डाळिंब",
+        tueSprout: "हिरवे मूग, मटकी स्प्राउट्स",
+        tueNuts: "<strong class='text-dark'>काजू, बदाम, किशमिश</strong>",
         dayWed: "बुधवार",
+        wedFruit: "खरबूज, पपई, सफरचंद",
+        wedSprout: "देशी चणा, मटकी स्प्राउट्स",
+        wedNuts: "<strong class='text-dark'>बदाम, काजू, अक्रोड तुकडा</strong>",
         dayThu: "गुरुवार",
+        thuFruit: "संत्रे, कलिंगड, पेरू",
+        thuSprout: "हिरवे मूग, देशी चणा",
+        thuNuts: "<strong class='text-dark'>काजू, बदाम, पिवळे मणुके</strong>",
         dayFri: "शुक्रवार",
+        friFruit: "सफरचंद, अननस, पपई",
+        friSprout: "मटकी, हिरवे मूग मिक्स",
+        friNuts: "<strong class='text-dark'>बदाम, काजू, किशमिश</strong>",
         daySat: "शनिवार",
-        priceBadge: "Best Value Plans",
-        priceTitle: "दर आणि स्पेशल ऑफर्स",
-        p1Title: "रेग्युलर मंथली प्लॅन",
-        p1Offer: "पूर्ण महिन्याची बास्केट",
-        p1Desc: "सोमवार ते शनिवार ताजी फळे व स्प्राउट्स बॉक्स थेट दारात.",
-        p2Title: "पहिले ३ महिने ऑफर",
-        p2Offer: "Flat ₹500 बचत दरमहा!",
-        p2Desc: "नवीन ग्राहकांसाठी पहिले ३ महिने फक्त ₹३,००० मध्ये संपूर्ण पोषण.",
-        p3Title: "२० लोकांचा रेफरल प्लॅन",
-        p3Offer: "Group Perk",
-        p3Desc: "२० जणांना जोडा आणि १ सबस्क्रिप्शन मोफत मिळवा किंवा फ्रूट पार्टी गिफ्ट!",
-        orderFormTitle: "Place Your Fresh Order",
-        orderFormSub: "प्लॅन निवडा, तपशील भरा आणि WhatsApp द्वारे एका क्लिकवर बुक करा!",
-        labelChoosePlan: "1. प्लॅन निवडा (Select Plan)",
-        labelQtyTitle: "संख्या (Quantity)",
-        labelQtySub: "किती बॉक्सेस हवे आहेत?",
-        labelName: "तुमचे नाव (Full Name)",
-        labelAddress: "डिलिव्हरी पत्ता (Address)",
-        calcLabel: "एकूण देय रक्कम:",
-        labelContact: "कोणाशी संपर्क साधायचा?",
-        btnSubmit: "WhatsApp वर ऑर्डर पाठवा",
-        mobBtn: "ऑर्डर करा (Order Now)"
+        satFruit: "डाळिंब, केळी, सफरचंद",
+        satSprout: "हिरवे मूग, मटकी मिक्स",
+        satNuts: "<strong class='text-dark'>काजू, बदाम, काळे मणुके</strong>",
+        bulkBadge: "🎉 Sunday & Special Events Special",
+        bulkTitle: "जिम इव्हेंट्स, ऑफिस पार्टी & सोसायट्यांसाठी बल्क ऑर्डर्स!",
+        bulkDesc: "कचरा जंक फूड किंवा तेलकट समोशांऐवजी तुमच्या इव्हेंटमध्ये द्या १००% हायजेनिक फ्रूट, स्प्राउट आणि ड्रायफ्रूट्स बास्केट! रविवार असो किंवा सण — आम्ही विशेष बल्क डिलिव्हरी देतो.",
+        bulkCardHead: "बल्क ऑर्डर डिस्काउंट",
+        bulkCardSub: "१०, २५, ५० किंवा १००+ बॉक्सेससाठी विशेष कस्टमाइज्ड पॅक",
+        bulkBtn: "बल्क चौकशी करा",
+        pricingHead: "पारदर्शक दर आणि स्पेशल फेस्टिव्हल ऑफर",
+        pricingSub: "कोणताही छुपा खर्च नाही! पॅकिंग, ड्रायफ्रूट्स, डिलिव्हरी आणि टॅक्स समाविष्ट.",
+        trialTitle: "सिंगल ट्रायल बॉक्स",
+        perBox: "/ १ बॉक्स",
+        trialDesc: "पहिली टेस्ट घेऊन पहा! ३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स.",
+        btnBookTrial: "ट्रायल बुक करा",
+        festiveBadge: "🔥 फेस्टिव्हल स्पेशल ऑफर",
+        festiveTitle: "२६ दिवसांचा फेस्टिव्हल प्लॅन",
+        perMonth: "/ महिना",
+        normalRate: "नॉर्मल दर: ₹3,500",
+        perDayHighlight: "फक्त ₹११५ / दिवस (२६ बॉक्सेस)",
+        fPoint1: "२६ दिवस अखंड पोषण (रविवार सुट्टी)",
+        fPoint2: "काजू, बदाम आणि मणुके दररोज समाविष्ट",
+        fPoint3: "सकाळी ६:३० ते ८:३० घरपोच मोफत डिलिव्हरी",
+        fPoint4: "टॅक्स, पॅकिंग & डिलिव्हरी सर्व मोफत",
+        btnSubOffer: "ऑफरमध्ये सबस्क्राइब करा",
+        bulkCardTitle: "बल्क & इव्हेंट ऑर्डर",
+        bulkCardSub2: "जिम, ऑफिस पार्ट्या व सोसायट्यांसाठी विशेष सवलत.",
+        btnOrderBulk: "बल्क ऑर्डर करा",
+        orderFormTitle: "तुमची ताजी बास्केट बुक करा",
+        orderFormSub: "प्लॅन निवडा, पत्ता टाका आणि WhatsApp द्वारे त्वरित ऑर्डर कन्फर्म करा!",
+        instantBooking: "⚡ Instant WhatsApp Booking",
+        planLabel: "१. तुमचा प्लॅन निवडा (Select Plan)",
+        pPlan1: "फेस्टिव्हल २६ दिवस",
+        pPlan2: "१-Day ट्रायल",
+        pPlan3: "बल्क / Sunday Event",
+        quantityLabel: "संख्या (Quantity)",
+        quantityHelp: "किती व्यक्तींसाठी/बॉक्सेस हवे आहेत?",
+        nameLabel: "तुमचे नाव (Full Name)",
+        addressLabel: "डिलिव्हरी पत्ता & दिनांक (Delivery Address & Event Date/Time)",
+        namePlaceholder: "उदा. राहुल शिंदे",
+        addressPlaceholder: "ऑफिस/फ्लॅट क्र., सोसायटीचे नाव किंवा रविवार इव्हेंट तारीख...",
+        dateLabel: "📅 Delivery / Order Date",
+        dateHelp: "Select the date for your meal box delivery.",
+        totalLabel: "एकूण अंदाज रक्कम (Total Amount):",
+        bannerF1: "३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स (काजू-बदाम)",
+        bannerF2: "फ्री मॉर्निंग डिलिव्हरी (रविवार इव्हेंट उपलब्ध)",
+        bannerF3: "पॅकिंग & GST समाविष्ट",
+        whatsappOrder: "WhatsApp वर ऑर्डर बुक करा",
+        stickyOrder: "ऑर्डर करा (₹३,००० / २६ दिवस)",
+        footerDesc: "Daily Fresh Fruit, Sprouts & Dry Fruits | Gym & Party Bulk Orders Available",
+        contactLabel: "संपर्क / WhatsApp:"
       },
       en: {
-        topRibbon: "✨ Ganeshaya Namaha | First 3 Months Special: ₹3,000/month (Regular ₹3,500)!",
+        topRibbon: "🎉 Festive Special: 26 Days at just ₹3,000 (3 Fruits + 3 Sprouts + 3 Dry Fruits) | Free Morning Delivery + All Taxes Included!",
         navOrder: "Order Now",
-        heroTag: "Fresh, Healthy & Beautiful",
-        heroTitle: "Your Daily Source for Fresh Fruit & Sprouts",
-        heroDesc: "Fuel your workdays with pure, chemical-free raw cut fruits and sprouted whole legumes delivered directly to your doorstep.",
-        heroBtnStory: "Our Story 📖",
+        heroTag: "✨ Fresh Fruits & Sprouts, Delivered To Your Door",
+        heroTitle: "Healthy Choices. Happier You.",
+        heroDesc: "Power your active routine with 100% chemical-free sliced fruits, nutrient-rich sprouted legumes, and wholesome cashew-almonds delivered every morning.",
+        featureFresh: "Fresh & Premium",
+        featureDoctor: "Doctor Certified",
+        featureDelivery: "Fast Morning Delivery",
+        heroBtnExplore: "Explore Menu ↓",
         heroBtnOrder: "Book Your Box",
-        aboutBadge: "Our Journey & Mission 🩺",
-        aboutTitle: "We Are Students Who Visited Hospitals, Consulted Doctors... and Realized the Crisis!",
-        aboutP1: "As university students researching everyday lifestyle patterns, we visited several multi-specialty hospitals and consulted senior physicians. What we saw in OPD waiting rooms was alarming: young professionals aged 20 to 45 were struggling with fatty liver, chronic acidity, and debilitating fatigue.",
-        aboutP2: "The doctors shared a blunt clinical truth: \"Medicines only suppress temporary symptoms. Until whole, live plant nutrition and raw sprouts enter the daily routine, hospital bills will keep multiplying!\"",
-        aboutP3: "We discovered that washing, chopping, and sprouting legumes daily is difficult in busy schedules. That is why we created BloomBite: deliver hospital-grade, farm-fresh live nutrition directly to your desk.",
-        tag1: "✅ Doctor Approved",
-        tag2: "✅ Zero Hospital Visits",
-        tag3: "✅ Student Mission",
-        stat1: "Doctor Consultations",
-        stat2: "Direct Farm Sourced",
-        stat3: "Zero Pills Needed",
-        stat4: "Prepped Fresh Daily",
-        hygieneBadge: "🛡️ 100% Purity & Safety",
-        hygieneTitle: "Direct From Farm to Desk: 5-Star Hygiene Standards!",
-        hygieneSub: "Say goodbye to dusty roadside fruits! At BloomBite, every single bite is prepared under hospital-grade cleanliness.",
-        hcard1Title: "Direct From Farm",
-        hcard1Desc: "Zero cold storage! Harvested fresh daily from trusted local farmers every morning.",
-        hcard2Title: "RO Water Cleaned",
-        hcard2Desc: "3-stage deep sanitization wash using pure RO water to wipe off dust and microbial traces.",
-        hcard3Title: "Cap & Gloves",
-        hcard3Desc: "Staff strictly wears head caps, aprons, and food-grade gloves. Zero direct hand contact!",
-        hcard4Title: "Sealed Fresh Box",
-        hcard4Desc: "Airtight eco-friendly boxes to keep environmental pollutants and flies completely out.",
+        freshPrepared: "Freshly Prepared ✨",
+        festiveOff: "FESTIVE ₹500 OFF",
+        powerBox: "BloomBite Power Box",
+        powerBoxSub: "26 Days • 26 Boxes • Just ₹115/Day",
+        boxF1: "3 Fresh Fruits:",
+        boxF1Desc: "Papaya, Apple, Watermelon/Pomegranate",
+        boxF2: "3 Sprouts Mix:",
+        boxF2Desc: "Desi Chana, Green Moong & Matki",
+        boxF3: "3 Dry Fruits:",
+        boxF3Desc: "Cashew, Almonds & Raisins",
+        boxF4: "Free Morning Delivery + Packaging + Taxes Included!",
+        btnSelectPlan: "Select Plan",
+        cat1Title: "Fruits",
+        cat1Desc: "Fresh & Juicy",
+        cat2Title: "Sprouts",
+        cat2Desc: "Rich Protein",
+        cat3Title: "Healthy Mix",
+        cat3Desc: "Fruits + Sprouts",
+        cat4Title: "Dry Fruits",
+        cat4Desc: "Cashew & Almonds",
+
+        // Reality Check
         vsBadge: "Reality Check ⚠️",
         vsTitle: "2 Samosas + 1 Tea (₹50) VS BloomBite Basket",
         vsSub: "It's not just ₹50/day—it invites thousands in hidden pharmacy and hospital bills!",
         badHead: "❌ 2 Samosas (₹40) + Tea (₹10)",
+        badBadge: "Daily ₹50 + Hidden Costs!",
         badSub: "The toxic financial & physical toll of daily roadside junk:",
         bad1: "<strong>Burnt Hydrogenated Oils:</strong> Re-heated commercial oils choke arteries and shoot bad cholesterol levels.",
         bad2: "<strong>Refined Flour & Bloat:</strong> Sticks to gut lining, slowing metabolic digestion and triggering chronic reflux.",
-        bad3: "<strong>Pharmacy & Tablet Bills:</strong> Spending ₹500-₹1,000/month on Pan-D, antacids, and pain pills just to suppress daily acidity!",
+        bad3: "<strong>Pharmacy & Tablet Bills:</strong> Spending ₹500–₹1,000/month on Pan-D, antacids, and pain pills just to suppress daily acidity!",
         bad4: "<strong>Emergency Hospital Risk:</strong> Fatty liver, escalating BP, and severe gut inflammation risk admissions costing ₹30,000 to ₹50,000+.",
         bad5: "<strong>Total Wasteful Drain:</strong> Spending ₹1,500/month on fried snacks only to purchase disease, obesity, and permanent exhaustion!",
         goodHead: "🌱 BloomBite Fresh Whole Nutrition",
+        goodBadge: "Smart Investment",
         goodSub: "Prevent doctor visits by putting clean cellular fuel on your desk:",
         good1: "<strong>Living Protein & Soluble Fiber:</strong> Sprouted legumes clean intestines and shut cravings down for 3-4 hours.",
         good2: "<strong>Raw Digestive Enzymes (Papain):</strong> Ends acidity at the root, lubricates gut lining, and prevents bloating permanently.",
         good3: "<strong>Zero Tablet Expenses:</strong> Clean cellular hydration eliminates reliance on antacids or multivitamin supplements!",
-        good4: "<strong>Clean Stamina & Immunity:</strong> Dense natural fructose and Vitamin C fuel sharp focus with zero midday crash.",
+        good4: "<strong>Clean Stamina & Immunity:</strong> Dense natural fructose, Vitamin C and premium nuts fuel sharp focus with zero midday crash.",
         good5: "<strong>Lifetime Health Dividends:</strong> Saves thousands in medical consultations while keeping your body athletic and energetic all day!",
-        concernsTag: "Whole Nutrition Power",
-        concernsTitle: "4 Daily Health Hazards & The BloomBite Cure",
-        concernsSub: "Live raw plant food is 100x more bio-available than artificial vitamin pills:",
-        c1Head: "3 PM Slump & Lethargy",
-        c1Issue: "Spiking insulin from refined carbohydrates crashes your daytime focus.",
-        c1Fix: "<strong class=\"text-success\">Cure:</strong> Bananas, apples, and sprouted chickpea carbs deliver smooth, non-crashing endurance.",
-        c2Head: "Acidity & Bloating",
-        c2Issue: "Oily foods stripped of insoluble fiber slow down gut transit time.",
-        c2Fix: "<strong class=\"text-success\">Cure:</strong> Papaya enzymes and sprouted matki lubricate digestion and nourish beneficial gut flora.",
-        c3Head: "Visceral Fat & Cravings",
-        c3Issue: "Empty calories leave your appetite unsatisfied, triggering overeating.",
-        c3Fix: "<strong class=\"text-success\">Cure:</strong> High plant protein and complex fiber from Green Moong sprouts shut down cravings for 3-4 hours.",
-        c4Head: "Frequent Weakness & Colds",
-        c4Issue: "Oxidative stress degrades cell repair when antioxidant intake is zero.",
-        c4Fix: "<strong class=\"text-success\">Cure:</strong> Fresh oranges, pomegranates, and guavas inject concentrated Vitamin C to shield against infections.",
-        timelineTitle: "What Happens to Your Body in 30 Days?",
-        timelineSub: "A scientific look at 4 weeks of consistent raw fruit & sprout nutrition:",
+
+        // 4 Health Hazards
+        hazardsBadge: "Whole Nutrition Power",
+        hazardsTitle: "4 Daily Health Hazards & The BloomBite Cure",
+        hazardsSub: "Live raw plant food is 100× more bio-available than artificial vitamin pills:",
+        hz1Title: "3 PM Slump & Lethargy",
+        hz1Desc: "Spiking insulin from refined carbohydrates crashes your daytime focus.",
+        hz1Cure: "<strong class='text-success'>Cure:</strong> Bananas, apples, and sprouted chickpea carbs deliver smooth, non-crashing endurance.",
+        hz2Title: "Acidity & Bloating",
+        hz2Desc: "Oily foods stripped of insoluble fiber slow down gut transit time.",
+        hz2Cure: "<strong class='text-success'>Cure:</strong> Papaya enzymes and sprouted matki lubricate digestion and nourish beneficial gut flora.",
+        hz3Title: "Visceral Fat & Cravings",
+        hz3Desc: "Empty calories leave your appetite unsatisfied, triggering overeating.",
+        hz3Cure: "<strong class='text-success'>Cure:</strong> High plant protein and complex fiber from Green Moong sprouts shut down cravings for 3–4 hours.",
+        hz4Title: "Frequent Weakness & Colds",
+        hz4Desc: "Oxidative stress degrades cell repair when antioxidant intake is zero.",
+        hz4Cure: "<strong class='text-success'>Cure:</strong> Fresh oranges, pomegranates, and guavas inject concentrated Vitamin C to shield against infections.",
+
+        // 30 Days Journey
+        tJourneyBadge: "30-DAY JOURNEY 🗓️",
+        tJourneyTitle: "What Happens to Your Body in 30 Days?",
+        tJourneySub: "A scientific look at 4 weeks of consistent raw fruit & sprout nutrition:",
         t1Time: "Days 1 to 7",
-        t1Head: "Gut Reset",
+        t1Title: "Gut Reset",
         t1Desc: "Enzymatic fiber ends acidity spikes; natural colon cleansing removes morning heaviness.",
         t2Time: "Days 8 to 15",
-        t2Head: "Stamina Boost",
+        t2Title: "Stamina Boost",
         t2Desc: "Midday brain fog lifts completely. You won't rely on sugary sodas or extra cups of tea.",
         t3Time: "Days 16 to 22",
-        t3Head: "Fat Control",
+        t3Title: "Fat Control",
         t3Desc: "Unhealthy sugar cravings drop noticeably. Metabolism accelerates, improving waistline comfort.",
         t4Time: "Days 23 to 30",
-        t4Head: "Skin & Immunity",
+        t4Title: "Skin & Immunity",
         t4Desc: "Deep cellular hydration clears skin complexion; your immune markers reach peak stability.",
-        timelineBtn: "Start My 30-Day Journey 🌱",
-        menuTitle: "6-Day Work Menu (Mon - Sat)",
-        menuSub: "Optimized nutrition for busy working routines (Sundays Closed)",
+        tJourneyBtn: "Start My 30–Day Journey 🌱",
+
+        aboutBadge: "Our Journey & Mission 🩺",
+        aboutTitle: "We Are Students Who Visited Hospitals, Consulted Doctors... and Realized the Crisis!",
+        aboutP1: "As university students studying everyday lifestyle patterns, we visited multi-specialty hospitals and consulted senior physicians. The lifestyle health crisis was alarming.",
+        aboutP2: "Doctors told us: 'Until whole, live plant nutrition and raw sprouts enter the daily routine, clinic visits won't stop!'",
+        aboutP3: "That is why we created BloomBite. Now reinforced with premium cashews and almonds for complete daily energy.",
+        tagDoctor: "✅ Doctor Approved",
+        tagDiet: "✅ 26 Days Power Diet",
+        tagPrice: "✅ All-Inclusive Price",
+        doctorAdvice: "Doctor Advice",
+        farmSelected: "Direct From Farm",
+        morningDelivery: "Morning Delivery",
+        nutsIncluded: "Cashew + Almonds",
+        menuBadge: "3 Fruits + 3 Sprouts + 3 Dry Fruits",
+        menuTitle: "6-Day Power Menu (Monday - Saturday)",
+        menuSub: "26 Days fresh morning delivery every month (Regular Sunday holiday, Bulk orders available on Sundays)",
         thDay: "Day",
-        thFruit: "Fresh Fruits",
+        thFruit: "Fresh Sliced Fruits",
         thSprouts: "Sprouts & Healthy Mix",
+        thNuts: "3 Premium Dry Fruits",
         dayMon: "Monday",
+        monFruit: "Apple, Papaya, Watermelon",
+        monSprout: "Green Moong, Chana Mix",
+        monNuts: "<strong class='text-dark'>Cashew, Almonds, Black Raisins</strong>",
         dayTue: "Tuesday",
+        tueFruit: "Banana, Guava, Pomegranate",
+        tueSprout: "Green Moong, Matki Sprouts",
+        tueNuts: "<strong class='text-dark'>Cashew, Almonds, Kishmish</strong>",
         dayWed: "Wednesday",
+        wedFruit: "Muskmelon, Papaya, Apple",
+        wedSprout: "Desi Chana, Matki Sprouts",
+        wedNuts: "<strong class='text-dark'>Almonds, Cashew, Walnut Crushed</strong>",
         dayThu: "Thursday",
+        thuFruit: "Orange, Watermelon, Guava",
+        thuSprout: "Green Moong, Desi Chana",
+        thuNuts: "<strong class='text-dark'>Cashew, Almonds, Golden Raisins</strong>",
         dayFri: "Friday",
+        friFruit: "Apple, Pineapple, Papaya",
+        friSprout: "Matki, Green Moong Mix",
+        friNuts: "<strong class='text-dark'>Almonds, Cashew, Kishmish</strong>",
         daySat: "Saturday",
-        priceBadge: "Best Value Plans",
-        priceTitle: "Transparent Pricing & Referral Perks",
-        p1Title: "Regular Monthly Plan",
-        p1Offer: "Full Month Basket",
-        p1Desc: "Monday to Saturday freshly sliced fruits and sprouts delivered to your desk.",
-        p2Title: "First 3 Months Offer",
-        p2Offer: "Save Flat ₹500/Month!",
-        p2Desc: "Special welcome rate for new subscribers: pure daily nutrition at just ₹3,000/month.",
-        p3Title: "20-Person Referral Perk",
-        p3Offer: "Group Perk",
-        p3Desc: "Refer 20 friends to win 1 month totally FREE or an exclusive Office Fruit Party!",
+        satFruit: "Pomegranate, Banana, Apple",
+        satSprout: "Green Moong, Matki Mix",
+        satNuts: "<strong class='text-dark'>Cashew, Almonds, Black Raisins</strong>",
+        bulkBadge: "🎉 Sunday & Special Events Special",
+        bulkTitle: "Bulk Orders for Gym Events, Office Parties & Societies!",
+        bulkDesc: "Swap junk food and samosas with 100% hygienic fresh fruit, sprout, and dry-fruit bowls! Whether it's a Sunday marathon or community gathering, we deliver on time.",
+        bulkCardHead: "Bulk Order Perks",
+        bulkCardSub: "Customized boxes available for 10, 25, 50, or 100+ attendees",
+        bulkBtn: "Enquire for Bulk Order",
+        pricingHead: "Transparent Pricing & Festive Plans",
+        pricingSub: "Zero hidden costs! Packing, dry fruits, delivery and taxes included.",
+        trialTitle: "Single Trial Box",
+        perBox: "/ 1 Box",
+        trialDesc: "Taste it first! 3 Fruits + 3 Sprouts + 3 Dry Fruits.",
+        btnBookTrial: "Book Trial",
+        festiveBadge: "🔥 Festive Special Offer",
+        festiveTitle: "26 Days Festive Plan",
+        perMonth: "/ Month",
+        normalRate: "Regular Rate: ₹3,500",
+        perDayHighlight: "Just ₹115 / Day (26 Boxes)",
+        fPoint1: "26 Days Daily Nutrition (Sunday Holiday)",
+        fPoint2: "Cashews, Almonds & Raisins Everyday",
+        fPoint3: "6:30 to 8:30 AM Free Morning Doorstep Delivery",
+        fPoint4: "Taxes, Packing & Delivery Free",
+        btnSubOffer: "Subscribe with Offer",
+        bulkCardTitle: "Bulk & Event Orders",
+        bulkCardSub2: "Special rates for gyms, corporate offices and societies.",
+        btnOrderBulk: "Place Bulk Order",
         orderFormTitle: "Place Your Fresh Order",
-        orderFormSub: "Select plan, fill address, and confirm instantly via WhatsApp!",
-        labelChoosePlan: "1. Select Plan",
-        labelQtyTitle: "Quantity",
-        labelQtySub: "How many boxes do you need?",
-        labelName: "Full Name",
-        labelAddress: "Delivery Address (Office / Flat)",
-        calcLabel: "Total Bill Amount:",
-        labelContact: "Contact Person",
-        btnSubmit: "Confirm on WhatsApp",
-        mobBtn: "Order on WhatsApp"
+        orderFormSub: "Select plan, enter address, and book instantly via WhatsApp!",
+        instantBooking: "⚡ Instant WhatsApp Booking",
+        planLabel: "1. Select Your Plan",
+        pPlan1: "Festive 26 Days",
+        pPlan2: "1-Day Trial",
+        pPlan3: "Bulk / Sunday Event",
+        quantityLabel: "Quantity",
+        quantityHelp: "How many boxes do you need?",
+        nameLabel: "Full Name",
+        addressLabel: "Delivery Address & Date/Time",
+        namePlaceholder: "e.g. Rahul Shinde",
+        addressPlaceholder: "Office/Flat No., Society name or Sunday event details...",
+        dateLabel: "📅 Delivery / Order Date",
+        dateHelp: "Select the date for your meal box delivery.",
+        totalLabel: "Total Estimated Amount:",
+        bannerF1: "3 Fruits + 3 Sprouts + 3 Dry Fruits (Cashew-Almonds)",
+        bannerF2: "Free Morning Delivery (Sunday Events Available)",
+        bannerF3: "Packaging & GST Included",
+        whatsappOrder: "Order on WhatsApp",
+        stickyOrder: "Order Now (₹3,000 / 26 Days)",
+        footerDesc: "Daily Fresh Fruit, Sprouts & Dry Fruits | Gym & Party Bulk Orders Available",
+        contactLabel: "Contact / WhatsApp:"
+      },
+      hi: {
+        topRibbon: "🎉 फेस्टिव स्पेशल: 26 दिन सिर्फ ₹3,000 (3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स) | फ्री मॉर्निंग डिलीवरी + सभी टैक्स शामिल!",
+        navOrder: "ऑर्डर करें",
+        heroTag: "✨ ताजे फल और स्प्राउट्स, आपके दरवाजे तक",
+        heroTitle: "स्वस्थ विकल्प। खुशहाल आप।",
+        heroDesc: "अपनी व्यस्त दिनचर्या को 100% केमिकल-फ्री कटे हुए फलों, पौष्टिक स्प्राउट्स और प्रीमियम काजू-बादाम के साथ बेहतर बनाएं — हर सुबह ताजी डिलीवरी।",
+        featureFresh: "फ्रेश और प्रीमियम",
+        featureDoctor: "डॉक्टर की सलाह",
+        featureDelivery: "तेज़ मॉर्निंग डिलीवरी",
+        heroBtnExplore: "मेनू देखें ↓",
+        heroBtnOrder: "बॉक्स बुक करें",
+        freshPrepared: "ताज़ा तैयार किया गया ✨",
+        festiveOff: "फेस्टिव ₹500 OFF",
+        powerBox: "BloomBite पावर बॉक्स",
+        powerBoxSub: "26 दिन • 26 बॉक्स • सिर्फ ₹115/दिन",
+        boxF1: "3 ताजे फल:",
+        boxF1Desc: "पपीता, सेब और तरबूज/अनार",
+        boxF2: "3 स्प्राउट्स मिक्स:",
+        boxF2Desc: "देसी चना, हरा मूंग और मटकी",
+        boxF3: "3 प्रीमियम ड्राय फ्रूट्स:",
+        boxF3Desc: "काजू, बादाम और किशमिश",
+        boxF4: "सुबह की फ्री डिलीवरी + पैकिंग + टैक्स शामिल!",
+        btnSelectPlan: "प्लान चुनें",
+        cat1Title: "ताजे फल",
+        cat1Desc: "ताजे और रसीले",
+        cat2Title: "स्प्राउट्स",
+        cat2Desc: "प्रोटीन से भरपूर",
+        cat3Title: "हेल्दी मिक्स",
+        cat3Desc: "फल + स्प्राउट्स",
+        cat4Title: "ड्राय फ्रूट्स",
+        cat4Desc: "काजू और बादाम",
+
+        // Reality Check
+        vsBadge: "Reality Check ⚠️",
+        vsTitle: "2 समोसे + 1 चाय (₹50) VS BloomBite फ्रूट बास्केट",
+        vsSub: "अनजाने में हर रोज़ सिर्फ ₹50 नहीं जाते, बल्कि भविष्य में हज़ारों रुपये अस्पताल और गोलियों में खर्च होते हैं!",
+        badHead: "❌ 2 समोसे (₹40) + चाय (₹10)",
+        badBadge: "रोज़ ₹50 + छुपे खर्च!",
+        badSub: "हर दोपहर 4 बजे शरीर और जेब पर होने वाला नुकसान:",
+        bad1: "<strong>जला हुआ तेल:</strong> बार-बार उबला हुआ तेल सीधे नसों में कोलेस्ट्रॉल और ब्लॉकेज बढ़ाता है।",
+        bad2: "<strong>मैदा और एसिडिटी:</strong> मैदा आंतों में चिपकता है, भारी एसिडिटी करता है और पाचन धीमा करता है।",
+        bad3: "<strong>दवाइयों का खर्च:</strong> एसिडिटी की गोलियों और पेनकिलर्स पर हर महीने ₹500 से ₹1,000 की बर्बादी!",
+        bad4: "<strong>अस्पताल का जोखिम:</strong> फैटी लिवर, हाई बीपी और पेट की गंभीर समस्याओं पर हज़ारों का बिल!",
+        bad5: "<strong>मेहनत के पैसों का नुकसान:</strong> समोसे खाकर सिर्फ मोटापा, सुस्ती और बीमारियां ही मिलती हैं!",
+        goodHead: "🌱 BloomBite Fresh Whole Nutrition",
+        goodBadge: "स्मार्ट निवेश",
+        goodSub: "अस्पताल के चक्कर काटने से बेहतर है प्रकृति का शुद्ध पोषण अपनी टेबल पर रखें:",
+        good1: "<strong>100% शुद्ध प्लांट प्रोटीन और फाइबर:</strong> अंकुरित अनाज आंतों को साफ करते हैं और 3-4 घंटे भूख नियंत्रित रखते हैं।",
+        good2: "<strong>पपीते के पाचक एंजाइम्स (Papain):</strong> एसिडिटी जड़ से खत्म, पेट हमेशा हल्का और पाचन दुरुस्त।",
+        good3: "<strong>दवाइयों का शून्य खर्च:</strong> प्राकृतिक पोषण से शरीर मजबूत होता है; किसी एंटासिड गोली की जरूरत नहीं पड़ती!",
+        good4: "<strong>अखंड प्राकृतिक स्टैमिना:</strong> संतरे, अनार और ड्राय फ्रूट्स दोपहर की सुस्ती पूरी तरह दूर करते हैं।",
+        good5: "<strong>जीवनभर की स्वास्थ्य बचत:</strong> डॉक्टरों के लाखों रुपये बचाएं, वजन नियंत्रित रखें और दिनभर तरोताज़ा रहें!",
+
+        // 4 Health Hazards
+        hazardsBadge: "Whole Nutrition Power",
+        hazardsTitle: "रोज़ की 4 बड़ी समस्याएं और BloomBite का प्राकृतिक उपाय",
+        hazardsSub: "आर्टिफिशियल सप्लीमेंट्स की तुलना में असली कच्चा भोजन 100 गुना अधिक लाभकारी होता है:",
+        hz1Title: "दोपहर की सुस्ती और थकान",
+        hz1Desc: "ब्लड शुगर के अचानक घटने-बढ़ने से काम में ध्यान नहीं लगता।",
+        hz1Cure: "<strong class='text-success'>उपाय:</strong> केला, सेब और अंकुरित चना दिनभर टिकने वाली स्थिर एनर्जी देते हैं।",
+        hz2Title: "पेट की समस्या और एसिडिटी",
+        hz2Desc: "तले हुए भोजन और फाइबर की कमी से पाचन धीमा होकर पेट फूल जाता है।",
+        hz2Cure: "<strong class='text-success'>उपाय:</strong> पपीते के पाचक एंजाइम्स आंतों को साफ कर पाचन आसान बनाते हैं।",
+        hz3Title: "पेट की चर्बी और बार-बार भूख",
+        hz3Desc: "अनहेल्दी स्नैक्स से पेट नहीं भरता और पेट पर अनचाही चर्बी जमा होती है।",
+        hz3Cure: "<strong class='text-success'>उपाय:</strong> हरे मूंग स्प्राउट्स का प्रोटीन 3-4 घंटे तक भूख नहीं लगने देता।",
+        hz4Title: "कमज़ोर इम्युनिटी और बार-बार जुकाम",
+        hz4Desc: "एंटीऑक्सीडेंट्स की कमी से बदलते मौसम में जल्दी इन्फेक्शन होना।",
+        hz4Cure: "<strong class='text-success'>उपाय:</strong> संतरा, अनार और अमरूद का Vitamin C शरीर की रोगप्रतिकारक शक्ति बढ़ाता है।",
+
+        // 30 Days Journey
+        tJourneyBadge: "30-DAY JOURNEY 🗓️",
+        tJourneyTitle: "30 दिनों में आपके शरीर में क्या बदलाव आते हैं?",
+        tJourneySub: "4 हफ्ते लगातार ताजे फल और अंकुरित अनाज खाने का वैज्ञानिक असर:",
+        t1Time: "दिन 1 से 7",
+        t1Title: "Gut Reset",
+        t1Desc: "पपीता और फाइबर एसिडिटी रोकते हैं और सुबह पेट एकदम हल्का रहता है।",
+        t2Time: "दिन 8 से 15",
+        t2Title: "Stamina Boost",
+        t2Desc: "दोपहर की सुस्ती गायब हो जाती है। बार-बार चाय-कॉफी की जरूरत नहीं पड़ती।",
+        t3Time: "दिन 16 से 22",
+        t3Title: "Fat Control",
+        t3Desc: "जंक फूड की आदत छूटती है, मेटाबॉलिज्म बढ़ता है और कमर हल्की महसूस होती है।",
+        t4Time: "दिन 23 से 30",
+        t4Title: "Skin & Immunity",
+        t4Desc: "चेहरे पर प्राकृतिक चमक आती है और रोगप्रतिकारक क्षमता उच्चतम स्तर पर पहुंचती है।",
+        tJourneyBtn: "मेरी 30 दिनों की यात्रा शुरू करें 🌱",
+
+        aboutBadge: "हमारी कहानी और मिशन 🩺",
+        aboutTitle: "हम छात्र हैं। हमने अस्पतालों का दौरा किया, डॉक्टरों से सलाह ली... और सच्चाई समझी!",
+        aboutP1: "दैनिक जीवनशैली का अध्ययन करते हुए हमने कई अस्पतालों का दौरा किया और वरिष्ठ डॉक्टरों से चर्चा की। जीवनशैली से जुड़ी स्वास्थ्य समस्याओं की स्थिति चिंताजनक थी।",
+        aboutP2: "डॉक्टरों ने हमें बताया: 'जब तक रोज़ के आहार में प्राकृतिक फल और कच्चे स्प्राउट्स शामिल नहीं होंगे, अस्पताल के चक्कर कम नहीं होंगे!'",
+        aboutP3: "इसीलिए हमने BloomBite शुरू किया। अब इसमें प्रीमियम काजू-बादाम भी शामिल हैं, ताकि रोज़ का पोषण और बेहतर हो।",
+        tagDoctor: "✅ Doctor Approved",
+        tagDiet: "✅ 26 Days Power Diet",
+        tagPrice: "✅ All-Inclusive Price",
+        doctorAdvice: "डॉक्टर की सलाह",
+        farmSelected: "सीधे खेत से चुना हुआ",
+        morningDelivery: "फ्री मॉर्निंग डिलीवरी",
+        nutsIncluded: "काजू + बादाम शामिल",
+        menuBadge: "3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स",
+        menuTitle: "6-दिन का पावर मेनू (सोमवार - शनिवार)",
+        menuSub: "हर महीने 26 दिन सुबह ताजी डिलीवरी (रविवार नियमित छुट्टी, रविवार को बल्क ऑर्डर उपलब्ध)",
+        thDay: "दिन",
+        thFruit: "ताजे कटे फल",
+        thSprouts: "स्प्राउट्स और हेल्दी मिक्स",
+        thNuts: "3 प्रीमियम ड्राय फ्रूट्स",
+        dayMon: "सोमवार",
+        monFruit: "सेब, पपीता, तरबूज",
+        monSprout: "हरा मूंग, चना मिक्स",
+        monNuts: "<strong class='text-dark'>काजू, बादाम, काली किशमिश</strong>",
+        dayTue: "मंगलवार",
+        tueFruit: "केला, अमरूद, अनार",
+        tueSprout: "हरा मूंग, मटकी स्प्राउट्स",
+        tueNuts: "<strong class='text-dark'>काजू, बादाम, किशमिश</strong>",
+        dayWed: "बुधवार",
+        wedFruit: "खरबूजा, पपीता, सेब",
+        wedSprout: "देसी चना, मटकी स्प्राउट्स",
+        wedNuts: "<strong class='text-dark'>बादाम, काजू, अखरोट के टुकड़े</strong>",
+        dayThu: "गुरुवार",
+        thuFruit: "संतरा, तरबूज, अमरूद",
+        thuSprout: "हरा मूंग, देसी चना",
+        thuNuts: "<strong class='text-dark'>काजू, बादाम, सुनहरी किशमिश</strong>",
+        dayFri: "शुक्रवार",
+        friFruit: "सेब, अनानास, पपीता",
+        friSprout: "मटकी, हरा मूंग मिक्स",
+        friNuts: "<strong class='text-dark'>बादाम, काजू, किशमिश</strong>",
+        daySat: "शनिवार",
+        satFruit: "अनार, केला, सेब",
+        satSprout: "हरा मूंग, मटकी मिक्स",
+        satNuts: "<strong class='text-dark'>काजू, बादाम, काली किशमिश</strong>",
+        bulkBadge: "🎉 रविवार और स्पेशल इवेंट्स के लिए खास",
+        bulkTitle: "जिम इवेंट्स, ऑफिस पार्टियों और सोसायटी के लिए बल्क ऑर्डर!",
+        bulkDesc: "जंक फूड और समोसे की जगह 100% हाइजेनिक फल, स्प्राउट्स और ड्राय-फ्रूट बाउल्स चुनें! रविवार मैराथन हो या कम्युनिटी इवेंट, हम समय पर डिलीवरी करते हैं।",
+        bulkCardHead: "बल्क ऑर्डर के फायदे",
+        bulkCardSub: "10, 25, 50 या 100+ बॉक्स के लिए कस्टम पैक उपलब्ध",
+        bulkBtn: "बल्क ऑर्डर पूछें",
+        pricingHead: "पारदर्शी दरें और स्पेशल फेस्टिव ऑफर",
+        pricingSub: "कोई छुपा शुल्क नहीं! पैकिंग, ड्राय फ्रूट्स, डिलीवरी और टैक्स शामिल।",
+        trialTitle: "सिंगल ट्रायल बॉक्स",
+        perBox: "/ 1 बॉक्स",
+        trialDesc: "पहले टेस्ट करके देखें! 3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स।",
+        btnBookTrial: "ट्रायल बुक करें",
+        festiveBadge: "🔥 फेस्टिव स्पेशल ऑफर",
+        festiveTitle: "26-दिन का फेस्टिव प्लान",
+        perMonth: "/ माह",
+        normalRate: "सामान्य दर: ₹3,500",
+        perDayHighlight: "सिर्फ ₹115 / दिन (26 बॉक्स)",
+        fPoint1: "26 दिन लगातार पोषण (रविवार अवकाश)",
+        fPoint2: "काजू, बादाम और किशमिश रोज़ शामिल",
+        fPoint3: "सुबह 6:30 से 8:30 तक फ्री होम डिलीवरी",
+        fPoint4: "टैक्स, पैकिंग और डिलीवरी सब फ्री",
+        btnSubOffer: "ऑफर में सब्सक्राइब करें",
+        bulkCardTitle: "बल्क और इवेंट ऑर्डर",
+        bulkCardSub2: "जिम, ऑफिस पार्टियों और सोसायटी के लिए खास छूट।",
+        btnOrderBulk: "बल्क ऑर्डर करें",
+        orderFormTitle: "अपना ताजा ऑर्डर बुक करें",
+        orderFormSub: "प्लान चुनें, पता भरें और WhatsApp पर तुरंत ऑर्डर कन्फर्म करें!",
+        instantBooking: "⚡ तुरंत WhatsApp बुकिंग",
+        planLabel: "1. अपना प्लान चुनें",
+        pPlan1: "फेस्टिव 26 दिन",
+        pPlan2: "1-दिन ट्रायल",
+        pPlan3: "बल्क / Sunday Event",
+        quantityLabel: "मात्रा (Quantity)",
+        quantityHelp: "कितने लोगों/बॉक्स के लिए चाहिए?",
+        nameLabel: "आपका नाम (पूरा नाम)",
+        addressLabel: "डिलीवरी पता और विवरण (Delivery Address)",
+        namePlaceholder: "जैसे राहुल शिंदे",
+        addressPlaceholder: "ऑफिस/फ्लैट नंबर, सोसायटी का नाम या रविवार इवेंट की जानकारी...",
+        dateLabel: "📅 डिलीवरी / ऑर्डर दिनांक",
+        dateHelp: "अपने मील बॉक्स की डिलीवरी तारीख चुनें।",
+        totalLabel: "कुल अनुमानित राशि:",
+        bannerF1: "3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स (काजू-बादाम)",
+        bannerF2: "फ्री मॉर्निंग डिलीवरी (रविवार इवेंट उपलब्ध)",
+        bannerF3: "पैकिंग और GST शामिल",
+        whatsappOrder: "WhatsApp पर ऑर्डर करें",
+        stickyOrder: "ऑर्डर करें (₹3,000 / 26 दिन)",
+        footerDesc: "रोज़ ताजे फल, स्प्राउट्स और ड्राय फ्रूट्स | जिम और पार्टी बल्क ऑर्डर उपलब्ध",
+        contactLabel: "संपर्क / WhatsApp:"
       }
     };
 
     let selectedLang = 'mr';
-    let currentPlan = { key: 'first3m', price: 3000, title: 'First 3 Months Offer (₹3,000/mo)' };
+    let currentPlan = { 
+      key: 'festive', 
+      price: 3000, 
+      title: 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)',
+      details: '२६ दिवस / २६ बॉक्सेस (३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स, फ्री मॉर्निंग डिलिव्हरी)'
+    };
 
     function chooseLanguage(lang) {
       selectedLang = lang;
-      
       const modal = document.getElementById('languageModal');
-      modal.style.display = 'none';
-      document.body.style.overflowY = 'auto';
+      if (modal) {
+        modal.style.setProperty('display', 'none', 'important');
+      }
+      document.body.style.overflow = 'auto';
 
-      document.getElementById('currentLangLabel').innerText = (lang === 'mr') ? 'मराठी' : 'English';
+      const langLabel = document.getElementById('currentLangLabel');
+      if (langLabel) {
+        langLabel.innerText = (lang === 'mr') ? 'मराठी' : (lang === 'hi' ? 'हिन्दी' : 'English');
+      }
 
       const data = translations[lang];
-      document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (data[key]) {
-          el.innerHTML = data[key];
-        }
-      });
+      if (data) {
+        document.querySelectorAll('[data-key]').forEach(el => {
+          const key = el.getAttribute('data-key');
+          if (data[key]) el.innerHTML = data[key];
+        });
+
+        const nameInput = document.getElementById('custName');
+        const addressInput = document.getElementById('custAddress');
+        if (nameInput && data.namePlaceholder) nameInput.placeholder = data.namePlaceholder;
+        if (addressInput && data.addressPlaceholder) addressInput.placeholder = data.addressPlaceholder;
+      }
+
       recalcBill();
-      
-      setTimeout(() => {
-        AOS.refreshHard();
-      }, 100);
+      if (window.AOS) AOS.refresh();
     }
 
     function selectPlan(key, price, title) {
-      currentPlan = { key, price, title };
+      const planTitles = {
+        mr: {
+          festive: 'फेस्टिव्हल २६ दिवसांचा प्लॅन (₹३,०००/महिना - २६ बॉक्सेस)',
+          single: '१-Day ट्रायल बॉक्स (₹१२०)',
+          bulk: 'बल्क / पार्टी / जिम इव्हेंट ऑर्डर (स्पेशल रविवार स्लॉट)'
+        },
+        en: {
+          festive: 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)',
+          single: 'Single Trial Box (₹120)',
+          bulk: 'Bulk / Party / Gym Event Order (Special Sunday Slot)'
+        },
+        hi: {
+          festive: 'फेस्टिव 26-दिन प्लान (₹3,000/माह - 26 बॉक्स)',
+          single: '1-दिन ट्रायल बॉक्स (₹120)',
+          bulk: 'बल्क / पार्टी / जिम इवेंट ऑर्डर (स्पेशल रविवार स्लॉट)'
+        }
+      };
+
+      title = (planTitles[selectedLang] && planTitles[selectedLang][key]) || title;
+
+      let details = 'सकाळी मोफत डिलिव्हरी + ड्रायफ्रूट्स समाविष्ट';
+      if (key === 'festive') details = '२६ दिवस (२६ बॉक्सेस) - ३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स (काजू-बदाम)';
+      if (key === 'single') details = '१-Day चाचणी बॉक्स (३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स)';
+      if (key === 'bulk') details = 'Gym / Party / Sunday Bulk Order (Special Sunday Delivery)';
+
+      currentPlan = { key, price, title, details };
+
       document.querySelectorAll('.plan-selector').forEach(el => el.classList.remove('active'));
-      document.getElementById(`planCard-${key}`).classList.add('active');
+      const activeCard = document.getElementById(`planCard-${key}`);
+      if (activeCard) activeCard.classList.add('active');
+
       recalcBill();
     }
 
     function updateQty(delta) {
       const qtyInput = document.getElementById('boxQty');
       let val = parseInt(qtyInput.value) || 1;
-      val = Math.max(1, Math.min(50, val + delta));
+      val = Math.max(1, Math.min(500, val + delta));
       qtyInput.value = val;
       recalcBill();
     }
 
     function recalcBill() {
       const qty = parseInt(document.getElementById('boxQty').value) || 1;
+      if (currentPlan.key === 'bulk') {
+        document.getElementById('totalPriceDisplay').innerText = "Wholesale Quote";
+        document.getElementById('discountTag').innerText = "Sunday Delivery Available";
+        return;
+      }
       const total = qty * currentPlan.price;
       document.getElementById('totalPriceDisplay').innerText = `₹${total.toLocaleString('en-IN')}`;
 
-      let badge = "Standard";
-      if (currentPlan.key === 'first3m') badge = "₹500/Mo Saved!";
-      if (currentPlan.key === 'single') badge = "Single Trial";
+      let badge = "सर्व समाविष्ट";
+      if (currentPlan.key === 'festive') badge = "फेस्टिव्हल सेव्हिंग ₹५००";
+      if (currentPlan.key === 'single') badge = "१-Day ट्रायल";
       document.getElementById('discountTag').innerText = badge;
     }
 
     function handleOrder(e) {
       e.preventDefault();
+
+      const orderDate = document.getElementById('orderDate');
+      if (orderDate && !orderDate.value) {
+        alert('Please select the Delivery / Order Date.');
+        orderDate.focus();
+        return;
+      }
+
+      const selectedOrderDate = orderDate ? orderDate.value : '';
       const name = document.getElementById('custName').value.trim();
       const address = document.getElementById('custAddress').value.trim();
       const qty = document.getElementById('boxQty').value;
       const total = document.getElementById('totalPriceDisplay').innerText;
-      const phone = document.getElementById('sendTo').value;
+      const phone = "9022153005";
 
       let msg = "";
       if (selectedLang === 'mr') {
-        msg = `*नवीन BloomBite ऑर्डर!*%0A%0A` +
-              `👤 *नाव:* ${encodeURIComponent(name)}%0A` +
-              `📍 *पत्ता:* ${encodeURIComponent(address)}%0A` +
-              `📦 *प्लॅन:* ${encodeURIComponent(currentPlan.title)}%0A` +
-              `🔢 *संख्या:* ${encodeURIComponent(qty)}%0A` +
-              `💰 *एकूण रक्कम:* ${encodeURIComponent(total)}%0A%0A` +
+        msg = `*नवीन BloomBite ऑर्डर (Nutrition + Dry Fruits)*\n\n` +
+              `👤 *नाव:* ${name}\n` +
+              `📅 *डिलिव्हरी दिनांक:* ${selectedOrderDate}\n` +
+              `📍 *डिलिव्हरी पत्ता:* ${address}\n` +
+              `📦 *प्लॅन:* ${currentPlan.title}\n` +
+              `ℹ️ *आहार:* ३ ताजी फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स (काजू-बदाम)\n` +
+              `🔢 *बॉक्सेस संख्या:* ${qty}\n` +
+              `🚚 *डिलिव्हरी स्लॉट:* सकाळ / रविवार स्पेशल उपलब्ध\n` +
+              `💰 *एकूण अंदाज रक्कम:* ${total}\n\n` +
               `कृपया माझी ऑर्डर कन्फर्म करा!`;
+      } else if (selectedLang === 'hi') {
+        msg = `*नया BloomBite ऑर्डर (Nutrition + Dry Fruits)*\n\n` +
+              `👤 *नाम:* ${name}\n` +
+              `📅 *डिलीवरी दिनांक:* ${selectedOrderDate}\n` +
+              `📍 *डिलीवरी पता:* ${address}\n` +
+              `📦 *प्लान:* ${currentPlan.title}\n` +
+              `ℹ️ *पोषण:* 3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स (काजू-बादाम)\n` +
+              `🔢 *बॉक्स संख्या:* ${qty}\n` +
+              `🚚 *डिलीवरी स्लॉट:* सुबह / रविवार स्पेशल उपलब्ध\n` +
+              `💰 *कुल राशि:* ${total}\n\n` +
+              `कृपया मेरा ऑर्डर कन्फर्म करें!`;
       } else {
-        msg = `*New BloomBite Order!*%0A%0A` +
-              `👤 *Name:* ${encodeURIComponent(name)}%0A` +
-              `📍 *Address:* ${encodeURIComponent(address)}%0A` +
-              `📦 *Plan:* ${encodeURIComponent(currentPlan.title)}%0A` +
-              `🔢 *Quantity:* ${encodeURIComponent(qty)}%0A` +
-              `💰 *Total:* ${encodeURIComponent(total)}%0A%0A` +
+        msg = `*New BloomBite Order (Nutrition + Dry Fruits)*\n\n` +
+              `👤 *Name:* ${name}\n` +
+              `📅 *Delivery Date:* ${selectedOrderDate}\n` +
+              `📍 *Delivery Address:* ${address}\n` +
+              `📦 *Plan:* ${currentPlan.title}\n` +
+              `ℹ️ *Nutrition:* 3 Fruits + 3 Sprouts + 3 Dry Fruits (Cashew-Almonds)\n` +
+              `🔢 *Quantity:* ${qty}\n` +
+              `🚚 *Slot:* Morning / Sunday Special Available\n` +
+              `💰 *Total Amount:* ${total}\n\n` +
               `Please confirm my booking!`;
       }
 
-      window.open(`https://wa.me/91${phone}?text=${msg}`, '_blank');
+      window.open(`https://wa.me/91${phone}?text=${encodeURIComponent(msg)}`, '_blank');
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const dateInput = document.getElementById('orderDate');
+      if (dateInput) {
+        const now = new Date();
+        const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+          .toISOString().split('T')[0];
+        dateInput.min = localDate;
+        if (!dateInput.value) dateInput.value = localDate;
+      }
+    });
   </script>
 </body>
 </html>
