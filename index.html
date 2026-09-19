@@ -43,7 +43,6 @@
       position: relative;
     }
 
-    /* Ambient Side Leaves for Laptop & Desktop */
     .leaf-accent {
       position: absolute;
       pointer-events: none;
@@ -130,7 +129,6 @@
       z-index: 1;
     }
 
-    /* Subtle corner leaves on hero card */
     .hero-banner-box::before {
       content: '';
       position: absolute;
@@ -467,15 +465,25 @@
 
     .table-responsive {
       border-radius: 18px;
-      overflow: hidden;
+      overflow-x: auto;
       border: 1px solid var(--border-color);
       box-shadow: var(--bb-shadow);
+    }
+
+    /* Fixed table styling for perfect spacing and no overflow */
+    .power-menu-table {
+      width: 100%;
+      min-width: 600px;
+    }
+    .power-menu-table th, .power-menu-table td {
+      padding: 12px 10px;
+      vertical-align: middle;
+      word-break: normal;
     }
   </style>
 </head>
 <body>
 
-  <!-- Natural Side Leaves / Foliage Elements (Rendered via SVG - zero extra requests) -->
   <svg class="leaf-accent leaf-left" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M10 190 Q30 110 50 10" stroke="#236842" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
     <path d="M35 130 C15 120 5 95 18 80 C32 65 52 90 35 130 Z" fill="#48bb78" opacity="0.75"/>
@@ -934,13 +942,13 @@
       </div>
 
       <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle mb-0" style="font-size: 0.9rem;">
+        <table class="table table-bordered text-center align-middle mb-0 power-menu-table" style="font-size: 0.88rem;">
           <thead class="table-success">
             <tr style="background-color: var(--light-mint);">
-              <th style="width: 15%; padding: 12px;" data-key="thDay">वार</th>
-              <th style="width: 35%;" data-key="thFruit">ताजी फळे (Fresh Fruits)</th>
-              <th style="width: 25%;" data-key="thSprouts">मोड आलेली कडधान्ये (Sprouts)</th>
-              <th style="width: 25%;" data-key="thNuts">३ ड्रायफ्रूट्स (Dry Fruits)</th>
+              <th style="width: 13%;" data-key="thDay">वार</th>
+              <th style="width: 32%;" data-key="thFruit">ताजी फळे (Fresh Fruits)</th>
+              <th style="width: 27%;" data-key="thSprouts">मोड आलेली कडधान्ये (Sprouts)</th>
+              <th style="width: 28%;" data-key="thNuts">३ ड्रायफ्रूट्स (Dry Fruits)</th>
             </tr>
           </thead>
           <tbody>
@@ -1425,7 +1433,7 @@
         bad1: "<strong>Burnt Hydrogenated Oils:</strong> Re-heated commercial oils choke arteries and shoot bad cholesterol levels.",
         bad2: "<strong>Refined Flour & Bloat:</strong> Sticks to gut lining, slowing metabolic digestion and triggering chronic reflux.",
         bad3: "<strong>Pharmacy & Tablet Bills:</strong> Spending ₹500–₹1,000/month on Pan-D, antacids, and pain pills just to suppress daily acidity!",
-        bad4: "<strong>Emergency Hospital Risk:</strong> Fatty liver, escalating BP, and severe gut inflammation risk admissions costing ₹30,000 to ₹50,000+.</span>",
+        bad4: "<strong>Emergency Hospital Risk:</strong> Fatty liver, escalating BP, and severe gut inflammation risk admissions costing ₹30,000 to ₹50,000+.",
         bad5: "<strong>Total Wasteful Drain:</strong> Spending ₹1,500/month on fried snacks only to purchase disease, obesity, and permanent exhaustion!",
         goodHead: "🌱 BloomBite Fresh Whole Nutrition",
         goodBadge: "Smart Investment",
@@ -1488,27 +1496,27 @@
         dayMon: "Monday",
         monFruit: "Apple, Papaya, Watermelon",
         monSprout: "Green Moong, Chana Mix",
-        monNuts: "<strong class='text-dark'>Cashew, Almonds, Black Raisins</strong>",
+        monNuts: "<strong class='text-dark'>Cashews, Almonds, Black Raisins</strong>",
         dayTue: "Tuesday",
         tueFruit: "Banana, Guava, Pomegranate",
         tueSprout: "Green Moong, Matki Sprouts",
-        tueNuts: "<strong class='text-dark'>Cashew, Almonds, Kishmish</strong>",
+        tueNuts: "<strong class='text-dark'>Cashews, Almonds, Raisins</strong>",
         dayWed: "Wednesday",
         wedFruit: "Muskmelon, Papaya, Apple",
         wedSprout: "Desi Chana, Matki Sprouts",
-        wedNuts: "<strong class='text-dark'>Almonds, Cashew, Walnut Crushed</strong>",
+        wedNuts: "<strong class='text-dark'>Almonds, Cashews, Walnuts</strong>",
         dayThu: "Thursday",
         thuFruit: "Orange, Watermelon, Guava",
         thuSprout: "Green Moong, Desi Chana",
-        thuNuts: "<strong class='text-dark'>Cashew, Almonds, Golden Raisins</strong>",
+        thuNuts: "<strong class='text-dark'>Cashews, Almonds, Golden Raisins</strong>",
         dayFri: "Friday",
         friFruit: "Apple, Pineapple, Papaya",
         friSprout: "Matki, Green Moong Mix",
-        friNuts: "<strong class='text-dark'>Almonds, Cashew, Kishmish</strong>",
+        friNuts: "<strong class='text-dark'>Almonds, Cashews, Raisins</strong>",
         daySat: "Saturday",
         satFruit: "Pomegranate, Banana, Apple",
         satSprout: "Green Moong, Matki Mix",
-        satNuts: "<strong class='text-dark'>Cashew, Almonds, Black Raisins</strong>",
+        satNuts: "<strong class='text-dark'>Cashews, Almonds, Black Raisins</strong>",
         bulkBadge: "🎉 Sunday & Special Events Special",
         bulkTitle: "Bulk Orders for Gym Events, Office Parties & Societies!",
         bulkDesc: "Swap junk food and samosas with 100% hygienic fresh fruit, sprout, and dry-fruit bowls! Whether it's a Sunday marathon or community gathering, we deliver on time.",
