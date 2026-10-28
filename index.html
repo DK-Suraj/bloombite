@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>BloomBite - Fresh Fruits, Sprouts & Dry Fruits</title>
+  <title>BloomBite - Fresh Fruits & Sprouts</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,6 +215,101 @@
     }
     .category-chip-box:hover .cat-avatar {
       transform: scale(1.1) rotate(5deg);
+    }
+
+    /* Refined pricing plans + order form layout */
+    .pricing-plans-section {
+      padding-top: clamp(2rem, 4vw, 3.5rem) !important;
+      padding-bottom: clamp(2rem, 4vw, 3.5rem) !important;
+    }
+    .pricing-plans-section .pricing-heading {
+      max-width: 760px;
+      margin-inline: auto;
+      padding: 0 12px;
+    }
+    .pricing-plans-section .pricing-heading h3 {
+      font-size: clamp(1.45rem, 2.4vw, 2.05rem);
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+      margin-top: .35rem;
+    }
+    .pricing-plans-section .pricing-heading p {
+      max-width: 580px;
+      margin: .6rem auto 0;
+      line-height: 1.65;
+    }
+    .pricing-plans-section .row { align-items: stretch; }
+    .pricing-plans-section .premium-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: clamp(1rem, 1.5vw, 1.45rem) !important;
+      overflow: visible;
+      overflow-wrap: anywhere;
+    }
+    .pricing-plans-section .premium-card h5 { line-height: 1.4; text-wrap: balance; }
+    .pricing-plans-section .premium-card .bg-light {
+      line-height: 1.7 !important;
+      min-height: 124px;
+    }
+    .pricing-plans-section .premium-card a.btn { white-space: normal; line-height: 1.35; }
+    .pricing-plans-section .child-trial-actions,
+    .pricing-plans-section .premium-card > .d-flex.gap-2 { align-items: stretch; }
+    .pricing-plans-section .child-trial-actions .btn,
+    .pricing-plans-section .premium-card > .d-flex.gap-2 .btn { min-height: 44px; }
+    #order-form {
+      padding-top: clamp(2rem, 5vw, 4rem) !important;
+      padding-bottom: clamp(2rem, 5vw, 4rem) !important;
+      background: radial-gradient(ellipse at top left, #e5f6eb 0%, #f4f8f5 42%, #eef2f7 100%) !important;
+    }
+    #order-form .container { width: 100%; max-width: 780px !important; }
+    #order-form .order-shell {
+      padding: clamp(1rem, 3vw, 2rem) !important;
+      border: 1px solid rgba(35,104,66,.16);
+      border-radius: clamp(18px, 3vw, 28px);
+      box-shadow: 0 22px 60px rgba(18,56,36,.11), 0 3px 12px rgba(15,23,42,.04);
+    }
+    #order-form .order-shell h3 {
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.3;
+      text-wrap: balance;
+    }
+    #order-form .order-shell form { min-width: 0; }
+    #order-form .form-label { display: block; line-height: 1.5; margin-bottom: .6rem; }
+    #order-form .form-control,
+    #order-form .form-select,
+    #order-form textarea { min-height: 48px; border-radius: 12px; border-color: #d8e2dc; }
+    #order-form textarea { min-height: 100px; }
+    #order-form .form-control:focus,
+    #order-form .form-select:focus,
+    #order-form textarea:focus {
+      border-color: #38a169;
+      box-shadow: 0 0 0 .22rem rgba(56,161,105,.14);
+    }
+    #order-form .plan-selector { min-width: 0; overflow-wrap: anywhere; }
+    #order-form button[type="submit"], #order-form .btn-brand { min-height: 50px; border-radius: 14px; }
+    @media (max-width: 991.98px) {
+      .pricing-plans-section .premium-card .bg-light { min-height: 0; }
+    }
+    @media (max-width: 575.98px) {
+      .pricing-plans-section { padding-inline: 12px !important; }
+      .pricing-plans-section .row { --bs-gutter-x: .7rem; --bs-gutter-y: .85rem; }
+      .pricing-plans-section .premium-card { padding: .9rem !important; border-radius: 18px; }
+      .pricing-plans-section .premium-card h5 { font-size: .98rem; }
+      .pricing-plans-section .premium-card h3 { font-size: 1.35rem; }
+      .pricing-plans-section .premium-card .bg-light { padding: .75rem !important; font-size: .75rem !important; }
+      .pricing-plans-section .premium-card .badge { white-space: normal; max-width: 100%; }
+      .pricing-plans-section .child-trial-actions,
+      .pricing-plans-section .premium-card > .d-flex.gap-2 { gap: .4rem !important; }
+      .pricing-plans-section .child-trial-actions .btn,
+      .pricing-plans-section .premium-card > .d-flex.gap-2 .btn { font-size: .68rem !important; padding: .45rem .35rem; }
+      #order-form .row { --bs-gutter-x: .65rem; --bs-gutter-y: .65rem; }
+      #order-form .plan-selector { min-height: 90px; padding: .55rem .35rem; border-radius: 14px; }
+      #order-form .order-shell .pill-badge { max-width: 100%; white-space: normal; justify-content: center; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pricing-plans-section .premium-card, #order-form .plan-selector { transition: none !important; }
     }
 
     .premium-card {
@@ -480,6 +575,55 @@
       vertical-align: middle;
       word-break: normal;
     }
+
+
+    .special-offer-card {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 22px 24px;
+      border: 2px solid #f59e0b;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fffdf5 0%, #fff7df 100%);
+      box-shadow: 0 10px 24px rgba(146, 98, 0, 0.08);
+      position: relative;
+    }
+    .special-offer-heading {
+      display: inline-block;
+      background: #e53935;
+      color: #fff;
+      font-weight: 800;
+      font-style: italic;
+      font-size: 1.15rem;
+      padding: 5px 16px;
+      border-radius: 10px;
+      margin: -38px 0 14px -8px;
+      box-shadow: 0 4px 10px rgba(229, 57, 53, 0.18);
+    }
+    .special-offer-card ul li { margin: 5px 0; color: #24543a; font-weight: 600; }
+    .special-offer-card ul li::first-letter { color: #159447; }
+    @media (max-width: 576px) {
+      .special-offer-card { padding: 20px 16px; }
+      .special-offer-heading { font-size: 1rem; }
+    }
+
+    /* Child Bowl and plan selector responsive alignment */
+    .child-bowl-card, .premium-card { min-width: 0; }
+    .child-trial-actions > a { flex: 1 1 0; min-width: 0; white-space: normal; line-height: 1.35; padding: .55rem .35rem; }
+    .plan-selector { height: 100%; min-height: 92px; display: flex; flex-direction: column; justify-content: center; overflow-wrap: anywhere; }
+    #order-form .row.g-2 > [class*="col-"] { min-width: 0; }
+    @media (max-width: 575.98px) {
+      .premium-card { padding: 1rem !important; }
+      .child-trial-actions { flex-direction: column; }
+      .child-trial-actions > a { width: 100% !important; font-size: .78rem !important; }
+      .plan-selector { min-height: 84px; padding: .5rem .25rem; }
+      #order-form .plan-selector .fw-bold:first-child { font-size: .72rem !important; line-height: 1.3; }
+      #order-form .plan-selector .badge { white-space: normal; }
+      #order-form .order-shell { padding: 1rem !important; }
+    }
+    @media (min-width: 576px) and (max-width: 991.98px) {
+      .child-trial-actions > a { font-size: .68rem !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -526,7 +670,7 @@
 
   <!-- Announcement Ribbon -->
   <div class="bg-success text-white py-2 text-center small fw-semibold px-2">
-    <span data-key="topRibbon">🎉 फेस्टिव्हल धमाका: २६ दिवस महिना फक्त ₹३,००० (३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स) | मोफत सकाळची डिलिव्हरी + टॅक्स समाविष्ट!</span>
+    <span data-key="topRibbon">🎉 फेस्टिव्हल धमाका: २६ दिवस महिना फक्त ₹३,००० (३ फळे + स्प्राउट्स) | मोफत सकाळची डिलिव्हरी + टॅक्स समाविष्ट!</span>
   </div>
 
   <!-- Navbar -->
@@ -564,7 +708,7 @@
               Healthy Choices. Happier You.
             </h1>
             <p class="text-secondary small mb-4" style="max-width: 540px; font-size: 0.95rem; line-height: 1.6;" data-key="heroDesc">
-              ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे, मोड आलेली कडधान्ये आणि प्रीमियम काजू-बदाम! २६ दिवस थेट घरपोच सकाळची फ्रेश डिलिव्हरी.
+              ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे, मोड आलेली कडधान्ये आणि प्रीमियम फळे आणि स्प्राउट्स! २६ दिवस थेट घरपोच सकाळची फ्रेश डिलिव्हरी.
             </p>
 
             <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start mb-4">
@@ -596,7 +740,6 @@
               <div class="p-3 rounded-4 mb-3 bg-light" style="border: 1px dashed #cbd5e1; font-size: 0.82rem; line-height: 1.7;">
                 <div>✔ <strong data-key="boxF1">३ ताजी फळे:</strong> <span data-key="boxF1Desc">पपई, सफरचंद आणि टरबूज/डाळिंब</span></div>
                 <div>✔ <strong data-key="boxF2">३ स्प्राउट्स मिक्स:</strong> <span data-key="boxF2Desc">देशी चणा, हिरवे मूग आणि मटकी</span></div>
-                <div>✔ <strong data-key="boxF3">३ प्रीमियम ड्रायफ्रूट्स:</strong> <span data-key="boxF3Desc">काजू, बदाम आणि किशमिश</span></div>
                 <div>✔ <strong data-key="boxF4">सकाळची मोफत डिलिव्हरी + पॅकिंग + टॅक्स समाविष्ट!</strong></div>
               </div>
               <div class="d-flex justify-content-between align-items-center">
@@ -652,18 +795,25 @@
           <i class="bi bi-chevron-right text-muted small"></i>
         </a>
       </div>
-      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-        <a href="#menu" class="category-chip-box">
-          <div class="d-flex align-items-center gap-2">
-            <div class="cat-avatar">🥜</div>
-            <div>
-              <div class="fw-bold small" data-key="cat4Title">Dry Fruits</div>
-              <div class="text-muted" style="font-size: 0.75rem;" data-key="cat4Desc">Nuts & Power</div>
-            </div>
-          </div>
-          <i class="bi bi-chevron-right text-muted small"></i>
-        </a>
-      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Special Offers for Institutions -->
+  <section id="special-offers" class="container my-4 px-3 position-relative" data-aos="fade-up">
+    <div class="special-offer-card">
+      <div class="special-offer-heading">🎉 Special Offers!</div>
+      <h5 class="fw-bold mb-2">For Institutions <span class="fw-normal">(School, College, Office & Parties)</span></h5>
+      <ul class="list-unstyled mb-3 small">
+        <li>✓ Bulk delivery discounts</li>
+        <li>✓ Special party packages</li>
+        <li>✓ Flexible scheduling for bulk orders</li>
+        <li>✓ Special pricing for Students & Teachers</li>
+        <li>✓ Exclusive discounts on School Lunchbox programs</li>
+        <li>✓ Convenient morning delivery</li>
+      </ul>
+      <a href="#order-form" onclick="selectPlan('bulk', 0, 'Institution / School / College / Office Bulk Order')" class="btn btn-brand btn-sm rounded-pill px-4">Get Special Offer</a>
     </div>
   </section>
 
@@ -738,7 +888,7 @@
             </li>
             <li class="mb-3 d-flex align-items-start">
               <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
-              <span data-key="good4"><strong>Clean Stamina & Immunity:</strong> Dense natural fructose, Vitamin C and premium nuts fuel sharp focus with zero midday crash.</span>
+              <span data-key="good4"><strong>Clean Stamina & Immunity:</strong> Dense natural fructose, Vitamin C and premium fruits and sprouts support daily nutrition with zero midday crash.</span>
             </li>
             <li class="d-flex align-items-start">
               <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
@@ -910,7 +1060,7 @@
             डॉक्टरांनी आम्हाला स्पष्ट सांगितले: <em>"औषधे फक्त तात्पुरती लक्षणे दाबतात. जोपर्यंत रोजच्या आहारात जिवंत फळे आणि मोड आलेली कडधान्ये येत नाहीत, तोपर्यंत हे हॉस्पिटलचे खेटे थांबणार नाहीत!"</em>
           </p>
           <p class="text-secondary small mb-3" style="font-size: 0.9rem; line-height: 1.6;" data-key="aboutP3">
-            धावपळीच्या जीवनात रोज फळे कापणे आणि स्प्राउट्स तयार करणे जमत नाही. <strong>म्हणूनच आम्ही 'BloomBite' सुरू केले!</strong> आता यात आम्ही पौष्टिक काजू-बदाम जोडून संपूर्ण शक्तीवर्धक आहार तयार केला आहे.
+            धावपळीच्या जीवनात रोज फळे कापणे आणि स्प्राउट्स तयार करणे जमत नाही. <strong>म्हणूनच आम्ही 'BloomBite' सुरू केले!</strong> आता यात आम्ही पौष्टिक फळे आणि स्प्राउट्सचा पौष्टिक आहार तयार केला आहे.
           </p>
 
           <div class="d-flex flex-wrap gap-2">
@@ -925,7 +1075,6 @@
             <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">👨‍⚕️</div><h5 class="fw-bold text-success mb-0">15+</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="doctorAdvice">डॉक्टरांचा सल्ला</p></div></div>
             <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🌿</div><h5 class="fw-bold text-primary mb-0">100%</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="farmSelected">थेट शेतातून निवड</p></div></div>
             <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🚚</div><h5 class="fw-bold text-danger mb-0">Free</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="morningDelivery">सकाळची डिलिव्हरी</p></div></div>
-            <div class="col-6"><div class="stat-badge"><div class="fs-3 mb-1">🥜</div><h5 class="fw-bold text-warning mb-0">3 Nuts</h5><p class="small text-muted mb-0" style="font-size: 0.75rem;" data-key="nutsIncluded">काजू + बदाम समाविष्ट</p></div></div>
           </div>
         </div>
       </div>
@@ -936,7 +1085,7 @@
   <section id="menu" class="py-4 bg-white border-top border-bottom px-3 position-relative" data-aos="fade-up">
     <div class="container">
       <div class="text-center mb-4">
-        <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold mb-1" data-key="menuBadge">३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स</span>
+        <span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill fw-bold mb-1" data-key="menuBadge">३ फळे + स्प्राउट्स</span>
         <h3 class="fw-bold" style="color: var(--primary);" data-key="menuTitle">६ दिवसांचा पॉवर मेनू (सोमवार - शनिवार)</h3>
         <p class="text-muted small" data-key="menuSub">महिनाभरात एकूण २६ दिवस दररोज सकाळी फ्रेश डिलिव्हरी (रविवार नियमित सुट्टी, फक्त बल्क ऑर्डर्स चालू)</p>
       </div>
@@ -946,9 +1095,8 @@
           <thead class="table-success">
             <tr style="background-color: var(--light-mint);">
               <th style="width: 13%;" data-key="thDay">वार</th>
-              <th style="width: 32%;" data-key="thFruit">ताजी फळे (Fresh Fruits)</th>
-              <th style="width: 27%;" data-key="thSprouts">मोड आलेली कडधान्ये (Sprouts)</th>
-              <th style="width: 28%;" data-key="thNuts">३ ड्रायफ्रूट्स (Dry Fruits)</th>
+              <th style="width: 45%;" data-key="thFruit">ताजी फळे (Fresh Fruits)</th>
+              <th style="width: 42%;" data-key="thSprouts">मोड आलेली कडधान्ये (Sprouts)</th>
             </tr>
           </thead>
           <tbody>
@@ -956,37 +1104,31 @@
               <td><span class="day-badge" data-key="dayMon">सोमवार</span></td>
               <td data-key="monFruit">सफरचंद, पपई, कलिंगड</td>
               <td data-key="monSprout">हिरवे मूग, चणा मिक्स</td>
-              <td data-key="monNuts"><strong class="text-dark">काजू, बदाम, काळे मणुके</strong></td>
             </tr>
             <tr>
               <td><span class="day-badge" data-key="dayTue">मंगळवार</span></td>
               <td data-key="tueFruit">केळी, पेरू, डाळिंब</td>
               <td data-key="tueSprout">हिरवे मूग, मटकी स्प्राउट्स</td>
-              <td data-key="tueNuts"><strong class="text-dark">काजू, बदाम, किशमिश</strong></td>
             </tr>
             <tr>
               <td><span class="day-badge" data-key="dayWed">बुधवार</span></td>
               <td data-key="wedFruit">खरबूज, पपई, सफरचंद</td>
               <td data-key="wedSprout">देशी चणा, मटकी स्प्राउट्स</td>
-              <td data-key="wedNuts"><strong class="text-dark">बदाम, काजू, अक्रोड तुकडा</strong></td>
             </tr>
             <tr>
               <td><span class="day-badge" data-key="dayThu">गुरुवार</span></td>
               <td data-key="thuFruit">संत्रे, कलिंगड, पेरू</td>
               <td data-key="thuSprout">हिरवे मूग, देशी चणा</td>
-              <td data-key="thuNuts"><strong class="text-dark">काजू, बदाम, पिवळे मणुके</strong></td>
             </tr>
             <tr>
               <td><span class="day-badge" data-key="dayFri">शुक्रवार</span></td>
               <td data-key="friFruit">सफरचंद, अननस, पपई</td>
               <td data-key="friSprout">मटकी, हिरवे मूग मिक्स</td>
-              <td data-key="friNuts"><strong class="text-dark">बदाम, काजू, किशमिश</strong></td>
             </tr>
             <tr>
               <td><span class="day-badge" data-key="daySat">शनिवार</span></td>
               <td data-key="satFruit">डाळिंब, केळी, सफरचंद</td>
               <td data-key="satSprout">हिरवे मूग, मटकी मिक्स</td>
-              <td data-key="satNuts"><strong class="text-dark">काजू, बदाम, काळे मणुके</strong></td>
             </tr>
           </tbody>
         </table>
@@ -1004,7 +1146,7 @@
           </span>
           <h3 class="fw-bold mb-2 text-white" data-key="bulkTitle">जिम इव्हेंट्स, ऑफिस पार्टी & सोसायट्यांसाठी बल्क ऑर्डर्स!</h3>
           <p class="small text-light mb-4" style="line-height: 1.6;" data-key="bulkDesc">
-            कचरा जंक फूड किंवा तेलकट समोशांऐवजी तुमच्या इव्हेंटमध्ये द्या १००% हायजेनिक फ्रूट, स्प्राउट आणि ड्रायफ्रूट्स बास्केट! 
+            कचरा जंक फूड किंवा तेलकट समोशांऐवजी तुमच्या इव्हेंटमध्ये द्या १००% हायजेनिक फ्रूट, स्प्राउट आणि फळे आणि स्प्राउट्स बास्केट! 
             <strong>रविवार असो किंवा कोणताही सण-उत्सव — आम्ही विशेष बल्क ऑर्डर्स वेळेवर पोहोचवतो.</strong>
           </p>
           <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
@@ -1028,32 +1170,51 @@
   </section>
 
   <!-- Pricing Cards -->
-  <section class="container my-4 py-2 px-3 position-relative" data-aos="fade-up">
-    <div class="text-center mb-4">
+  <section class="container my-4 py-2 px-3 position-relative pricing-plans-section" data-aos="fade-up">
+    <div class="text-center mb-4 pricing-heading">
       <span class="pill-badge mb-2">Festive Value Plans</span>
       <h3 class="fw-bold" style="color: var(--primary);" data-key="pricingHead">पारदर्शक दर आणि स्पेशल फेस्टिव्हल ऑफर</h3>
-      <p class="text-muted small" data-key="pricingSub">कोणताही छुपा खर्च नाही! पॅकिंग, ड्रायफ्रूट्स, डिलिव्हरी आणि टॅक्स समाविष्ट.</p>
+      <p class="text-muted small" data-key="pricingSub">कोणताही छुपा खर्च नाही! पॅकिंग, डिलिव्हरी आणि टॅक्स समाविष्ट.</p>
     </div>
 
     <div class="row g-3 justify-content-center">
       <!-- Trial Plan -->
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
         <div class="card premium-card p-4 text-center border-top border-warning border-4 h-100">
           <span class="badge bg-warning text-dark mb-2 align-self-center px-3 py-1 rounded-pill fw-bold">1-Day Trial</span>
           <h5 class="fw-bold" data-key="trialTitle">सिंगल ट्रायल बॉक्स</h5>
           <h3 class="text-dark my-2">₹120 <small class="fs-6 text-muted" data-key="perBox">/ १ बॉक्स</small></h3>
-          <p class="small text-muted mb-3" data-key="trialDesc">पहिली टेस्ट घेऊन पहा! ३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स.</p>
+          <p class="small text-muted mb-3" data-key="trialDesc">पहिली टेस्ट घेऊन पहा! ३ फळे + स्प्राउट्स.</p>
           <div class="p-3 bg-light rounded-3 text-start small mb-4" style="font-size: 0.8rem; line-height: 1.8;">
             <div>✔ Fresh Sliced Fruits & Sprouts</div>
-            <div>✔ Added Almonds, Cashew & Raisins</div>
+            <div>✔ Fresh Seasonal Fruits & Sprouts</div>
             <div>✔ Free Morning Home Delivery</div>
           </div>
           <a href="#order-form" onclick="selectPlan('single', 120, '1-Day Trial Box (₹120)')" class="btn btn-outline-warning text-dark rounded-pill w-100 fw-bold mt-auto" data-key="btnBookTrial">ट्रायल बुक करा</a>
         </div>
       </div>
 
+      <!-- Child Bowl Plan -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="75">
+        <div class="card premium-card p-4 text-center border-top border-4 h-100" style="border-top-color: #f97316 !important;">
+          <span class="badge text-white mb-2 align-self-center px-3 py-1 rounded-pill fw-bold" style="background: #f97316;">Child Bowl</span>
+          <h5 class="fw-bold" data-key="childTitle">चिल बाउल मासिक प्लॅन</h5>
+          <h3 class="text-dark my-2">₹2,199 <small class="fs-6 text-muted" data-key="perMonth">/ महिना</small></h3>
+          <div class="p-3 bg-light rounded-3 text-start small mb-3" style="font-size: 0.8rem; line-height: 1.8;">
+            <div>✔ <span data-key="childP1">७ ताजी हंगामी फळे</span></div>
+            <div>✔ <span data-key="childP2">मासिक प्लॅन (२६ दिवस)</span></div>
+            <div>✔ <span data-key="childP3">१५०–१८० ग्रॅम (१ छोटा बाउल)</span></div>
+          </div>
+          <div class="child-trial-actions d-flex gap-2 mb-3">
+            <a href="#order-form" onclick="selectPlan('child6', 600, 'Child Bowl 6-Day Trial (₹600)')" class="btn btn-sm btn-outline-secondary rounded-pill w-50 fw-semibold" style="font-size: 0.72rem;" data-key="childT6">६-दिवस ट्रायल ₹६००</a>
+            <a href="#order-form" onclick="selectPlan('child3', 350, 'Child Bowl 3-Day Trial (₹350)')" class="btn btn-sm btn-outline-secondary rounded-pill w-50 fw-semibold" style="font-size: 0.72rem;" data-key="childT3">३-दिवस ट्रायल ₹३५०</a>
+          </div>
+          <a href="#order-form" onclick="selectPlan('child', 2199, 'Child Bowl Monthly Plan (₹2,199/mo - 26 Days)')" class="btn btn-outline-warning text-dark rounded-pill w-100 fw-bold mt-auto" data-key="btnChild">चिल प्लॅन निवडा</a>
+        </div>
+      </div>
+
       <!-- Festive Offer -->
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
         <div class="card premium-card p-4 text-center border-top border-success border-4 h-100 position-relative shadow-sm">
           <span class="badge bg-danger position-absolute top-0 start-50 translate-middle rounded-pill px-3 py-2 shadow-sm" data-key="festiveBadge">
             🔥 फेस्टिव्हल स्पेशल ऑफर
@@ -1062,18 +1223,22 @@
           <h3 class="text-success my-2">₹3,000 <small class="fs-6 text-muted" data-key="perMonth">/ महिना</small></h3>
           <div class="fw-bold text-muted small text-decoration-line-through mb-1" data-key="normalRate">नॉर्मल दर: ₹3,500</div>
           <span class="badge bg-success p-2 px-3 mb-3 rounded-pill" data-key="perDayHighlight">फक्त ₹११५ / दिवस (२६ बॉक्सेस)</span>
-          <div class="p-3 bg-light rounded-3 text-start small mb-4" style="font-size: 0.8rem; line-height: 1.8;">
+          <div class="p-3 bg-light rounded-3 text-start small mb-3" style="font-size: 0.8rem; line-height: 1.8;">
             <div>✔ <strong data-key="fPoint1">२६ दिवस अखंड पोषण (रविवार सुट्टी)</strong></div>
-            <div>✔ <strong data-key="fPoint2">काजू, बदाम आणि मणुके दररोज समाविष्ट</strong></div>
+            <div>✔ <strong data-key="fPoint2">ताजी फळे आणि स्प्राउट्स दररोज समाविष्ट</strong></div>
             <div>✔ <strong data-key="fPoint3">सकाळी ६:३० ते ८:३० घरपोच मोफत डिलिव्हरी</strong></div>
             <div>✔ <strong data-key="fPoint4">टॅक्स, पॅकिंग & डिलिव्हरी सर्व मोफत</strong></div>
+          </div>
+          <div class="d-flex gap-2 mb-3">
+            <a href="#order-form" onclick="selectPlan('std6', 900, 'Standard Bowl 6-Day Trial (₹900)')" class="btn btn-sm btn-outline-secondary rounded-pill w-50 fw-semibold" style="font-size: 0.72rem;" data-key="stdT6">६-दिवस ट्रायल ₹९००</a>
+            <a href="#order-form" onclick="selectPlan('std3', 500, 'Standard Bowl 3-Day Trial (₹500)')" class="btn btn-sm btn-outline-secondary rounded-pill w-50 fw-semibold" style="font-size: 0.72rem;" data-key="stdT3">३-दिवस ट्रायल ₹५००</a>
           </div>
           <a href="#order-form" onclick="selectPlan('festive', 3000, 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)')" class="btn btn-success rounded-pill w-100 fw-bold mt-auto" data-key="btnSubOffer">ऑफरमध्ये सबस्क्राइब करा</a>
         </div>
       </div>
 
       <!-- Bulk / Event Card -->
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
         <div class="card premium-card p-4 text-center border-top border-primary border-4 h-100">
           <span class="badge bg-primary text-white mb-2 align-self-center px-3 py-1 rounded-pill fw-bold">Gym & Sunday Events</span>
           <h5 class="fw-bold" data-key="bulkCardTitle">बल्क & इव्हेंट ऑर्डर</h5>
@@ -1104,7 +1269,7 @@
         <form id="orderForm" onsubmit="handleOrder(event)">
           <label class="form-label fw-bold small text-secondary"><span data-key="planLabel">१. तुमचा प्लॅन निवडा (Select Plan)</span></label>
           <div class="row g-2 mb-3">
-            <div class="col-4">
+            <div class="col-6 col-sm-4">
               <div class="plan-selector active text-center" id="planCard-festive" onclick="selectPlan('festive', 3000, 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)')">
                 <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan1">फेस्टिव्हल २६ दिवस</div>
                 <div class="fw-bold text-success my-1" style="font-size: 1rem;">₹3,000</div>
@@ -1112,7 +1277,7 @@
               </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-6 col-sm-4">
               <div class="plan-selector text-center" id="planCard-single" onclick="selectPlan('single', 120, 'Single Trial Box (₹120)')">
                 <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan2">१-Day ट्रायल</div>
                 <div class="fw-bold text-warning my-1" style="font-size: 1rem;">₹120</div>
@@ -1120,11 +1285,51 @@
               </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-6 col-sm-4">
               <div class="plan-selector text-center" id="planCard-bulk" onclick="selectPlan('bulk', 0, 'Bulk / Party / Gym Event Order (Special Sunday Slot)')">
                 <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan3">बल्क / Sunday Event</div>
                 <div class="fw-bold text-primary my-1" style="font-size: 1rem;">Custom</div>
                 <span class="badge bg-primary text-white rounded-pill" style="font-size: 0.65rem;">Bulk Special</span>
+              </div>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <div class="plan-selector text-center" id="planCard-child" onclick="selectPlan('child', 2199, 'Child Bowl Monthly Plan (₹2,199/mo - 26 Days)')">
+                <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan4">चिल २६ दिवस</div>
+                <div class="fw-bold text-success my-1" style="font-size: 1rem;">₹2,199</div>
+                <span class="badge bg-warning text-dark rounded-pill" style="font-size: 0.65rem;">Child Bowl</span>
+              </div>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <div class="plan-selector text-center" id="planCard-child6" onclick="selectPlan('child6', 600, 'Child Bowl 6-Day Trial (₹600)')">
+                <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan5">चिल ६-दिवस</div>
+                <div class="fw-bold text-warning my-1" style="font-size: 1rem;">₹600</div>
+                <span class="badge bg-warning text-dark rounded-pill" style="font-size: 0.65rem;">Trial</span>
+              </div>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <div class="plan-selector text-center" id="planCard-child3" onclick="selectPlan('child3', 350, 'Child Bowl 3-Day Trial (₹350)')">
+                <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan6">चिल ३-दिवस</div>
+                <div class="fw-bold text-warning my-1" style="font-size: 1rem;">₹350</div>
+                <span class="badge bg-warning text-dark rounded-pill" style="font-size: 0.65rem;">Trial</span>
+              </div>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <div class="plan-selector text-center" id="planCard-std6" onclick="selectPlan('std6', 900, 'Standard Bowl 6-Day Trial (₹900)')">
+                <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan7">स्टँडर्ड ६-दिवस</div>
+                <div class="fw-bold text-warning my-1" style="font-size: 1rem;">₹900</div>
+                <span class="badge bg-warning text-dark rounded-pill" style="font-size: 0.65rem;">Trial</span>
+              </div>
+            </div>
+
+            <div class="col-6 col-sm-4">
+              <div class="plan-selector text-center" id="planCard-std3" onclick="selectPlan('std3', 500, 'Standard Bowl 3-Day Trial (₹500)')">
+                <div class="fw-bold" style="font-size: 0.75rem;" data-key="pPlan8">स्टँडर्ड ३-दिवस</div>
+                <div class="fw-bold text-warning my-1" style="font-size: 1rem;">₹500</div>
+                <span class="badge bg-warning text-dark rounded-pill" style="font-size: 0.65rem;">Trial</span>
               </div>
             </div>
           </div>
@@ -1172,7 +1377,7 @@
             </div>
             <hr class="my-2 text-success opacity-25">
             <div class="d-flex flex-wrap gap-3 small" style="font-size: 0.75rem; color: #155724;">
-              <span><i class="bi bi-check-circle-fill"></i> <span data-key="bannerF1">३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स (काजू-बदाम)</span></span>
+              <span><i class="bi bi-check-circle-fill"></i> <span data-key="bannerF1">३ फळे + स्प्राउट्स (फळे आणि स्प्राउट्स)</span></span>
               <span><i class="bi bi-check-circle-fill"></i> <span data-key="bannerF2">फ्री मॉर्निंग डिलिव्हरी (रविवार इव्हेंट उपलब्ध)</span></span>
               <span><i class="bi bi-check-circle-fill"></i> <span data-key="bannerF3">पॅकिंग & GST समाविष्ट</span></span>
             </div>
@@ -1200,7 +1405,7 @@
         <img src="logo.png" alt="BloomBite" style="height: 38px; filter: brightness(0) invert(1);">
         <h4 class="brand-title text-white mb-0">BloomBite</h4>
       </div>
-      <p class="text-secondary small mb-3"><span data-key="footerDesc">Daily Fresh Fruit, Sprouts & Dry Fruits | Gym & Party Bulk Orders Available</span></p>
+      <p class="text-secondary small mb-3"><span data-key="footerDesc">Daily Fresh Fruits & Sprouts | Gym & Party Bulk Orders Available</span></p>
       <div class="small text-secondary">
         <span><i class="bi bi-whatsapp text-success me-1"></i> <span data-key="contactLabel">संपर्क / WhatsApp:</span> <strong class="text-white">9699730616</strong></span>
       </div>
@@ -1221,11 +1426,11 @@
 
     const translations = {
       mr: {
-        topRibbon: "🎉 फेस्टिव्हल धमाका: २६ दिवस महिना फक्त ₹३,००० (३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स) | मोफत सकाळची डिलिव्हरी + टॅक्स समाविष्ट!",
+        topRibbon: "🎉 फेस्टिव्हल धमाका: २६ दिवस महिना फक्त ₹३,००० (३ फळे + स्प्राउट्स) | मोफत सकाळची डिलिव्हरी + टॅक्स समाविष्ट!",
         navOrder: "ऑर्डर करा",
         heroTag: "✨ Fresh Fruits & Sprouts, Delivered To Your Door",
         heroTitle: "Healthy Choices. Happier You.",
-        heroDesc: "ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे, मोड आलेली कडधान्ये आणि प्रीमियम काजू-बदाम! २६ दिवस थेट घरपोच सकाळची फ्रेश डिलिव्हरी.",
+        heroDesc: "ऑफिस आणि धावपळीच्या रूटीनमध्ये शरीराला द्या १००% केमिकल-मुक्त ताजी फळे, मोड आलेली कडधान्ये आणि प्रीमियम फळे आणि स्प्राउट्स! २६ दिवस थेट घरपोच सकाळची फ्रेश डिलिव्हरी.",
         featureFresh: "फ्रेश & प्रीमियम",
         featureDoctor: "डॉक्टरांचा सल्ला",
         featureDelivery: "जलद सकाळची डिलिव्हरी",
@@ -1239,8 +1444,8 @@
         boxF1Desc: "पपई, सफरचंद आणि टरबूज/डाळिंब",
         boxF2: "३ स्प्राउट्स मिक्स:",
         boxF2Desc: "देशी चणा, हिरवे मूग आणि मटकी",
-        boxF3: "३ प्रीमियम ड्रायफ्रूट्स:",
-        boxF3Desc: "काजू, बदाम आणि किशमिश",
+        boxF3: "स्प्राउट्स:",
+        boxF3Desc: "ताजे हंगामी फळे आणि स्प्राउट्स",
         boxF4: "सकाळची मोफत डिलिव्हरी + पॅकिंग + टॅक्स समाविष्ट!",
         btnSelectPlan: "प्लॅन निवडा",
         cat1Title: "ताजी फळे",
@@ -1249,7 +1454,7 @@
         cat2Desc: "भरपूर प्रोटीन",
         cat3Title: "हेल्दी मिक्स",
         cat3Desc: "फळे + कडधान्ये",
-        cat4Title: "ड्रायफ्रूट्स",
+        cat4Title: "Fresh & Healthy",
         cat4Desc: "काजू व बदाम",
         vsBadge: "Reality Check ⚠️",
         vsTitle: "२ समोसे + १ चहा (₹५०) VS BloomBite फ्रूट बास्केट",
@@ -1268,7 +1473,7 @@
         good1: "<strong>१००% शुद्ध प्लांट प्रोटीन & फायबर:</strong> मोड आलेली कडधान्ये आतडी स्वच्छ करतात आणि ३-४ तास भूक शांत ठेवतात.",
         good2: "<strong>पपईचे पाचक एन्झाईम्स (Papain):</strong> ॲसिडिटी मुळापासून नष्ट होते, पोट कायम हलके राहते आणि बद्धकोष्ठता होत नाही.",
         good3: "<strong>झिरो गोळ्यांचा खर्च:</strong> नैसर्गिक पोषणामुळे शरीराची रचना सुधारते; कोणतीही अँटासिड गोळी घेण्याची गरज पडत नाही!",
-        good4: "<strong>अखंड नैसर्गिक स्टॅमिना:</strong> संत्री, डाळिंब आणि ड्रायफ्रूट्स दुपारचा आळस पूर्णपणे नाहीसा करतात.",
+        good4: "<strong>अखंड नैसर्गिक स्टॅमिना:</strong> संत्री, डाळिंब आणि स्प्राउट्स दुपारचा आळस पूर्णपणे नाहीसा करतात.",
         good5: "<strong>खऱ्या आरोग्याची बचत:</strong> डॉक्टरांचे लाखो रुपये वाचवून शरीर फिट, वजन नियंत्रित आणि मन टवटवीत राहते!",
         hazardsBadge: "Whole Nutrition Power",
         hazardsTitle: "रोजच्या ४ मोठ्या समस्या & BloomBite चा नैसर्गिक उतारा",
@@ -1287,7 +1492,7 @@
         hz4Cure: "<strong class='text-success'>उतारा:</strong> संत्री, डाळिंब यातील Vitamin C शरीराची इम्युनिटी वॉल मजबूत ठेवतात.",
         tJourneyBadge: "30-DAY JOURNEY 🗓️",
         tJourneyTitle: "३० दिवसांत शरीरात काय बदल घडतात?",
-        tJourneySub: "दररोज ताजी फळे, स्प्राउट्स आणि ड्रायफ्रूट्स खाण्याचा शास्त्रीय परिणाम:",
+        tJourneySub: "दररोज ताजी फळे, स्प्राउट्स आणि स्प्राउट्स खाण्याचा शास्त्रीय परिणाम:",
         t1Time: "दिवस १ ते ७",
         t1Title: "Gut Reset",
         t1Desc: "पपई आणि फायबरमुळे ॲसिडिटी थांबते आणि सकाळचे पोट एकदम हलके होते.",
@@ -1305,37 +1510,37 @@
         aboutTitle: "आम्ही तरुण विद्यार्थी हॉस्पिटल्समध्ये गेलो, डॉक्टरांना भेटलो... आणि डोळे उघडले!",
         aboutP1: "आम्ही कॉलेजचे तरुण विद्यार्थी, जेव्हा आम्ही शहरातील विविध हॉस्पिटल्समध्ये गेलो आणि वरिष्ठ डॉक्टरांशी चर्चा केली, तेव्हा समोर आलेले वास्तव धक्कादायक होते!",
         aboutP2: "डॉक्टरांनी आम्हाला स्पष्ट सांगितले: 'जोपर्यंत रोजच्या आहारात जिवंत फळे आणि मोड आलेली कडधान्ये येत नाहीत, तोपर्यंत हे हॉस्पिटलचे खेटे थांबणार नाहीत!'",
-        aboutP3: "म्हणूनच आम्ही 'BloomBite' सुरू केले! आता यात आम्ही पौष्टिक काजू-बदाम जोडून संपूर्ण शक्तीवर्धक आहार तयार केला आहे.",
+        aboutP3: "म्हणूनच आम्ही 'BloomBite' सुरू केले! आता यात आम्ही पौष्टिक फळे आणि स्प्राउट्सचा पौष्टिक आहार तयार केला आहे.",
         tagDoctor: "✅ Doctor Approved",
         tagDiet: "✅ 26 Days Power Diet",
         tagPrice: "✅ All-Inclusive Price",
         doctorAdvice: "डॉक्टरांचा सल्ला",
         farmSelected: "थेट शेतातून निवड",
         morningDelivery: "सकाळची डिलिव्हरी",
-        nutsIncluded: "काजू + बदाम समाविष्ट",
-        menuBadge: "३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स",
+        sproutsIncluded: "ताजी फळे + स्प्राउट्स",
+        menuBadge: "३ फळे + स्प्राउट्स",
         menuTitle: "६ दिवसांचा पॉवर मेनू (सोमवार - शनिवार)",
         menuSub: "महिनाभरात एकूण २६ दिवस दररोज सकाळी फ्रेश डिलिव्हरी (रविवार नियमित सुट्टी, फक्त बल्क ऑर्डर्स चालू)",
         thDay: "वार",
         thFruit: "ताजी फळे (Fresh Fruits)",
         thSprouts: "मोड आलेली कडधान्ये (Sprouts)",
-        thNuts: "३ ड्रायफ्रूट्स (Dry Fruits)",
+        thNuts: "स्प्राउट्स (Sprouts)",
         dayMon: "सोमवार",
         monFruit: "सफरचंद, पपई, कलिंगड",
         monSprout: "हिरवे मूग, चणा मिक्स",
-        monNuts: "<strong class='text-dark'>काजू, बदाम, काळे मणुके</strong>",
+        monNuts: "<strong class='text-dark'>ताजी फळे आणि स्प्राउट्स</strong>",
         dayTue: "मंगळवार",
         tueFruit: "केळी, पेरू, डाळिंब",
         tueSprout: "हिरवे मूग, मटकी स्प्राउट्स",
-        tueNuts: "<strong class='text-dark'>काजू, बदाम, किशमिश</strong>",
+        tueNuts: "<strong class='text-dark'>ताजी फळे आणि स्प्राउट्स</strong>",
         dayWed: "बुधवार",
         wedFruit: "खरबूज, पपई, सफरचंद",
         wedSprout: "देशी चणा, मटकी स्प्राउट्स",
-        wedNuts: "<strong class='text-dark'>बदाम, काजू, अक्रोड तुकडा</strong>",
+        wedNuts: "<strong class='text-dark'>ताजी फळे आणि स्प्राउट्स</strong>",
         dayThu: "गुरुवार",
         thuFruit: "संत्रे, कलिंगड, पेरू",
         thuSprout: "हिरवे मूग, देशी चणा",
-        thuNuts: "<strong class='text-dark'>काजू, बदाम, पिवळे मणुके</strong>",
+        thuNuts: "<strong class='text-dark'>ताजी फळे आणि स्प्राउट्स</strong>",
         dayFri: "शुक्रवार",
         friFruit: "सफरचंद, अननस, पपई",
         friSprout: "मटकी, हिरवे मूग मिक्स",
@@ -1343,26 +1548,35 @@
         daySat: "शनिवार",
         satFruit: "डाळिंब, केळी, सफरचंद",
         satSprout: "हिरवे मूग, मटकी मिक्स",
-        satNuts: "<strong class='text-dark'>काजू, बदाम, काळे मणुके</strong>",
+        satNuts: "<strong class='text-dark'>ताजी फळे आणि स्प्राउट्स</strong>",
         bulkBadge: "🎉 Sunday & Special Events Special",
         bulkTitle: "जिम इव्हेंट्स, ऑफिस पार्टी & सोसायट्यांसाठी बल्क ऑर्डर्स!",
-        bulkDesc: "कचरा जंक फूड किंवा तेलकट समोशांऐवजी तुमच्या इव्हेंटमध्ये द्या १००% हायजेनिक फ्रूट, स्प्राउट आणि ड्रायफ्रूट्स बास्केट! रविवार असो किंवा सण — आम्ही विशेष बल्क डिलिव्हरी देतो.",
+        bulkDesc: "कचरा जंक फूड किंवा तेलकट समोशांऐवजी तुमच्या इव्हेंटमध्ये द्या १००% हायजेनिक फ्रूट, स्प्राउट आणि फळे आणि स्प्राउट्स बास्केट! रविवार असो किंवा सण — आम्ही विशेष बल्क डिलिव्हरी देतो.",
         bulkCardHead: "बल्क ऑर्डर डिस्काउंट",
         bulkCardSub: "१०, २५, ५० किंवा १००+ बॉक्सेससाठी विशेष कस्टमाइज्ड पॅक",
         bulkBtn: "बल्क चौकशी करा",
         pricingHead: "पारदर्शक दर आणि स्पेशल फेस्टिव्हल ऑफर",
-        pricingSub: "कोणताही छुपा खर्च नाही! पॅकिंग, ड्रायफ्रूट्स, डिलिव्हरी आणि टॅक्स समाविष्ट.",
+        pricingSub: "कोणताही छुपा खर्च नाही! पॅकिंग, डिलिव्हरी आणि टॅक्स समाविष्ट.",
         trialTitle: "सिंगल ट्रायल बॉक्स",
         perBox: "/ १ बॉक्स",
-        trialDesc: "पहिली टेस्ट घेऊन पहा! ३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स.",
+        trialDesc: "पहिली टेस्ट घेऊन पहा! ३ फळे + स्प्राउट्स.",
         btnBookTrial: "ट्रायल बुक करा",
+        childTitle: "Child Bowl मासिक प्लॅन",
+        childP1: "७ ताजी हंगामी फळे",
+        childP2: "मासिक प्लॅन (२६ दिवस)",
+        childP3: "१५०–१८० ग्रॅम (१ छोटा बाउल)",
+        childT6: "६-दिवस ट्रायल ₹६००",
+        childT3: "३-दिवस ट्रायल ₹३५०",
+        btnChild: "Child Bowl प्लॅन निवडा",
+        stdT6: "६-दिवस ट्रायल ₹९००",
+        stdT3: "३-दिवस ट्रायल ₹५००",
         festiveBadge: "🔥 फेस्टिव्हल स्पेशल ऑफर",
         festiveTitle: "२६ दिवसांचा फेस्टिव्हल प्लॅन",
         perMonth: "/ महिना",
         normalRate: "नॉर्मल दर: ₹3,500",
         perDayHighlight: "फक्त ₹११५ / दिवस (२६ बॉक्सेस)",
         fPoint1: "२६ दिवस अखंड पोषण (रविवार सुट्टी)",
-        fPoint2: "काजू, बदाम आणि मणुके दररोज समाविष्ट",
+        fPoint2: "ताजी फळे आणि स्प्राउट्स दररोज समाविष्ट",
         fPoint3: "सकाळी ६:३० ते ८:३० घरपोच मोफत डिलिव्हरी",
         fPoint4: "टॅक्स, पॅकिंग & डिलिव्हरी सर्व मोफत",
         btnSubOffer: "ऑफरमध्ये सबस्क्राइब करा",
@@ -1376,6 +1590,11 @@
         pPlan1: "फेस्टिव्हल २६ दिवस",
         pPlan2: "१-Day ट्रायल",
         pPlan3: "बल्क / Sunday Event",
+        pPlan4: "Child Bowl २६ दिवस",
+        pPlan5: "Child Bowl ६-दिवस",
+        pPlan6: "Child Bowl ३-दिवस",
+        pPlan7: "स्टँडर्ड ६-दिवस",
+        pPlan8: "स्टँडर्ड ३-दिवस",
         quantityLabel: "संख्या (Quantity)",
         quantityHelp: "किती व्यक्तींसाठी/बॉक्सेस हवे आहेत?",
         nameLabel: "तुमचे नाव (Full Name)",
@@ -1385,16 +1604,16 @@
         dateLabel: "📅 Delivery / Order Date",
         dateHelp: "Select the date for your meal box delivery.",
         totalLabel: "एकूण अंदाज रक्कम (Total Amount):",
-        bannerF1: "३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स (काजू-बदाम)",
+        bannerF1: "३ फळे + स्प्राउट्स (फळे आणि स्प्राउट्स)",
         bannerF2: "फ्री मॉर्निंग डिलिव्हरी (रविवार इव्हेंट उपलब्ध)",
         bannerF3: "पॅकिंग & GST समाविष्ट",
         whatsappOrder: "WhatsApp वर ऑर्डर बुक करा",
         stickyOrder: "ऑर्डर करा (₹३,००० / २६ दिवस)",
-        footerDesc: "Daily Fresh Fruit, Sprouts & Dry Fruits | Gym & Party Bulk Orders Available",
+        footerDesc: "Daily Fresh Fruits & Sprouts | Gym & Party Bulk Orders Available",
         contactLabel: "संपर्क / WhatsApp:"
       },
       en: {
-        topRibbon: "🎉 Festive Special: 26 Days at just ₹3,000 (3 Fruits + 3 Sprouts + 3 Dry Fruits) | Free Morning Delivery + All Taxes Included!",
+        topRibbon: "🎉 Festive Special: 26 Days at just ₹3,000 (3 Fresh Fruits + Sprouts) | Free Morning Delivery + All Taxes Included!",
         navOrder: "Order Now",
         heroTag: "✨ Fresh Fruits & Sprouts, Delivered To Your Door",
         heroTitle: "Healthy Choices. Happier You.",
@@ -1412,8 +1631,8 @@
         boxF1Desc: "Papaya, Apple, Watermelon/Pomegranate",
         boxF2: "3 Sprouts Mix:",
         boxF2Desc: "Desi Chana, Green Moong & Matki",
-        boxF3: "3 Dry Fruits:",
-        boxF3Desc: "Cashew, Almonds & Raisins",
+        boxF3: "Sprouts:",
+        boxF3Desc: "Fresh seasonal fruits and sprouts",
         boxF4: "Free Morning Delivery + Packaging + Taxes Included!",
         btnSelectPlan: "Select Plan",
         cat1Title: "Fruits",
@@ -1422,7 +1641,7 @@
         cat2Desc: "Rich Protein",
         cat3Title: "Healthy Mix",
         cat3Desc: "Fruits + Sprouts",
-        cat4Title: "Dry Fruits",
+        cat4Title: "Sprouts",
         cat4Desc: "Cashew & Almonds",
         vsBadge: "Reality Check ⚠️",
         vsTitle: "2 Samosas + 1 Tea (₹50) VS BloomBite Basket",
@@ -1441,7 +1660,7 @@
         good1: "<strong>Living Protein & Soluble Fiber:</strong> Sprouted legumes clean intestines and shut cravings down for 3-4 hours.",
         good2: "<strong>Raw Digestive Enzymes (Papain):</strong> Ends acidity at the root, lubricates gut lining, and prevents bloating permanently.",
         good3: "<strong>Zero Tablet Expenses:</strong> Clean cellular hydration eliminates reliance on antacids or multivitamin supplements!",
-        good4: "<strong>Clean Stamina & Immunity:</strong> Dense natural fructose, Vitamin C and premium nuts fuel sharp focus with zero midday crash.",
+        good4: "<strong>Clean Stamina & Immunity:</strong> Dense natural fructose, Vitamin C and premium fruits and sprouts support daily nutrition with zero midday crash.",
         good5: "<strong>Lifetime Health Dividends:</strong> Saves thousands in medical consultations while keeping your body athletic and energetic all day!",
         hazardsBadge: "Whole Nutrition Power",
         hazardsTitle: "4 Daily Health Hazards & The BloomBite Cure",
@@ -1485,30 +1704,30 @@
         doctorAdvice: "Doctor Advice",
         farmSelected: "Direct From Farm",
         morningDelivery: "Morning Delivery",
-        nutsIncluded: "Cashew + Almonds",
-        menuBadge: "3 Fruits + 3 Sprouts + 3 Dry Fruits",
+        sproutsIncluded: "Fresh Fruits + Sprouts",
+        menuBadge: "3 Fresh Fruits + Sprouts",
         menuTitle: "6-Day Power Menu (Monday - Saturday)",
         menuSub: "26 Days fresh morning delivery every month (Regular Sunday holiday, Bulk orders available on Sundays)",
         thDay: "Day",
         thFruit: "Fresh Sliced Fruits",
         thSprouts: "Sprouts & Healthy Mix",
-        thNuts: "3 Premium Dry Fruits",
+        thNuts: "Fresh Fruits & Sprouts",
         dayMon: "Monday",
         monFruit: "Apple, Papaya, Watermelon",
         monSprout: "Green Moong, Chana Mix",
-        monNuts: "<strong class='text-dark'>Cashews, Almonds, Black Raisins</strong>",
+        monNuts: "<strong class='text-dark'>Fresh fruits and sprouts</strong>",
         dayTue: "Tuesday",
         tueFruit: "Banana, Guava, Pomegranate",
         tueSprout: "Green Moong, Matki Sprouts",
-        tueNuts: "<strong class='text-dark'>Cashews, Almonds, Raisins</strong>",
+        tueNuts: "<strong class='text-dark'>Fresh fruits and sprouts</strong>",
         dayWed: "Wednesday",
         wedFruit: "Muskmelon, Papaya, Apple",
         wedSprout: "Desi Chana, Matki Sprouts",
-        wedNuts: "<strong class='text-dark'>Almonds, Cashews, Walnuts</strong>",
+        wedNuts: "<strong class='text-dark'>Fresh fruits and sprouts</strong>",
         dayThu: "Thursday",
         thuFruit: "Orange, Watermelon, Guava",
         thuSprout: "Green Moong, Desi Chana",
-        thuNuts: "<strong class='text-dark'>Cashews, Almonds, Golden Raisins</strong>",
+        thuNuts: "<strong class='text-dark'>Fresh fruits and sprouts</strong>",
         dayFri: "Friday",
         friFruit: "Apple, Pineapple, Papaya",
         friSprout: "Matki, Green Moong Mix",
@@ -1516,19 +1735,28 @@
         daySat: "Saturday",
         satFruit: "Pomegranate, Banana, Apple",
         satSprout: "Green Moong, Matki Mix",
-        satNuts: "<strong class='text-dark'>Cashews, Almonds, Black Raisins</strong>",
+        satNuts: "<strong class='text-dark'>Fresh fruits and sprouts</strong>",
         bulkBadge: "🎉 Sunday & Special Events Special",
         bulkTitle: "Bulk Orders for Gym Events, Office Parties & Societies!",
-        bulkDesc: "Swap junk food and samosas with 100% hygienic fresh fruit, sprout, and dry-fruit bowls! Whether it's a Sunday marathon or community gathering, we deliver on time.",
+        bulkDesc: "Swap junk food and samosas with 100% hygienic fresh fruit and sprout bowls! Whether it's a Sunday marathon or community gathering, we deliver on time.",
         bulkCardHead: "Bulk Order Perks",
         bulkCardSub: "Customized boxes available for 10, 25, 50, or 100+ attendees",
         bulkBtn: "Enquire for Bulk Order",
         pricingHead: "Transparent Pricing & Festive Plans",
-        pricingSub: "Zero hidden costs! Packing, dry fruits, delivery and taxes included.",
+        pricingSub: "Zero hidden costs! Packing, delivery and taxes included.",
         trialTitle: "Single Trial Box",
         perBox: "/ 1 Box",
-        trialDesc: "Taste it first! 3 Fruits + 3 Sprouts + 3 Dry Fruits.",
+        trialDesc: "Taste it first! 3 Fresh Fruits + Sprouts.",
         btnBookTrial: "Book Trial",
+        childTitle: "Child Bowl Monthly Plan",
+        childP1: "7 fresh seasonal fruits",
+        childP2: "Monthly plan (26 days)",
+        childP3: "150–180 g (1 small bowl)",
+        childT6: "6-Day Trial ₹600",
+        childT3: "3-Day Trial ₹350",
+        btnChild: "Select Child Bowl Plan",
+        stdT6: "6-Day Trial ₹900",
+        stdT3: "3-Day Trial ₹500",
         festiveBadge: "🔥 Festive Special Offer",
         festiveTitle: "26 Days Festive Plan",
         perMonth: "/ Month",
@@ -1549,6 +1777,11 @@
         pPlan1: "Festive 26 Days",
         pPlan2: "1-Day Trial",
         pPlan3: "Bulk / Sunday Event",
+        pPlan4: "Child Bowl 26 Days",
+        pPlan5: "Child Bowl 6-Day",
+        pPlan6: "Child Bowl 3-Day",
+        pPlan7: "Standard 6-Day",
+        pPlan8: "Standard 3-Day",
         quantityLabel: "Quantity",
         quantityHelp: "How many boxes do you need?",
         nameLabel: "Full Name",
@@ -1558,16 +1791,16 @@
         dateLabel: "📅 Delivery / Order Date",
         dateHelp: "Select the date for your meal box delivery.",
         totalLabel: "Total Estimated Amount:",
-        bannerF1: "3 Fruits + 3 Sprouts + 3 Dry Fruits (Cashew-Almonds)",
+        bannerF1: "3 Fresh Fruits + Sprouts (Cashew-Almonds)",
         bannerF2: "Free Morning Delivery (Sunday Events Available)",
         bannerF3: "Packaging & GST Included",
         whatsappOrder: "Order on WhatsApp",
         stickyOrder: "Order Now (₹3,000 / 26 Days)",
-        footerDesc: "Daily Fresh Fruit, Sprouts & Dry Fruits | Gym & Party Bulk Orders Available",
+        footerDesc: "Daily Fresh Fruits & Sprouts | Gym & Party Bulk Orders Available",
         contactLabel: "Contact / WhatsApp:"
       },
       hi: {
-        topRibbon: "🎉 फेस्टिव स्पेशल: 26 दिन सिर्फ ₹3,000 (3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स) | फ्री मॉर्निंग डिलीवरी + सभी टैक्स शामिल!",
+        topRibbon: "🎉 फेस्टिव स्पेशल: 26 दिन सिर्फ ₹3,000 (3 फल + स्प्राउट्स) | फ्री मॉर्निंग डिलीवरी + सभी टैक्स शामिल!",
         navOrder: "ऑर्डर करें",
         heroTag: "✨ ताजे फल और स्प्राउट्स, आपके दरवाजे तक",
         heroTitle: "स्वस्थ विकल्प। खुशहाल आप।",
@@ -1585,7 +1818,7 @@
         boxF1Desc: "पपीता, सेब और तरबूज/अनार",
         boxF2: "3 स्प्राउट्स मिक्स:",
         boxF2Desc: "देसी चना, हरा मूंग और मटकी",
-        boxF3: "3 प्रीमियम ड्राय फ्रूट्स:",
+        boxF3: "3 प्रीमियम स्प्राउट्स:",
         boxF3Desc: "काजू, बादाम और किशमिश",
         boxF4: "सुबह की फ्री डिलीवरी + पैकिंग + टैक्स शामिल!",
         btnSelectPlan: "प्लान चुनें",
@@ -1595,7 +1828,7 @@
         cat2Desc: "प्रोटीन से भरपूर",
         cat3Title: "हेल्दी मिक्स",
         cat3Desc: "फल + स्प्राउट्स",
-        cat4Title: "ड्राय फ्रूट्स",
+        cat4Title: "Fresh & Healthy",
         cat4Desc: "काजू और बादाम",
         vsBadge: "Reality Check ⚠️",
         vsTitle: "2 समोसे + 1 चाय (₹50) VS BloomBite फ्रूट बास्केट",
@@ -1614,7 +1847,7 @@
         good1: "<strong>100% शुद्ध प्लांट प्रोटीन और फाइबर:</strong> अंकुरित अनाज आंतों को साफ करते हैं और 3-4 घंटे भूख नियंत्रित रखते हैं।",
         good2: "<strong>पपीते के पाचक एंजाइम्स (Papain):</strong> एसिडिटी जड़ से खत्म, पेट हमेशा हल्का और पाचन दुरुस्त।",
         good3: "<strong>दवाइयों का शून्य खर्च:</strong> प्राकृतिक पोषण से शरीर मजबूत होता है; किसी एंटासिड गोली की जरूरत नहीं पड़ती!",
-        good4: "<strong>अखंड प्राकृतिक स्टैमिना:</strong> संतरे, अनार और ड्राय फ्रूट्स दोपहर की सुस्ती पूरी तरह दूर करते हैं।",
+        good4: "<strong>अखंड प्राकृतिक स्टैमिना:</strong> संतरे, अनार और स्प्राउट्स दोपहर की सुस्ती पूरी तरह दूर करते हैं।",
         good5: "<strong>जीवनभर की स्वास्थ्य बचत:</strong> डॉक्टरों के लाखों रुपये बचाएं, वजन नियंत्रित रखें और दिनभर तरोताज़ा रहें!",
         hazardsBadge: "Whole Nutrition Power",
         hazardsTitle: "रोज़ की 4 बड़ी समस्याएं और BloomBite का प्राकृतिक उपाय",
@@ -1658,14 +1891,14 @@
         doctorAdvice: "डॉक्टर की सलाह",
         farmSelected: "सीधे खेत से चुना हुआ",
         morningDelivery: "फ्री मॉर्निंग डिलीवरी",
-        nutsIncluded: "काजू + बादाम शामिल",
-        menuBadge: "3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स",
+        sproutsIncluded: "काजू + बादाम शामिल",
+        menuBadge: "3 फल + स्प्राउट्स",
         menuTitle: "6-दिन का पावर मेनू (सोमवार - शनिवार)",
         menuSub: "हर महीने 26 दिन सुबह ताजी डिलीवरी (रविवार नियमित छुट्टी, रविवार को बल्क ऑर्डर उपलब्ध)",
         thDay: "दिन",
         thFruit: "ताजे कटे फल",
         thSprouts: "स्प्राउट्स और हेल्दी मिक्स",
-        thNuts: "3 प्रीमियम ड्राय फ्रूट्स",
+        thNuts: "ताजे फल और स्प्राउट्स",
         dayMon: "सोमवार",
         monFruit: "सेब, पपीता, तरबूज",
         monSprout: "हरा मूंग, चना मिक्स",
@@ -1692,16 +1925,25 @@
         satNuts: "<strong class='text-dark'>काजू, बादाम, काली किशमिश</strong>",
         bulkBadge: "🎉 रविवार और स्पेशल इवेंट्स के लिए खास",
         bulkTitle: "जिम इवेंट्स, ऑफिस पार्टियों और सोसायटी के लिए बल्क ऑर्डर!",
-        bulkDesc: "जंक फूड और समोसे की जगह 100% हाइजेनिक फल, स्प्राउट्स और ड्राय-फ्रूट बाउल्स चुनें! रविवार मैराथन हो या कम्युनिटी इवेंट, हम समय पर डिलीवरी करते हैं।",
+        bulkDesc: "जंक फूड और समोसे की जगह 100% हाइजेनिक फळे आणि स्प्राउट्स बाउल्स निवडा! रविवार मैराथन हो या कम्युनिटी इवेंट, हम समय पर डिलीवरी करते हैं।",
         bulkCardHead: "बल्क ऑर्डर के फायदे",
         bulkCardSub: "10, 25, 50 या 100+ बॉक्स के लिए कस्टम पैक उपलब्ध",
         bulkBtn: "बल्क ऑर्डर पूछें",
         pricingHead: "पारदर्शी दरें और स्पेशल फेस्टिव ऑफर",
-        pricingSub: "कोई छुपा शुल्क नहीं! पैकिंग, ड्राय फ्रूट्स, डिलीवरी और टैक्स शामिल।",
+        pricingSub: "कोई छुपा शुल्क नहीं! पैकिंग, स्प्राउट्स, डिलीवरी और टैक्स शामिल।",
         trialTitle: "सिंगल ट्रायल बॉक्स",
         perBox: "/ 1 बॉक्स",
-        trialDesc: "पहले टेस्ट करके देखें! 3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स।",
+        trialDesc: "पहले टेस्ट करके देखें! 3 फल + स्प्राउट्स।",
         btnBookTrial: "ट्रायल बुक करें",
+        childTitle: "Child Bowl मासिक प्लान",
+        childP1: "7 ताजे मौसमी फल",
+        childP2: "मासिक प्लान (26 दिन)",
+        childP3: "150–180 ग्राम (1 छोटा बाउल)",
+        childT6: "6-दिन ट्रायल ₹600",
+        childT3: "3-दिन ट्रायल ₹350",
+        btnChild: "Child Bowl प्लान चुनें",
+        stdT6: "6-दिन ट्रायल ₹900",
+        stdT3: "3-दिन ट्रायल ₹500",
         festiveBadge: "🔥 फेस्टिव स्पेशल ऑफर",
         festiveTitle: "26-दिन का फेस्टिव प्लान",
         perMonth: "/ माह",
@@ -1722,6 +1964,11 @@
         pPlan1: "फेस्टिव 26 दिन",
         pPlan2: "1-दिन ट्रायल",
         pPlan3: "बल्क / Sunday Event",
+        pPlan4: "Child Bowl 26 दिन",
+        pPlan5: "Child Bowl 6-दिन",
+        pPlan6: "Child Bowl 3-दिन",
+        pPlan7: "स्टैंडर्ड 6-दिन",
+        pPlan8: "स्टैंडर्ड 3-दिन",
         quantityLabel: "मात्रा (Quantity)",
         quantityHelp: "कितने लोगों/बॉक्स के लिए चाहिए?",
         nameLabel: "आपका नाम (पूरा नाम)",
@@ -1731,12 +1978,12 @@
         dateLabel: "📅 डिलीवरी / ऑर्डर दिनांक",
         dateHelp: "अपने मील बॉक्स की डिलीवरी तारीख चुनें।",
         totalLabel: "कुल अनुमानित राशि:",
-        bannerF1: "3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स (काजू-बादाम)",
+        bannerF1: "3 फल + स्प्राउट्स (काजू-बादाम)",
         bannerF2: "फ्री मॉर्निंग डिलीवरी (रविवार इवेंट उपलब्ध)",
         bannerF3: "पैकिंग और GST शामिल",
         whatsappOrder: "WhatsApp पर ऑर्डर करें",
         stickyOrder: "ऑर्डर करें (₹3,000 / 26 दिन)",
-        footerDesc: "रोज़ ताजे फल, स्प्राउट्स और ड्राय फ्रूट्स | जिम और पार्टी बल्क ऑर्डर उपलब्ध",
+        footerDesc: "रोज़ ताजे फल, स्प्राउट्स और स्प्राउट्स | जिम और पार्टी बल्क ऑर्डर उपलब्ध",
         contactLabel: "संपर्क / WhatsApp:"
       }
     };
@@ -1746,7 +1993,7 @@
       key: 'festive', 
       price: 3000, 
       title: 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)',
-      details: '२६ दिवस / २६ बॉक्सेस (३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स, फ्री मॉर्निंग डिलिव्हरी)'
+      details: '२६ दिवस / २६ बॉक्सेस (३ फळे + स्प्राउट्स, फ्री मॉर्निंग डिलिव्हरी)'
     };
 
     function chooseLanguage(lang) {
@@ -1786,26 +2033,46 @@
         mr: {
           festive: 'फेस्टिव्हल २६ दिवसांचा प्लॅन (₹३,०००/महिना - २६ बॉक्सेस)',
           single: '१-Day ट्रायल बॉक्स (₹१२०)',
-          bulk: 'बल्क / पार्टी / जिम इव्हेंट ऑर्डर (स्पेशल रविवार स्लॉट)'
+          bulk: 'बल्क / पार्टी / जिम इव्हेंट ऑर्डर (स्पेशल रविवार स्लॉट)',
+          child: 'Child Bowl मासिक प्लॅन (₹२,१९९/महिना - २६ दिवस)',
+          child6: 'Child Bowl ६-दिवस ट्रायल (₹६००)',
+          child3: 'Child Bowl ३-दिवस ट्रायल (₹३५०)',
+          std6: 'स्टँडर्ड बाउल ६-दिवस ट्रायल (₹९००)',
+          std3: 'स्टँडर्ड बाउल ३-दिवस ट्रायल (₹५००)'
         },
         en: {
           festive: 'Festive 26-Day Plan (₹3,000/mo - 26 Boxes)',
           single: 'Single Trial Box (₹120)',
-          bulk: 'Bulk / Party / Gym Event Order (Special Sunday Slot)'
+          bulk: 'Bulk / Party / Gym Event Order (Special Sunday Slot)',
+          child: 'Child Bowl Monthly Plan (₹2,199/mo - 26 Days)',
+          child6: 'Child Bowl 6-Day Trial (₹600)',
+          child3: 'Child Bowl 3-Day Trial (₹350)',
+          std6: 'Standard Bowl 6-Day Trial (₹900)',
+          std3: 'Standard Bowl 3-Day Trial (₹500)'
         },
         hi: {
           festive: 'फेस्टिव 26-दिन प्लान (₹3,000/माह - 26 बॉक्स)',
           single: '1-दिन ट्रायल बॉक्स (₹120)',
-          bulk: 'बल्क / पार्टी / जिम इवेंट ऑर्डर (स्पेशल रविवार स्लॉट)'
+          bulk: 'बल्क / पार्टी / जिम इवेंट ऑर्डर (स्पेशल रविवार स्लॉट)',
+          child: 'Child Bowl मासिक प्लान (₹2,199/माह - 26 दिन)',
+          child6: 'Child Bowl 6-दिन ट्रायल (₹600)',
+          child3: 'Child Bowl 3-दिन ट्रायल (₹350)',
+          std6: 'स्टैंडर्ड बाउल 6-दिन ट्रायल (₹900)',
+          std3: 'स्टैंडर्ड बाउल 3-दिन ट्रायल (₹500)'
         }
       };
 
       title = (planTitles[selectedLang] && planTitles[selectedLang][key]) || title;
 
-      let details = 'सकाळी मोफत डिलिव्हरी + ड्रायफ्रूट्स समाविष्ट';
-      if (key === 'festive') details = '२६ दिवस (२६ बॉक्सेस) - ३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स (काजू-बदाम)';
-      if (key === 'single') details = '१-Day चाचणी बॉक्स (३ फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स)';
+      let details = 'सकाळी मोफत डिलिव्हरी + स्प्राउट्स समाविष्ट';
+      if (key === 'festive') details = '२६ दिवस (२६ बॉक्सेस) - ३ फळे + स्प्राउट्स (फळे आणि स्प्राउट्स)';
+      if (key === 'single') details = '१-Day चाचणी बॉक्स (३ फळे + स्प्राउट्स)';
       if (key === 'bulk') details = 'Gym / Party / Sunday Bulk Order (Special Sunday Delivery)';
+      if (key === 'child') details = selectedLang === 'en' ? 'Child Bowl - 26 days (7 fresh seasonal fruits, 150–180 g)' : selectedLang === 'hi' ? 'Child Bowl - 26 दिन (7 ताजे मौसमी फल, 150–180 ग्राम)' : 'Child Bowl - २६ दिवस (७ ताजी हंगामी फळे, १५०–१८० ग्रॅम)';
+      if (key === 'child6') details = selectedLang === 'en' ? 'Child Bowl - 6-day trial' : selectedLang === 'hi' ? 'Child Bowl - 6-दिन ट्रायल' : 'Child Bowl - ६-दिवस ट्रायल';
+      if (key === 'child3') details = selectedLang === 'en' ? 'Child Bowl - 3-day trial' : selectedLang === 'hi' ? 'Child Bowl - 3-दिन ट्रायल' : 'Child Bowl - ३-दिवस ट्रायल';
+      if (key === 'std6') details = 'Standard Bowl - ६-दिवस ट्रायल';
+      if (key === 'std3') details = 'Standard Bowl - ३-दिवस ट्रायल';
 
       currentPlan = { key, price, title, details };
 
@@ -1837,6 +2104,9 @@
       let badge = "सर्व समाविष्ट";
       if (currentPlan.key === 'festive') badge = "फेस्टिव्हल सेव्हिंग ₹५००";
       if (currentPlan.key === 'single') badge = "१-Day ट्रायल";
+      if (currentPlan.key === 'child') badge = "Child Bowl मासिक";
+      if (currentPlan.key === 'child6' || currentPlan.key === 'std6') badge = "६-दिवस ट्रायल";
+      if (currentPlan.key === 'child3' || currentPlan.key === 'std3') badge = "३-दिवस ट्रायल";
       document.getElementById('discountTag').innerText = badge;
     }
 
@@ -1859,34 +2129,34 @@
 
       let msg = "";
       if (selectedLang === 'mr') {
-        msg = `*नवीन BloomBite ऑर्डर (Nutrition + Dry Fruits)*\n\n` +
+        msg = `*नवीन BloomBite ऑर्डर (Fruits + Sprouts)*\n\n` +
               `👤 *नाव:* ${name}\n` +
               `📅 *डिलिव्हरी दिनांक:* ${selectedOrderDate}\n` +
               `📍 *डिलिव्हरी पत्ता:* ${address}\n` +
               `📦 *प्लॅन:* ${currentPlan.title}\n` +
-              `ℹ️ *आहार:* ३ ताजी फळे + ३ कडधान्ये + ३ ड्रायफ्रूट्स (काजू-बदाम)\n` +
+              `ℹ️ *आहार:* ताजी फळे आणि स्प्राउट्स\n` +
               `🔢 *बॉक्सेस संख्या:* ${qty}\n` +
               `🚚 *डिलिव्हरी स्लॉट:* सकाळ / रविवार स्पेशल उपलब्ध\n` +
               `💰 *एकूण अंदाज रक्कम:* ${total}\n\n` +
               `कृपया माझी ऑर्डर कन्फर्म करा!`;
       } else if (selectedLang === 'hi') {
-        msg = `*नया BloomBite ऑर्डर (Nutrition + Dry Fruits)*\n\n` +
+        msg = `*नया BloomBite ऑर्डर (Fruits + Sprouts)*\n\n` +
               `👤 *नाम:* ${name}\n` +
               `📅 *डिलीवरी दिनांक:* ${selectedOrderDate}\n` +
               `📍 *डिलीवरी पता:* ${address}\n` +
               `📦 *प्लान:* ${currentPlan.title}\n` +
-              `ℹ️ *पोषण:* 3 फल + 3 स्प्राउट्स + 3 ड्राय फ्रूट्स (काजू-बादाम)\n` +
+              `ℹ️ *पोषण:* 3 फल + स्प्राउट्स (काजू-बादाम)\n` +
               `🔢 *बॉक्स संख्या:* ${qty}\n` +
               `🚚 *डिलीवरी स्लॉट:* सुबह / रविवार स्पेशल उपलब्ध\n` +
               `💰 *कुल राशि:* ${total}\n\n` +
               `कृपया मेरा ऑर्डर कन्फर्म करें!`;
       } else {
-        msg = `*New BloomBite Order (Nutrition + Dry Fruits)*\n\n` +
+        msg = `*New BloomBite Order (Fruits + Sprouts)*\n\n` +
               `👤 *Name:* ${name}\n` +
               `📅 *Delivery Date:* ${selectedOrderDate}\n` +
               `📍 *Delivery Address:* ${address}\n` +
               `📦 *Plan:* ${currentPlan.title}\n` +
-              `ℹ️ *Nutrition:* 3 Fruits + 3 Sprouts + 3 Dry Fruits (Cashew-Almonds)\n` +
+              `ℹ️ *Nutrition:* 3 Fresh Fruits + Sprouts (Cashew-Almonds)\n` +
               `🔢 *Quantity:* ${qty}\n` +
               `🚚 *Slot:* Morning / Sunday Special Available\n` +
               `💰 *Total Amount:* ${total}\n\n` +
